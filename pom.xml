@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+	<groupId>dev.kalenchukov</groupId>
+	<artifactId>useragentparser</artifactId>
+
+	<name>UserAgentParser</name>
+	<description>Получение информации о клиенте по строке user-agent</description>
+	<version>1.0.0</version>
+	<url>https://github.com/kalenchukov/UserAgentParser</url>
+
+	<licenses>
+		<license>
+			<name>MIT License</name>
+			<url>https://opensource.org/licenses/MIT</url>
+		</license>
+	</licenses>
+
+	<developers>
+		<developer>
+			<id>kalenchukov</id>
+			<name>Алексей Каленчуков</name>
+			<email>aleksey.kalenchukov@yandex.ru</email>
+		</developer>
+	</developers>
+
+	<packaging>jar</packaging>
+
+	<properties>
+		<maven.compiler.source>16</maven.compiler.source>
+		<maven.compiler.target>16</maven.compiler.target>
+		<encoding>UTF-8</encoding>
+	</properties>
+
+	<scm>
+		<url>https://github.com/kalenchukov/UserAgentParser/</url>
+		<connection>scm:git:https://github.com/kalenchukov/UserAgentParser.git</connection>
+		<developerConnection>scm:git:git@github.com:kalenchukov/UserAgentParser.git</developerConnection>
+	</scm>
+
+</project>

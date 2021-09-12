@@ -1,0 +1,83 @@
+/*
+ * Copyright © 2021 Алексей Каленчуков
+ * GitHub: https://github.com/kalenchukov
+ * E-mail: mailto:aleksey.kalenchukov@yandex.ru
+ */
+
+package dev.kalenchukov.useragentparser;
+
+import org.jetbrains.annotations.Nullable;
+
+import java.util.Map;
+
+/**
+ * Интерфейс для парсеров.
+ */
+public interface UserAgentParsing
+{
+	/**
+	 * Должен принимать строку user-agent о которой необходимо возвращать информацию.
+	 *
+	 * @param userAgent строка user-agent
+	 */
+	void setUserAgent(String userAgent);
+
+	/**
+	 * Должен возвращать все значения.
+	 */
+	Map<String, String> getAll();
+
+	/**
+	 * Должен возвращать ID браузера.
+	 */
+	@Nullable
+	String getBrowserId();
+
+	/**
+	 * Должен возвращать название браузера.
+	 */
+	@Nullable
+	String getBrowserName();
+
+	/**
+	 * Должен возвращать версию браузера.
+	 */
+	@Nullable
+	String getBrowserVersion();
+
+	/**
+	 * Должен возвращать ID устройства.
+	 */
+	@Nullable
+	String getDeviceId();
+
+	/**
+	 * Должен возвращать тип устройства.
+	 */
+	@Nullable
+	String getDeviceType();
+
+	/**
+	 * Должен возвращать модель устройства.
+	 */
+	@Nullable
+	String getDeviceModel();
+
+	/**
+	 * Должен возвращать ID операционной системы.
+	 */
+	@Nullable
+	String getOperatingSystemId();
+
+	/**
+	 * Должен возвращать название операционной системы.
+	 */
+	@Nullable
+	String getOperatingSystemName();
+
+	/**
+	 * Должен возвращать версию операционной системы.
+	 */
+	@Nullable
+	String getOperatingSystemVersion();
+}

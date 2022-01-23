@@ -45,7 +45,7 @@ public class Browser
 	 *
 	 * @see #getRegExpBrowsers()
 	 */
-	private final Map<String, BrowserType> mapRegExp = this.getRegExpBrowsers();
+	private final Map<String, BrowserType> regExpBrowsers = this.getRegExpBrowsers();
 
 	Browser() {}
 
@@ -161,7 +161,7 @@ public class Browser
 			Pattern pattern;
 			Matcher matcher;
 
-			for (Map.Entry<String, BrowserType> regExp : mapRegExp.entrySet())
+			for (Map.Entry<String, BrowserType> regExp : regExpBrowsers.entrySet())
 			{
 				pattern = Pattern.compile(regExp.getKey(), Pattern.CASE_INSENSITIVE);
 				matcher = pattern.matcher(this.userAgent);

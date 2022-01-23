@@ -9,7 +9,7 @@ class MainGetType
 	public static void main(String[] args)
 	{
 		// Возвращает название браузера по идентификатору
-		System.out.println(Browser.getById("3"));
+		System.out.println(Browser.getById(3L));
 
 		// Возвращает идентификатор браузера по названию
 		System.out.println(Browser.getByName("Firefox"));
@@ -18,7 +18,7 @@ class MainGetType
 		System.out.println(Browser.getAll());
 
 		// Возвращает тип устройства по идентификатору
-		System.out.println(Device.getById("2"));
+		System.out.println(Device.getById(2L));
 
 		// Возвращает идентификатор устройства по типу
 		System.out.println(Device.getByType("Mobile"));
@@ -27,7 +27,7 @@ class MainGetType
 		System.out.println(Device.getAll());
 
 		// Возвращает название операционной системы по идентификатору
-		System.out.println(OperatingSystem.getById("7"));
+		System.out.println(OperatingSystem.getById(7L));
 
 		// Возвращает идентификатор операционной системы по названию
 		System.out.println(OperatingSystem.getByName("Linux"));

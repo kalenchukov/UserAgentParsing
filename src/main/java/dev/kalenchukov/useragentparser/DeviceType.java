@@ -19,32 +19,32 @@ enum DeviceType
 	),
 
 	PC(
-		"1",
+		1L,
 		"PC"
 	),
 
 	MOBILE(
-		"2",
+		2L,
 		"Mobile"
 	),
 
 	TABLET(
-		"3",
+		3L,
 		"Tablet"
 	),
 
 	GAME_CONSOLE(
-		"4",
+		4L,
 		"Game console"
 	),
 
 	TV(
-		"5",
+		5L,
 		"TV"
 	),
 
 	VIRTUAL_ASSISTANT(
-		"6",
+		6L,
 		"Virtual assistant"
 	);
 
@@ -52,7 +52,7 @@ enum DeviceType
 	 * ID устройства.
 	 */
 	@Nullable
-	private final String id;
+	private final Long id;
 
 	/**
 	 * Тип устройства.
@@ -67,14 +67,14 @@ enum DeviceType
 	 * @param id ID устройства
 	 * @param type тип устройства
 	 */
-	DeviceType(String id, String type)
+	DeviceType(@Nullable Long id, @Nullable String type)
 	{
 		this.id = id;
 		this.type = type;
 	}
 
 	@Nullable
-	String getId()
+	Long getId()
 	{
 		return this.id;
 	}

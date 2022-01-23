@@ -19,382 +19,382 @@ enum BrowserType
 	),
 
 	GOOGLE_CHROME(
-		"1",
+		1L,
 		"Google Chrome"
 	),
 
 	OPERA(
-		"2",
+		2L,
 		"Opera"
 	),
 
 	FIREFOX(
-		"3",
+		3L,
 		"Firefox"
 	),
 
 	INTERNET_EXPLORER(
-		"4",
+		4L,
 		"Internet Explorer"
 	),
 
 	YANDEX_BROWSER(
-		"5",
+		5L,
 		"Yandex browser"
 	),
 
 	EDGE(
-		"6",
+		6L,
 		"Edge"
 	),
 
 	SAFARI(
-		"7",
+		7L,
 		"Safari"
 	),
 
 	CHROMIUM(
-		"8",
+		8L,
 		"Chromium"
 	),
 
 	OTTER_BROWSER(
-		"9",
+		9L,
 		"Otter Browser"
 	),
 
 	VIVALDI(
-		"10",
+		10L,
 		"Vivaldi"
 	),
 
 	MAXTHON(
-		"11",
+		11L,
 		"Maxthon"
 	),
 
 	KONQUEROR(
-		"12",
+		12L,
 		"Konqueror"
 	),
 
 	SRWARE_IRON(
-		"13",
+		13L,
 		"SRWare Iron"
 	),
 
 	SEAMONKEY(
-		"14",
+		14L,
 		"SeaMonkey"
 	),
 
 	AOL_BROWSER(
-		"15",
+		15L,
 		"Aol Browser"
 	),
 
 	ICEWEASEL(
-		"16",
+		16L,
 		"IceWeasel"
 	),
 
 	EPIPHANY(
-		"17",
+		17L,
 		"Epiphany"
 	),
 
 	KAZEHAKASE(
-		"18",
+		18L,
 		"Kazehakase"
 	),
 
 	GALEON(
-		"19",
+		19L,
 		"Galeon"
 	),
 
 	ICECAT(
-		"20",
+		20L,
 		"IceCat"
 	),
 
 	OPERA_TOUCH(
-		"21",
+		21L,
 		"Opera Touch"
 	),
 
 	FLOCK(
-		"22",
+		22L,
 		"Flock"
 	),
 
 	NETSCAPE_NAVIGATOR(
-		"23",
+		23L,
 		"Netscape Navigator"
 	),
 
 	PHOENIX_BROWSER(
-		"24",
+		24L,
 		"Phoenix Browser"
 	),
 
 	UCBROWSER(
-		"25",
+		25L,
 		"UCBrowser"
 	),
 
 	ARORA(
-		"26",
+		26L,
 		"Arora"
 	),
 
 	MINIMO(
-		"27",
+		27L,
 		"Minimo"
 	),
 
 	OMNIWEB(
-		"28",
+		28L,
 		"OmniWeb"
 	),
 
 	SHIIRA(
-		"29",
+		29L,
 		"Shiira"
 	),
 
 	SUNRISE_BROWSER(
-		"30",
+		30L,
 		"Sunrise Browser"
 	),
 
 	NOKIA_BROWSER(
-		"31",
+		31L,
 		"Nokia Browser"
 	),
 
 	CAMINO(
-		"32",
+		32L,
 		"Camino"
 	),
 
 	CHIMERA(
-		"33",
+		33L,
 		"Chimera"
 	),
 
 	ICEAPE(
-		"34",
+		34L,
 		"IceApe"
 	),
 
 	MIDORI(
-		"35",
+		35L,
 		"Midori"
 	),
 
 	LEECHCRAFT(
-		"36",
+		36L,
 		"LeechCraft"
 	),
 
 	MIUI_BROWSER(
-		"37",
+		37L,
 		"Miui Browser"
 	),
 
 	BAIDU_BROWSER_HD(
-		"38",
+		38L,
 		"Baidu Browser HD"
 	),
 
 	K_NINJA(
-		"39",
+		39L,
 		"K-Ninja"
 	),
 
 	NETFRONT(
-		"40",
+		40L,
 		"NetFront"
 	),
 
 	THUNDERBROWSE(
-		"41",
+		41L,
 		"ThunderBrowse"
 	),
 
 	PALE_MOON(
-		"42",
+		42L,
 		"Pale Moon"
 	),
 
 	ALOHA_BROWSER(
-		"43",
+		43L,
 		"Aloha Browser"
 	),
 
 	SAMSUNG_BROWSER(
-		"44",
+		44L,
 		"Samsung Browser"
 	),
 
 	DOLPHIN_BROWSER(
-		"45",
+		45L,
 		"Dolphin Browser"
 	),
 
 	MERCURY(
-		"46",
+		46L,
 		"Mercury"
 	),
 
 	K_MELEON(
-		"47",
+		47L,
 		"K-Meleon"
 	),
 
 	QQBROWSER(
-		"48",
+		48L,
 		"QQBrowser"
 	),
 
 	OPERA_MINI(
-		"49",
+		49L,
 		"Opera Mini"
 	),
 
 	OPERA_MOBI(
-		"50",
+		50L,
 		"Opera Mobi"
 	),
 
 	SPUTNIK_BROWSER(
-		"51",
+		51L,
 		"Sputnik Browser"
 	),
 
 	BING_SEARCH_APP(
-		"52",
+		52L,
 		"Bing Search App"
 	),
 
 	NINTENDO_BROWSER(
-		"53",
+		53L,
 		"NintendoBrowser"
 	),
 
 	SLEIPNIR(
-		"54",
+		54L,
 		"Sleipnir"
 	),
 
 	CRAZY_BROWSER(
-		"55",
+		55L,
 		"Crazy Browser"
 	),
 
 	COC_COC_BROWSER(
-		"56",
+		56L,
 		"Coc Coc Browser"
 	),
 
 	LG_BROWSER(
-		"57",
+		57L,
 		"LG Browser"
 	),
 
 	QUARK(
-		"58",
+		58L,
 		"Quark Browser"
 	),
 
 	SURF(
-		"59",
+		59L,
 		"Surf"
 	),
 
 	HUAWEIBROWSER(
-		"60",
+		60L,
 		"Huawei Browser"
 	),
 
 	ELEMENTS_BROWSER(
-		"61",
+		61L,
 		"Elements Browser"
 	),
 
 	NAVER_WHALE(
-		"62",
+		62L,
 			"Naver Whale"
 	),
 
 	AMIGO(
-		"63",
+		63L,
 		"Amigo"
 	),
 
 	MZBROWSER(
-		"64",
+		64L,
 		"Meizu Browser"
 	),
 
 	STAINLESS(
-		"65",
+		65L,
 		"Stainless"
 	),
 
 	OVIBROWSER(
-		"66",
+		66L,
 		"OviBrowser"
 	),
 
 	BAIDU_BROWSER(
-		"67",
+		67L,
 		"Baidu"
 	),
 
 	PUFFIN(
-		"68",
+		68L,
 		"Puffin Browser"
 	),
 
 	MINEFIELD(
-		"69",
+		69L,
 		"Minefield Browser"
 	),
 
 	SHIRETOKO(
-		"70",
+		70L,
 		"Shiretoko Browser"
 	),
 
 	NAMOROKA(
-		"71",
+		71L,
 		"Namoroka Browser"
 	),
 
 	VIVOBROWSER(
-		"72",
+		72L,
 		"VivoBrowser"
 	),
 
 	HEYTAPBROWSER(
-		"73",
+		73L,
 		"HeyTapBrowser"
 	),
 
 	OPPOBROWSER(
-		"74",
+		74L,
 		"OppoBrowser"
 	),
 
 	SUPERBIRD(
-		"75",
+		75L,
 		"Superbird"
 	),
 
 	LUNASCAPE(
-		"76",
+		76L,
 		"Lunascape"
 	);
 
@@ -402,7 +402,7 @@ enum BrowserType
 	 * ID браузера.
 	 */
 	@Nullable
-	private final String id;
+	private final Long id;
 
 	/**
 	 * Название браузера.
@@ -417,14 +417,14 @@ enum BrowserType
 	 * @param id ID браузера
 	 * @param name название браузера
 	 */
-	BrowserType(String id, String name)
+	BrowserType(@Nullable Long id, @Nullable String name)
 	{
 		this.id = id;
 		this.name = name;
 	}
 
 	@Nullable
-	String getId()
+	Long getId()
 	{
 		return this.id;
 	}

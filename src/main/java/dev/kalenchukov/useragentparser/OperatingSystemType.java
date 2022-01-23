@@ -19,197 +19,197 @@ enum OperatingSystemType
 	),
 
 	WINDOWS(
-		"1",
+		1L,
 		"Windows"
 	),
 
 	KUBUNTU(
-		"2",
+		2L,
 		"Kubuntu"
 	),
 
 	MAC_OS_X(
-		"3",
+		3L,
 		"Mac OS X"
 	),
 
 	MAC_OS_9(
-		"4",
+		4L,
 		"Mac OS 9"
 	),
 
 	ANDROID(
-		"5",
+		5L,
 		"Android"
 	),
 
 	IOS(
-		"6",
+		6L,
 		"iOS"
 	),
 
 	LINUX(
-		"7",
+		7L,
 		"Linux"
 	),
 
 	UBUNTU(
-		"8",
+		8L,
 		"Ubuntu"
 	),
 
 	MANDRIVA_LINUX(
-		"9",
+		9L,
 		"Mandriva Linux"
 	),
 
 	ASPLINUX(
-		"10",
+		10L,
 		"ASPLinux"
 	),
 
 	OPENSUSE(
-		"11",
+		11L,
 		"OpenSUSE"
 	),
 
 	BADA(
-		"12",
+		12L,
 		"Bada"
 	),
 
 	CHROME_OS(
-		"13",
+		13L,
 		"Chrome OS"
 	),
 
 	DARWIN(
-		"14",
+		14L,
 		"Darwin"
 	),
 
 	NETBSD(
-		"15",
+		15L,
 		"NetBSD"
 	),
 
 	BLACKBERRY_OS(
-		"16",
+		16L,
 		"BlackBerry OS"
 	),
 
 	AMIGAOS(
-		"17",
+		17L,
 		"AmigaOS"
 	),
 
 	HAIKU(
-		"18",
+		18L,
 		"Haiku"
 	),
 
 	WINDOWS_MOBILE(
-		"19",
+		19L,
 		"Windows Mobile"
 	),
 
 	WINDOWS_PHONE(
-		"20",
+		20L,
 		"Windows Phone"
 	),
 
 	SYMBIAN_OS(
-		"21",
+		21L,
 		"Symbian OS"
 	),
 
 	SOLARIS(
-		"22",
+		22L,
 		"Solaris"
 	),
 
 	WINDOWS_CE(
-		"23",
+		23L,
 		"Windows CE"
 	),
 
 	BEOS(
-		"24",
+		24L,
 		"BeOS"
 	),
 
 	FEDORA(
-		"25",
+		25L,
 		"Fedora"
 	),
 
 	OPENBSD(
-		"26",
+		26L,
 		"OpenBSD"
 	),
 
 	LINUX_MINT(
-		"27",
+		27L,
 		"Linux Mint"
 	),
 
 	FREEBSD(
-		"28",
+		28L,
 		"FreeBSD"
 	),
 
 	LINUX_GENTOO(
-		"29",
+		29L,
 		"Linux Gentoo"
 	),
 
 	SLACKWARE_LINUX(
-		"30",
+		30L,
 		"Slackware Linux"
 	),
 
 	MIDP(
-		"31",
+		31L,
 		"MIDP"
 	),
 
 	CENTOS(
-		"32",
+		32L,
 		"CentOS"
 	),
 
 	RED_HAT(
-		"33",
+		33L,
 		"Red Hat"
 	),
 
 	SUNOS(
-		"34",
+		34L,
 		"SunOS"
 	),
 
 	KAIOS(
-		"35",
+		35L,
 		"KaiOS"
 	),
 
 	WEBOS(
-		"36",
+		36L,
 		"WebOS"
 	),
 
 	TV_OS(
-		"37",
+		37L,
 		"Apple TV OS"
 	),
 
 	MAUI(
-		"38",
+		38L,
 		"MAUI"
 	),
 
 	TIZEN(
-		"39",
+		39L,
 		"Tizen"
 	);
 
@@ -217,7 +217,7 @@ enum OperatingSystemType
 	 * ID операционной системы.
 	 */
 	@Nullable
-	private final String id;
+	private final Long id;
 
 	/**
 	 * Название операционной системы.
@@ -232,14 +232,14 @@ enum OperatingSystemType
 	 * @param id ID операционной системы
 	 * @param name название операционной системы
 	 */
-	OperatingSystemType(String id, String name)
+	OperatingSystemType(@Nullable Long id, @Nullable String name)
 	{
 		this.id = id;
 		this.name = name;
 	}
 
 	@Nullable
-	String getId()
+	Long getId()
 	{
 		return this.id;
 	}

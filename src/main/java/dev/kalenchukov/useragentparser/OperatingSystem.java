@@ -42,9 +42,10 @@ public class OperatingSystem
 	/**
 	 * Список регулярных выражений для определения типа операционной системы.
 	 *
-	 * @see #getMapRegExp()
+	 * @see #getRegExpOperatingSystems()
 	 */
-	private final Map<String, OperatingSystemType> mapRegExp = this.getMapRegExp();
+	@NotNull
+	private final Map<String, OperatingSystemType> regExpOperatingSystems = this.getRegExpOperatingSystems();
 
 	OperatingSystem() {}
 
@@ -55,13 +56,16 @@ public class OperatingSystem
 	 * @return название операционной системы
 	 */
 	@Nullable
-	public static String getById(@NotNull String id)
+	public static String getById(@NotNull Long id)
 	{
-		for (OperatingSystemType elm: OperatingSystemType.values())
+		for (OperatingSystemType operatingSystem: OperatingSystemType.values())
 		{
-			if (elm != OperatingSystemType.UNKNOWN && elm.getId().equals(id))
+			if (operatingSystem.getId() != null)
 			{
-				return elm.getName();
+				if (operatingSystem != OperatingSystemType.UNKNOWN && operatingSystem.getId().equals(id))
+				{
+					return operatingSystem.getName();
+				}
 			}
 		}
 
@@ -75,13 +79,16 @@ public class OperatingSystem
 	 * @return идентификатор операционной системы
 	 */
 	@Nullable
-	public static String getByName(@NotNull String name)
+	public static Long getByName(@NotNull String name)
 	{
-		for (OperatingSystemType elm: OperatingSystemType.values())
+		for (OperatingSystemType operatingSystem: OperatingSystemType.values())
 		{
-			if (elm != OperatingSystemType.UNKNOWN && elm.getName().equals(name))
+			if (operatingSystem.getName() != null)
 			{
-				return elm.getId();
+				if (operatingSystem != OperatingSystemType.UNKNOWN && operatingSystem.getName().equals(name))
+				{
+					return operatingSystem.getId();
+				}
 			}
 		}
 
@@ -93,19 +100,19 @@ public class OperatingSystem
 	 *
 	 * @return идентификатор и название операционной системы
 	 */
-	public static Map<String, String> getAll()
+	public static Map<Long, String> getAll()
 	{
-		Map<String, String> types = new HashMap<>();
+		Map<Long, String> typesOperatingSystem = new HashMap<>();
 
-		for (OperatingSystemType elm: OperatingSystemType.values())
+		for (OperatingSystemType operatingSystem: OperatingSystemType.values())
 		{
-			if (elm != OperatingSystemType.UNKNOWN)
+			if (operatingSystem != OperatingSystemType.UNKNOWN)
 			{
-				types.put(elm.getId(), elm.getName());
+				typesOperatingSystem.put(operatingSystem.getId(), operatingSystem.getName());
 			}
 		}
 
-		return types;
+		return typesOperatingSystem;
 	}
 
 	/**
@@ -113,20 +120,20 @@ public class OperatingSystem
 	 *
 	 * @param userAgent строка user-agent
 	 */
-	void setUserAgent(String userAgent)
+	void setUserAgent(@NotNull String userAgent)
 	{
 		this.userAgent = userAgent;
 		this.operatingSystem = OperatingSystemType.UNKNOWN;
 		this.version = null;
 
-		if (userAgent != null && !userAgent.equals(""))
+		if (!userAgent.equals(""))
 		{
 			this.execute();
 		}
 	}
 
 	@Nullable
-	String getId()
+	Long getId()
 	{
 		return this.operatingSystem.getId();
 	}
@@ -148,25 +155,26 @@ public class OperatingSystem
 	 */
 	private void execute()
 	{
-		Pattern pattern;
-		Matcher matcher;
-
-		for (Map.Entry<String, OperatingSystemType> regExp : mapRegExp.entrySet())
+		if (this.userAgent != null)
 		{
-			pattern = Pattern.compile(regExp.getKey(), Pattern.CASE_INSENSITIVE);
-			matcher = pattern.matcher(this.userAgent);
+			Pattern pattern;
+			Matcher matcher;
 
-			if (matcher.matches())
+			for (Map.Entry<String, OperatingSystemType> regExp : regExpOperatingSystems.entrySet())
 			{
-				if (matcher.groupCount() > 0)
-				{
-					this.version = matcher.group("version")
-										  .replace("_", ".")
-										  .trim();
-				}
+				pattern = Pattern.compile(regExp.getKey(), Pattern.CASE_INSENSITIVE);
+				matcher = pattern.matcher(this.userAgent);
 
-				this.operatingSystem = regExp.getValue();
-				break;
+				if (matcher.matches())
+				{
+					if (matcher.groupCount() > 0)
+					{
+						this.version = matcher.group("version").replace("_", ".").trim();
+					}
+
+					this.operatingSystem = regExp.getValue();
+					break;
+				}
 			}
 		}
 	}
@@ -174,92 +182,93 @@ public class OperatingSystem
 	/**
 	 * Возвращает список шаблонов регулярных выражений для определения операционной системы.
 	 */
-	private Map<String, OperatingSystemType> getMapRegExp()
+	@NotNull
+	private Map<String, OperatingSystemType> getRegExpOperatingSystems()
 	{
-		Map<String, OperatingSystemType> mapRegExp = new LinkedHashMap<>();
+		Map<String, OperatingSystemType> regExpOperatingSystems = new LinkedHashMap<>();
 
-		mapRegExp.put(".*Tizen/(?<version>[0-9.]+).*", OperatingSystemType.TIZEN);
-		mapRegExp.put(".*KAIOS/(?<version>[0-9.]+).*", OperatingSystemType.KAIOS);
-		mapRegExp.put(".*SunOS (?<version>[0-9.]+).*", OperatingSystemType.SOLARIS);
-		mapRegExp.put(".*webOS.TV-(?<version>[0-9.]+).*", OperatingSystemType.WEBOS);
-		mapRegExp.put(".*webOS/(?<version>[0-9.]+).*", OperatingSystemType.WEBOS);
-		mapRegExp.put(".*kubuntu/(?<version>[0-9.]+).*", OperatingSystemType.KUBUNTU);
-		mapRegExp.put(".*mandriva linux/(?<version>[0-9.]+).*", OperatingSystemType.MANDRIVA_LINUX);
-		mapRegExp.put(".*asplinux/(?<version>[0-9.]+).*", OperatingSystemType.ASPLINUX);
-		mapRegExp.put(".*suse/(?<version>[0-9.]+).*", OperatingSystemType.OPENSUSE);
-		mapRegExp.put(".*bada/(?<version>[0-9.]+).*", OperatingSystemType.BADA);
-		mapRegExp.put(".*darwin (?<version>[0-9.]+).*", OperatingSystemType.DARWIN);
-		mapRegExp.put(".*darwin/(?<version>[0-9.]+).*", OperatingSystemType.DARWIN);
-		mapRegExp.put(".*netbsd (?<version>[0-9.]+).*", OperatingSystemType.NETBSD);
-		mapRegExp.put(".*amigaos (?<version>[0-9.]+).*", OperatingSystemType.AMIGAOS);
-		mapRegExp.put(".*windows phone os (?<version>[0-9.]+).*", OperatingSystemType.WINDOWS_PHONE);
-		mapRegExp.put(".*windows phone (?<version>[0-9.]+).*", OperatingSystemType.WINDOWS_PHONE);
-		mapRegExp.put(".*windows ce (?<version>[0-9.]+).*", OperatingSystemType.WINDOWS_CE);
-		mapRegExp.put(".*fedora/(?<version>[0-9.]+).*", OperatingSystemType.FEDORA);
-		mapRegExp.put(".*linux mint/(?<version>[0-9.]+).*", OperatingSystemType.LINUX_MINT);
-		mapRegExp.put(".*profile/midp-(?<version>[0-9.]+).*", OperatingSystemType.MIDP);
-		mapRegExp.put(".*midp-(?<version>[0-9.]+).*", OperatingSystemType.MIDP);
-		mapRegExp.put(".*centos/(?<version>[0-9.]+).*", OperatingSystemType.CENTOS);
-		mapRegExp.put(".*red hat/(?<version>[0-9.]+).*", OperatingSystemType.RED_HAT);
-		mapRegExp.put(".*CPU OS (?<version>[0-9._]+).*", OperatingSystemType.TV_OS);
-		mapRegExp.put(".*ubuntu/(?<version>[0-9.]+).*", OperatingSystemType.UBUNTU);
-		mapRegExp.put(".*iPad;CPU OS (?<version>[0-9_]+).*", OperatingSystemType.IOS);
-		mapRegExp.put(".*iPod;CPU OS (?<version>[0-9_]+).*", OperatingSystemType.IOS);
-		mapRegExp.put(".*iPhone OS (?<version>[0-9_]+).*", OperatingSystemType.IOS);
-		mapRegExp.put(".*iPhone/(?<version>[0-9_]+).*", OperatingSystemType.IOS);
-		mapRegExp.put(".*iPad/(?<version>[0-9_]+).*", OperatingSystemType.IOS);
-		mapRegExp.put(".*iOS (?<version>[0-9_]+).*", OperatingSystemType.IOS);
-		mapRegExp.put(".*macintosh;os x (?<version>[0-9._]+).*", OperatingSystemType.MAC_OS_X);
-		mapRegExp.put(".*mac os x (?<version>[0-9._]+).*", OperatingSystemType.MAC_OS_X);
-		mapRegExp.put(".*windowsnt(?<version>[0-9.]+).*", OperatingSystemType.WINDOWS);
-		mapRegExp.put(".*win(?<version>95).*", OperatingSystemType.WINDOWS);
-		mapRegExp.put(".*win(?<version>98).*", OperatingSystemType.WINDOWS);
-		mapRegExp.put(".*winnt(?<version>[0-9.]+).*", OperatingSystemType.WINDOWS);
-		mapRegExp.put(".*windows nt (?<version>[0-9.]+).*", OperatingSystemType.WINDOWS);
-		mapRegExp.put(".*windows (?<version>[0-9.]+).*", OperatingSystemType.WINDOWS);
-		mapRegExp.put(".*windows (?<version>me).*", OperatingSystemType.WINDOWS);
-		mapRegExp.put(".*windows (?<version>xp).*", OperatingSystemType.WINDOWS);
-		mapRegExp.put(".*android (?<version>[0-9.]+).*", OperatingSystemType.ANDROID);
+		regExpOperatingSystems.put(".*Tizen/(?<version>[0-9.]+).*", OperatingSystemType.TIZEN);
+		regExpOperatingSystems.put(".*KAIOS/(?<version>[0-9.]+).*", OperatingSystemType.KAIOS);
+		regExpOperatingSystems.put(".*SunOS (?<version>[0-9.]+).*", OperatingSystemType.SOLARIS);
+		regExpOperatingSystems.put(".*webOS.TV-(?<version>[0-9.]+).*", OperatingSystemType.WEBOS);
+		regExpOperatingSystems.put(".*webOS/(?<version>[0-9.]+).*", OperatingSystemType.WEBOS);
+		regExpOperatingSystems.put(".*kubuntu/(?<version>[0-9.]+).*", OperatingSystemType.KUBUNTU);
+		regExpOperatingSystems.put(".*mandriva linux/(?<version>[0-9.]+).*", OperatingSystemType.MANDRIVA_LINUX);
+		regExpOperatingSystems.put(".*asplinux/(?<version>[0-9.]+).*", OperatingSystemType.ASPLINUX);
+		regExpOperatingSystems.put(".*suse/(?<version>[0-9.]+).*", OperatingSystemType.OPENSUSE);
+		regExpOperatingSystems.put(".*bada/(?<version>[0-9.]+).*", OperatingSystemType.BADA);
+		regExpOperatingSystems.put(".*darwin (?<version>[0-9.]+).*", OperatingSystemType.DARWIN);
+		regExpOperatingSystems.put(".*darwin/(?<version>[0-9.]+).*", OperatingSystemType.DARWIN);
+		regExpOperatingSystems.put(".*netbsd (?<version>[0-9.]+).*", OperatingSystemType.NETBSD);
+		regExpOperatingSystems.put(".*amigaos (?<version>[0-9.]+).*", OperatingSystemType.AMIGAOS);
+		regExpOperatingSystems.put(".*windows phone os (?<version>[0-9.]+).*", OperatingSystemType.WINDOWS_PHONE);
+		regExpOperatingSystems.put(".*windows phone (?<version>[0-9.]+).*", OperatingSystemType.WINDOWS_PHONE);
+		regExpOperatingSystems.put(".*windows ce (?<version>[0-9.]+).*", OperatingSystemType.WINDOWS_CE);
+		regExpOperatingSystems.put(".*fedora/(?<version>[0-9.]+).*", OperatingSystemType.FEDORA);
+		regExpOperatingSystems.put(".*linux mint/(?<version>[0-9.]+).*", OperatingSystemType.LINUX_MINT);
+		regExpOperatingSystems.put(".*profile/midp-(?<version>[0-9.]+).*", OperatingSystemType.MIDP);
+		regExpOperatingSystems.put(".*midp-(?<version>[0-9.]+).*", OperatingSystemType.MIDP);
+		regExpOperatingSystems.put(".*centos/(?<version>[0-9.]+).*", OperatingSystemType.CENTOS);
+		regExpOperatingSystems.put(".*red hat/(?<version>[0-9.]+).*", OperatingSystemType.RED_HAT);
+		regExpOperatingSystems.put(".*CPU OS (?<version>[0-9._]+).*", OperatingSystemType.TV_OS);
+		regExpOperatingSystems.put(".*ubuntu/(?<version>[0-9.]+).*", OperatingSystemType.UBUNTU);
+		regExpOperatingSystems.put(".*iPad;CPU OS (?<version>[0-9_]+).*", OperatingSystemType.IOS);
+		regExpOperatingSystems.put(".*iPod;CPU OS (?<version>[0-9_]+).*", OperatingSystemType.IOS);
+		regExpOperatingSystems.put(".*iPhone OS (?<version>[0-9_]+).*", OperatingSystemType.IOS);
+		regExpOperatingSystems.put(".*iPhone/(?<version>[0-9_]+).*", OperatingSystemType.IOS);
+		regExpOperatingSystems.put(".*iPad/(?<version>[0-9_]+).*", OperatingSystemType.IOS);
+		regExpOperatingSystems.put(".*iOS (?<version>[0-9_]+).*", OperatingSystemType.IOS);
+		regExpOperatingSystems.put(".*macintosh;os x (?<version>[0-9._]+).*", OperatingSystemType.MAC_OS_X);
+		regExpOperatingSystems.put(".*mac os x (?<version>[0-9._]+).*", OperatingSystemType.MAC_OS_X);
+		regExpOperatingSystems.put(".*windowsnt(?<version>[0-9.]+).*", OperatingSystemType.WINDOWS);
+		regExpOperatingSystems.put(".*win(?<version>95).*", OperatingSystemType.WINDOWS);
+		regExpOperatingSystems.put(".*win(?<version>98).*", OperatingSystemType.WINDOWS);
+		regExpOperatingSystems.put(".*winnt(?<version>[0-9.]+).*", OperatingSystemType.WINDOWS);
+		regExpOperatingSystems.put(".*windows nt (?<version>[0-9.]+).*", OperatingSystemType.WINDOWS);
+		regExpOperatingSystems.put(".*windows (?<version>[0-9.]+).*", OperatingSystemType.WINDOWS);
+		regExpOperatingSystems.put(".*windows (?<version>me).*", OperatingSystemType.WINDOWS);
+		regExpOperatingSystems.put(".*windows (?<version>xp).*", OperatingSystemType.WINDOWS);
+		regExpOperatingSystems.put(".*android (?<version>[0-9.]+).*", OperatingSystemType.ANDROID);
 
-		mapRegExp.put(".*Tizen.*", OperatingSystemType.TIZEN);
-		mapRegExp.put(".*MAUI.*", OperatingSystemType.MAUI);
-		mapRegExp.put(".*CrOS.*", OperatingSystemType.CHROME_OS);
-		mapRegExp.put(".*mac_powerpc.*", OperatingSystemType.MAC_OS_9);
-		mapRegExp.put(".*PPC Mac OS X;.*", OperatingSystemType.MAC_OS_X);
-		mapRegExp.put(".*webOS.*", OperatingSystemType.WEBOS);
-		mapRegExp.put(".*j2me/midp.*", OperatingSystemType.MIDP);
-		mapRegExp.put(".*profile/midp.*", OperatingSystemType.MIDP);
-		mapRegExp.put(".*fedora.*", OperatingSystemType.FEDORA);
-		mapRegExp.put(".*openbsd.*", OperatingSystemType.OPENBSD);
-		mapRegExp.put(".*linux mint.*", OperatingSystemType.LINUX_MINT);
-		mapRegExp.put(".*freebsd.*", OperatingSystemType.FREEBSD);
-		mapRegExp.put(".*gentoo.*", OperatingSystemType.LINUX_GENTOO);
-		mapRegExp.put(".*slackware.*", OperatingSystemType.SLACKWARE_LINUX);
-		mapRegExp.put(".*windows ce.*", OperatingSystemType.WINDOWS_CE);
-		mapRegExp.put(".*beos.*", OperatingSystemType.BEOS);
-		mapRegExp.put(".*windows phone.*", OperatingSystemType.WINDOWS_PHONE);
-		mapRegExp.put(".*symbian.*", OperatingSystemType.SYMBIAN_OS);
-		mapRegExp.put(".*symbos.*", OperatingSystemType.SYMBIAN_OS);
-		mapRegExp.put(".*SunOS.*", OperatingSystemType.SOLARIS);
-		mapRegExp.put(".*opensolaris.*", OperatingSystemType.SOLARIS);
-		mapRegExp.put(".*amigaos.*", OperatingSystemType.AMIGAOS);
-		mapRegExp.put(".*haiku.*", OperatingSystemType.HAIKU);
-		mapRegExp.put(".*windows mobile.*", OperatingSystemType.WINDOWS_MOBILE);
-		mapRegExp.put(".*darwin.*", OperatingSystemType.DARWIN);
-		mapRegExp.put(".*netbsd.*", OperatingSystemType.NETBSD);
-		mapRegExp.put(".*blackberry.*", OperatingSystemType.BLACKBERRY_OS);
-		mapRegExp.put(".*bada.*", OperatingSystemType.BADA);
-		mapRegExp.put(".*kubuntu.*", OperatingSystemType.KUBUNTU);
-		mapRegExp.put(".*centos.*", OperatingSystemType.CENTOS);
-		mapRegExp.put(".*red hat.*", OperatingSystemType.RED_HAT);
-		mapRegExp.put(".*ppc mac os x.*", OperatingSystemType.MAC_OS_X);
-		mapRegExp.put(".*mac os x.*", OperatingSystemType.MAC_OS_X);
-		mapRegExp.put(".*macintosh.*", OperatingSystemType.MAC_OS_X);
-		mapRegExp.put(".*ubuntu.*", OperatingSystemType.UBUNTU);
-		mapRegExp.put(".*windows.*", OperatingSystemType.WINDOWS);
-		mapRegExp.put(".*android.*", OperatingSystemType.ANDROID);
-		mapRegExp.put(".*linux.*", OperatingSystemType.LINUX);
+		regExpOperatingSystems.put(".*Tizen.*", OperatingSystemType.TIZEN);
+		regExpOperatingSystems.put(".*MAUI.*", OperatingSystemType.MAUI);
+		regExpOperatingSystems.put(".*CrOS.*", OperatingSystemType.CHROME_OS);
+		regExpOperatingSystems.put(".*mac_powerpc.*", OperatingSystemType.MAC_OS_9);
+		regExpOperatingSystems.put(".*PPC Mac OS X;.*", OperatingSystemType.MAC_OS_X);
+		regExpOperatingSystems.put(".*webOS.*", OperatingSystemType.WEBOS);
+		regExpOperatingSystems.put(".*j2me/midp.*", OperatingSystemType.MIDP);
+		regExpOperatingSystems.put(".*profile/midp.*", OperatingSystemType.MIDP);
+		regExpOperatingSystems.put(".*fedora.*", OperatingSystemType.FEDORA);
+		regExpOperatingSystems.put(".*openbsd.*", OperatingSystemType.OPENBSD);
+		regExpOperatingSystems.put(".*linux mint.*", OperatingSystemType.LINUX_MINT);
+		regExpOperatingSystems.put(".*freebsd.*", OperatingSystemType.FREEBSD);
+		regExpOperatingSystems.put(".*gentoo.*", OperatingSystemType.LINUX_GENTOO);
+		regExpOperatingSystems.put(".*slackware.*", OperatingSystemType.SLACKWARE_LINUX);
+		regExpOperatingSystems.put(".*windows ce.*", OperatingSystemType.WINDOWS_CE);
+		regExpOperatingSystems.put(".*beos.*", OperatingSystemType.BEOS);
+		regExpOperatingSystems.put(".*windows phone.*", OperatingSystemType.WINDOWS_PHONE);
+		regExpOperatingSystems.put(".*symbian.*", OperatingSystemType.SYMBIAN_OS);
+		regExpOperatingSystems.put(".*symbos.*", OperatingSystemType.SYMBIAN_OS);
+		regExpOperatingSystems.put(".*SunOS.*", OperatingSystemType.SOLARIS);
+		regExpOperatingSystems.put(".*opensolaris.*", OperatingSystemType.SOLARIS);
+		regExpOperatingSystems.put(".*amigaos.*", OperatingSystemType.AMIGAOS);
+		regExpOperatingSystems.put(".*haiku.*", OperatingSystemType.HAIKU);
+		regExpOperatingSystems.put(".*windows mobile.*", OperatingSystemType.WINDOWS_MOBILE);
+		regExpOperatingSystems.put(".*darwin.*", OperatingSystemType.DARWIN);
+		regExpOperatingSystems.put(".*netbsd.*", OperatingSystemType.NETBSD);
+		regExpOperatingSystems.put(".*blackberry.*", OperatingSystemType.BLACKBERRY_OS);
+		regExpOperatingSystems.put(".*bada.*", OperatingSystemType.BADA);
+		regExpOperatingSystems.put(".*kubuntu.*", OperatingSystemType.KUBUNTU);
+		regExpOperatingSystems.put(".*centos.*", OperatingSystemType.CENTOS);
+		regExpOperatingSystems.put(".*red hat.*", OperatingSystemType.RED_HAT);
+		regExpOperatingSystems.put(".*ppc mac os x.*", OperatingSystemType.MAC_OS_X);
+		regExpOperatingSystems.put(".*mac os x.*", OperatingSystemType.MAC_OS_X);
+		regExpOperatingSystems.put(".*macintosh.*", OperatingSystemType.MAC_OS_X);
+		regExpOperatingSystems.put(".*ubuntu.*", OperatingSystemType.UBUNTU);
+		regExpOperatingSystems.put(".*windows.*", OperatingSystemType.WINDOWS);
+		regExpOperatingSystems.put(".*android.*", OperatingSystemType.ANDROID);
+		regExpOperatingSystems.put(".*linux.*", OperatingSystemType.LINUX);
 
-		return mapRegExp;
+		return regExpOperatingSystems;
 	}
 }

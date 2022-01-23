@@ -9,6 +9,13 @@
 
 	<name>UserAgentParser</name>
 	<description>Получение информации о клиенте по строке user-agent</description>
+	<dependencies>
+		<dependency>
+			<groupId>org.jetbrains</groupId>
+			<artifactId>annotations</artifactId>
+			<version>22.0.0</version>
+		</dependency>
+	</dependencies>
 	<version>1.0.0</version>
 	<url>https://github.com/kalenchukov/UserAgentParser</url>
 

@@ -98,7 +98,7 @@ userAgentParser.getOperatingSystemVersion();
 ### Работа с классом "Browser"
 ```java
 // Возвращает название браузера по идентификатору
-Browser.getById("3");
+Browser.getById(3L);
 
 // Возвращает идентификатор браузера по названию
 Browser.getByName("Firefox");
@@ -110,7 +110,7 @@ Browser.getAll();
 ### Работа с классом "Device"
 ```java
 // Возвращает тип устройства по идентификатору
-Device.getById("2");
+Device.getById(2L);
 
 // Возвращает идентификатор устройства по типу
 Device.getByType("Mobile");
@@ -122,7 +122,7 @@ Device.getAll();
 ### Работа с классом "OperatingSystem"
 ```java
 // Возвращает название операционной системы по идентификатору
-OperatingSystem.getById("7");
+OperatingSystem.getById(7L);
 
 // Возвращает идентификатор операционной системы по названию
 OperatingSystem.getByName("Linux");

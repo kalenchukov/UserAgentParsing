@@ -37,14 +37,16 @@ public class Device
 	 *
 	 * @see DeviceType
 	 */
+	@NotNull
 	private DeviceType device = DeviceType.UNKNOWN;
 
 	/**
 	 * Список регулярных выражений для определения типа устройства.
 	 *
-	 * @see #getMapRegExp()
+	 * @see #getRegExpDevices()
 	 */
-	private final Map<String, DeviceType> mapRegExp = this.getMapRegExp();
+	@NotNull
+	private final Map<String, DeviceType> regExpDevices = this.getRegExpDevices();
 
 	Device() {}
 
@@ -55,13 +57,16 @@ public class Device
 	 * @return тип устройства
 	 */
 	@Nullable
-	public static String getById(@NotNull String id)
+	public static String getById(@NotNull Long id)
 	{
-		for (DeviceType elm: DeviceType.values())
+		for (DeviceType device : DeviceType.values())
 		{
-			if (elm != DeviceType.UNKNOWN && elm.getId().equals(id))
+			if (device.getId() != null)
 			{
-				return elm.getType();
+				if (device != DeviceType.UNKNOWN && device.getId().equals(id))
+				{
+					return device.getType();
+				}
 			}
 		}
 
@@ -75,13 +80,16 @@ public class Device
 	 * @return идентификатор устройства
 	 */
 	@Nullable
-	public static String getByType(@NotNull String type)
+	public static Long getByType(@NotNull String type)
 	{
-		for (DeviceType elm: DeviceType.values())
+		for (DeviceType device: DeviceType.values())
 		{
-			if (elm != DeviceType.UNKNOWN && elm.getType().equals(type))
+			if (device.getType() != null)
 			{
-				return elm.getId();
+				if (device != DeviceType.UNKNOWN && device.getType().equals(type))
+				{
+					return device.getId();
+				}
 			}
 		}
 
@@ -93,19 +101,20 @@ public class Device
 	 *
 	 * @return идентификатор и тип устройства
 	 */
-	public static Map<String, String> getAll()
+	@NotNull
+	public static Map<Long, String> getAll()
 	{
-		Map<String, String> types = new HashMap<>();
+		Map<Long, String> typesDevices = new HashMap<>();
 
-		for (DeviceType elm: DeviceType.values())
+		for (DeviceType device : DeviceType.values())
 		{
-			if (elm != DeviceType.UNKNOWN)
+			if (device != DeviceType.UNKNOWN)
 			{
-				types.put(elm.getId(), elm.getType());
+				typesDevices.put(device.getId(), device.getType());
 			}
 		}
 
-		return types;
+		return typesDevices;
 	}
 
 	/**
@@ -113,20 +122,20 @@ public class Device
 	 *
 	 * @param userAgent строка user-agent
 	 */
-	void setUserAgent(String userAgent)
+	void setUserAgent(@NotNull String userAgent)
 	{
 		this.userAgent = userAgent;
 		this.device = DeviceType.UNKNOWN;
 		this.model = null;
 
-		if (userAgent != null && !userAgent.equals(""))
+		if (!userAgent.equals(""))
 		{
 			this.execute();
 		}
 	}
 
 	@Nullable
-	String getId()
+	Long getId()
 	{
 		return this.device.getId();
 	}
@@ -148,24 +157,26 @@ public class Device
 	 */
 	private void execute()
 	{
-		Pattern pattern;
-		Matcher matcher;
-
-		for (Map.Entry<String, DeviceType> regExp : this.getMapRegExp().entrySet())
+		if (this.userAgent != null)
 		{
-			pattern = Pattern.compile(regExp.getKey(), Pattern.CASE_INSENSITIVE);
-			matcher = pattern.matcher(this.userAgent);
+			Pattern pattern;
+			Matcher matcher;
 
-			if (matcher.matches())
+			for (Map.Entry<String, DeviceType> regExp : this.getRegExpDevices().entrySet())
 			{
-				if (matcher.groupCount() > 0)
-				{
-					this.model = matcher.group("model")
-										.trim();
-				}
+				pattern = Pattern.compile(regExp.getKey(), Pattern.CASE_INSENSITIVE);
+				matcher = pattern.matcher(this.userAgent);
 
-				this.device = regExp.getValue();
-				break;
+				if (matcher.matches())
+				{
+					if (matcher.groupCount() > 0)
+					{
+						this.model = matcher.group("model").trim();
+					}
+
+					this.device = regExp.getValue();
+					break;
+				}
 			}
 		}
 	}
@@ -173,159 +184,160 @@ public class Device
 	/**
 	 * Возвращает список шаблонов регулярных выражений для определения устройства.
 	 */
-	private Map<String, DeviceType> getMapRegExp()
+	@NotNull
+	private Map<String, DeviceType> getRegExpDevices()
 	{
-		Map<String, DeviceType> mapRegExp = new LinkedHashMap<>();
+		Map<String, DeviceType> regExpDevices = new LinkedHashMap<>();
 
 		// Определение с моделью
-		mapRegExp.put(".*\\((?<model>iPod);.*", DeviceType.MOBILE);
-		mapRegExp.put(".*\\((?<model>iPod) touch;.*", DeviceType.MOBILE);
-		mapRegExp.put(".*\\((?<model>iPad);.*", DeviceType.MOBILE);
-		mapRegExp.put(".*\\((?<model>iPhone);.*", DeviceType.MOBILE);
-		mapRegExp.put(".*\\((?<model>iPhone [a-z0-9]+);.*", DeviceType.MOBILE);
+		regExpDevices.put(".*\\((?<model>iPod);.*", DeviceType.MOBILE);
+		regExpDevices.put(".*\\((?<model>iPod) touch;.*", DeviceType.MOBILE);
+		regExpDevices.put(".*\\((?<model>iPad);.*", DeviceType.MOBILE);
+		regExpDevices.put(".*\\((?<model>iPhone);.*", DeviceType.MOBILE);
+		regExpDevices.put(".*\\((?<model>iPhone [a-z0-9]+);.*", DeviceType.MOBILE);
 
-		mapRegExp.put(".*Android [0-9.]+;[a-z]{2}\\-([a-z]+\\-)?([a-z]{2})?;(?<model>(?!Build)[a-z0-9_.,)/(\s\\-+]+)Build/.*\\) [a-z0-9]+ [a-z0-9]+ AppleWebKit.*", DeviceType.MOBILE);
-		mapRegExp.put(".*Android [0-9.]+;[a-z]{2}\\-([a-z]+\\-)?([a-z]{2})?;(?<model>(?!Build)[a-z0-9_.,)/(\s\\-+]+)Build/.*;[a-z];[a-z]{2}\\)Presto/.*", DeviceType.MOBILE);
-		mapRegExp.put(".*Android [0-9.]+;[a-z]{2}\\-([a-z]+\\-)?([a-z]{2})?;(?<model>(?!Build)[a-z0-9_.,)/(\s\\-+]+)Build/.*\\)Maxthon AppleWebKit/.*", DeviceType.MOBILE);
-		mapRegExp.put(".*Android [0-9.]+;[a-z]{2}\\-([a-z]+\\-)?([a-z]{2})?;(?<model>(?!Build)[a-z0-9_.,)/(\s\\-+]+)Build/.*;[a-z0-9]+;[a-z0-9]+\\).*", DeviceType.MOBILE);
-		mapRegExp.put(".*Android [0-9.]+;[a-z]{2}\\-([a-z]+\\-)?([a-z]{2})?;(?<model>(?!Build)[a-z0-9_.,)/(\s\\-+]+)\\)Release/.*Browser/.*Build/.*", DeviceType.MOBILE);
-		mapRegExp.put(".*Android [0-9.]+;[a-z]{2}\\-([a-z]+\\-)?([a-z]{2})?;(?<model>(?!Build)[a-z0-9_.,)/(\s\\-+]+)Release/.*Browser/.*Build/.*", DeviceType.MOBILE);
-		mapRegExp.put(".*Android [0-9.]+;[a-z]{2}\\-([a-z]+\\-)?([a-z]{2})?;(?<model>(?!Build)[a-z0-9_.,)/(\s\\-+]+)Build/.*\\)AppleWebKit/.*", DeviceType.MOBILE);
-		mapRegExp.put(".*Android [0-9.]+;[a-z]{2}\\-([a-z]+\\-)?([a-z]{2})?;(?<model>(?!Build)[a-z0-9_.,)/(\s\\-+]+)\\)Build/.*AppleWebKit/.*", DeviceType.MOBILE);
-		mapRegExp.put(".*Android [0-9.]+;[a-z]{2}\\-([a-z]+\\-)?([a-z]{2})?;(?<model>(?!Build)[a-z0-9_.,)/(\s\\-+]+)Build/.*\\)Chrome/.*", DeviceType.MOBILE);
-		mapRegExp.put(".*Android [0-9.]+;[a-z]{2}\\-([a-z]+\\-)?([a-z]{2})?;(?<model>(?!Build)[a-z0-9_.,)/(\s\\-+]+)Build/.*\\)Linux/.*", DeviceType.MOBILE);
-		mapRegExp.put(".*Android [0-9.]+;[a-z]{2}\\-([a-z]+\\-)?([a-z]{2})?;(?<model>(?!Build)[a-z0-9_.,)/(\s\\-+]+)Build/AppleWebKit/.*", DeviceType.MOBILE);
-		mapRegExp.put(".*Android [0-9.]+;[a-z]{2}\\-([a-z]+\\-)?([a-z]{2})?;(?<model>(?!Build)[a-z0-9_.,)/(\s\\-+]+)Build/.*\\)Mobile.*", DeviceType.MOBILE);
-		mapRegExp.put(".*Android [0-9.]+;[a-z]{2}\\-([a-z]+\\-)?([a-z]{2})?;(?<model>(?!Build)[a-z0-9_.,)/(\s\\-+]+)/[0-9.]+ Android/.*", DeviceType.MOBILE);
-		mapRegExp.put(".*Android [0-9.]+;[a-z]{2}\\-([a-z]+\\-)?([a-z]{2})?;(?<model>(?!Build)[a-z0-9_.,)/(\s\\-+]+)Build/.*\\)Gecko.*", DeviceType.MOBILE);
-		mapRegExp.put(".*Android [0-9.]+;[a-z]{2}\\-([a-z]+\\-)?([a-z]{2})?;(?<model>(?!Build)[a-z0-9_.,)/(\s\\-+]+)Build/.*;Mobile;.*", DeviceType.MOBILE);
-		mapRegExp.put(".*Android [0-9.]+;[a-z]{2}\\-([a-z]+\\-)?([a-z]{2})?;(?<model>(?!Build)[a-z0-9_.,)/(\s\\-+]+)Build/.*\\)OPR/.*", DeviceType.MOBILE);
-		mapRegExp.put(".*Android [0-9.]+;[a-z]{2}\\-([a-z]+\\-)?([a-z]{2})?;(?<model>(?!Build)[a-z0-9_.,)/(\s\\-+]+)\\)AppleWebKit/.*", DeviceType.MOBILE);
-		mapRegExp.put(".*Android [0-9.]+;[a-z]{2}\\-([a-z]+\\-)?([a-z]{2})?;(?<model>(?!Build)[a-z0-9_.,)/(\s\\-+]+)Build/.*;Opera.*", DeviceType.MOBILE);
+		regExpDevices.put(".*Android [0-9.]+;[a-z]{2}\\-([a-z]+\\-)?([a-z]{2})?;(?<model>(?!Build)[a-z0-9_.,)/(\s\\-+]+)Build/.*\\) [a-z0-9]+ [a-z0-9]+ AppleWebKit.*", DeviceType.MOBILE);
+		regExpDevices.put(".*Android [0-9.]+;[a-z]{2}\\-([a-z]+\\-)?([a-z]{2})?;(?<model>(?!Build)[a-z0-9_.,)/(\s\\-+]+)Build/.*;[a-z];[a-z]{2}\\)Presto/.*", DeviceType.MOBILE);
+		regExpDevices.put(".*Android [0-9.]+;[a-z]{2}\\-([a-z]+\\-)?([a-z]{2})?;(?<model>(?!Build)[a-z0-9_.,)/(\s\\-+]+)Build/.*\\)Maxthon AppleWebKit/.*", DeviceType.MOBILE);
+		regExpDevices.put(".*Android [0-9.]+;[a-z]{2}\\-([a-z]+\\-)?([a-z]{2})?;(?<model>(?!Build)[a-z0-9_.,)/(\s\\-+]+)Build/.*;[a-z0-9]+;[a-z0-9]+\\).*", DeviceType.MOBILE);
+		regExpDevices.put(".*Android [0-9.]+;[a-z]{2}\\-([a-z]+\\-)?([a-z]{2})?;(?<model>(?!Build)[a-z0-9_.,)/(\s\\-+]+)\\)Release/.*Browser/.*Build/.*", DeviceType.MOBILE);
+		regExpDevices.put(".*Android [0-9.]+;[a-z]{2}\\-([a-z]+\\-)?([a-z]{2})?;(?<model>(?!Build)[a-z0-9_.,)/(\s\\-+]+)Release/.*Browser/.*Build/.*", DeviceType.MOBILE);
+		regExpDevices.put(".*Android [0-9.]+;[a-z]{2}\\-([a-z]+\\-)?([a-z]{2})?;(?<model>(?!Build)[a-z0-9_.,)/(\s\\-+]+)Build/.*\\)AppleWebKit/.*", DeviceType.MOBILE);
+		regExpDevices.put(".*Android [0-9.]+;[a-z]{2}\\-([a-z]+\\-)?([a-z]{2})?;(?<model>(?!Build)[a-z0-9_.,)/(\s\\-+]+)\\)Build/.*AppleWebKit/.*", DeviceType.MOBILE);
+		regExpDevices.put(".*Android [0-9.]+;[a-z]{2}\\-([a-z]+\\-)?([a-z]{2})?;(?<model>(?!Build)[a-z0-9_.,)/(\s\\-+]+)Build/.*\\)Chrome/.*", DeviceType.MOBILE);
+		regExpDevices.put(".*Android [0-9.]+;[a-z]{2}\\-([a-z]+\\-)?([a-z]{2})?;(?<model>(?!Build)[a-z0-9_.,)/(\s\\-+]+)Build/.*\\)Linux/.*", DeviceType.MOBILE);
+		regExpDevices.put(".*Android [0-9.]+;[a-z]{2}\\-([a-z]+\\-)?([a-z]{2})?;(?<model>(?!Build)[a-z0-9_.,)/(\s\\-+]+)Build/AppleWebKit/.*", DeviceType.MOBILE);
+		regExpDevices.put(".*Android [0-9.]+;[a-z]{2}\\-([a-z]+\\-)?([a-z]{2})?;(?<model>(?!Build)[a-z0-9_.,)/(\s\\-+]+)Build/.*\\)Mobile.*", DeviceType.MOBILE);
+		regExpDevices.put(".*Android [0-9.]+;[a-z]{2}\\-([a-z]+\\-)?([a-z]{2})?;(?<model>(?!Build)[a-z0-9_.,)/(\s\\-+]+)/[0-9.]+ Android/.*", DeviceType.MOBILE);
+		regExpDevices.put(".*Android [0-9.]+;[a-z]{2}\\-([a-z]+\\-)?([a-z]{2})?;(?<model>(?!Build)[a-z0-9_.,)/(\s\\-+]+)Build/.*\\)Gecko.*", DeviceType.MOBILE);
+		regExpDevices.put(".*Android [0-9.]+;[a-z]{2}\\-([a-z]+\\-)?([a-z]{2})?;(?<model>(?!Build)[a-z0-9_.,)/(\s\\-+]+)Build/.*;Mobile;.*", DeviceType.MOBILE);
+		regExpDevices.put(".*Android [0-9.]+;[a-z]{2}\\-([a-z]+\\-)?([a-z]{2})?;(?<model>(?!Build)[a-z0-9_.,)/(\s\\-+]+)Build/.*\\)OPR/.*", DeviceType.MOBILE);
+		regExpDevices.put(".*Android [0-9.]+;[a-z]{2}\\-([a-z]+\\-)?([a-z]{2})?;(?<model>(?!Build)[a-z0-9_.,)/(\s\\-+]+)\\)AppleWebKit/.*", DeviceType.MOBILE);
+		regExpDevices.put(".*Android [0-9.]+;[a-z]{2}\\-([a-z]+\\-)?([a-z]{2})?;(?<model>(?!Build)[a-z0-9_.,)/(\s\\-+]+)Build/.*;Opera.*", DeviceType.MOBILE);
 
-		mapRegExp.put(".*Android [0-9.]+;[a-z]{2};(?<model>(?!Build)[a-z0-9_.,)/(\s\\-+]+)Build/.*AppleWebKit/.*", DeviceType.MOBILE);
-		mapRegExp.put(".*Android [0-9.]+;[a-z]{2};(?<model>(?!Build)[a-z0-9_.,)/(\s\\-+]+)\\)AppleWebKit/.*", DeviceType.MOBILE);
+		regExpDevices.put(".*Android [0-9.]+;[a-z]{2};(?<model>(?!Build)[a-z0-9_.,)/(\s\\-+]+)Build/.*AppleWebKit/.*", DeviceType.MOBILE);
+		regExpDevices.put(".*Android [0-9.]+;[a-z]{2};(?<model>(?!Build)[a-z0-9_.,)/(\s\\-+]+)\\)AppleWebKit/.*", DeviceType.MOBILE);
 
-		mapRegExp.put(".*Android [0-9.]+;(?<model>(?!Build)[a-z0-9_.,)/(\s\\-+]+);Build/.*;[a-z]{2}(\\-[a-z]+)?\\-[a-z]{2};\\)AppleWebKit/.*", DeviceType.MOBILE);
-		mapRegExp.put(".*Android [0-9.]+;(?<model>(?!Build)[a-z0-9_.,)/(\s\\-+]+);Build/.*;Tesseract/[0-9.]+\\)AppleWebKit/.*", DeviceType.MOBILE);
-		mapRegExp.put(".*Android [0-9.]+;(?<model>(?!Build)[a-z0-9_.,)/(\s\\-+]+);Tesseract/[0-9.]+\\)AppleWebKit/.*", DeviceType.MOBILE);
-		mapRegExp.put(".*Android [0-9.]+;(?<model>(?!Build)[a-z0-9_.,)/(\s\\-+]+)Build/.*\\)\\[[a-z0-9-_./:\s]+\\].*", DeviceType.MOBILE);
-		mapRegExp.put(".*Android [0-9.]+;(?<model>(?!Build)[a-z0-9_.,)/(\s\\-+]+);Build/.*;[a-z];\\)AppleWebKit/.*", DeviceType.MOBILE);
-		mapRegExp.put(".*Android [0-9.]+;(?<model>(?!Build)[a-z0-9_.,)/(\s\\-+]+);[a-z];[a-z]{2}\\)AppleWebKit/.*", DeviceType.MOBILE);
-		mapRegExp.put(".*Android [0-9.]+;(?<model>(?!Build)[a-z0-9_.,)/(\s\\-+]+)Build/.*;Mobile;rv:[0-9.]+\\).*", DeviceType.MOBILE);
-		mapRegExp.put(".*Android [0-9.]+;(?<model>(?!Build)[a-z0-9_.,)/(\s\\-+]+)Build/.*;Tablet;rv:[0-9.]+\\).*", DeviceType.MOBILE);
-		mapRegExp.put(".*Android [0-9.]+;(?<model>(?!Build)[a-z0-9_.,)/(\s\\-+#]+)Build/.*;wv\\)AppleWebKit/.*", DeviceType.MOBILE);
-		mapRegExp.put(".*Android [0-9.]+;(?<model>(?!Build)[a-z0-9_.,)/(\s\\-+#]+)Build/.*\\).*AppleWebKit/.*", DeviceType.MOBILE);
-		mapRegExp.put(".*Android [0-9.]+;(?<model>(?!Build)[a-z0-9_.,)/(\s\\-+]+)Build/.*\\)YandexSearch/.*", DeviceType.MOBILE);
-		mapRegExp.put(".*Android [0-9.]+;(?<model>(?!Build)[a-z0-9_.,)/(\s\\-+]+);[a-z]{2}\\)AppleWebKit/.*", DeviceType.MOBILE);
-		mapRegExp.put(".*Android [0-9.]+;(?<model>(?!Build)[a-z0-9_.,)/(\s\\-+]+)Build/.*\\)[a-z-_:]+/.*", DeviceType.MOBILE);
-		mapRegExp.put(".*Android [0-9.]+;(?<model>(?!Build)[a-z0-9_.,)/(\s\\-+]+)Build/.*\\);[a-z-_:]+.*", DeviceType.MOBILE);
-		mapRegExp.put(".*Android [0-9.]+;(?<model>(?!Build)[a-z0-9_.,)/(\s\\-+]+)Build/.*\\)[a-z-_:]+.*", DeviceType.MOBILE);
-		mapRegExp.put(".*Android [0-9.]+;(?<model>(?!Build)[a-z0-9_.,)/(\s\\-+]+)Build/.*\\)\\[ip.*\\]", DeviceType.MOBILE);
-		mapRegExp.put(".*Android [0-9.]+;(?<model>(?!Build)[a-z0-9_.,)/(\s\\-+]+)Build/.*\\)\\[FBAN.*", DeviceType.MOBILE);
-		mapRegExp.put(".*Android [0-9.]+;(?<model>(?!Build)[a-z0-9_.,)/(\s\\-+]+)Build/.*\\)Chrome/.*", DeviceType.MOBILE);
-		mapRegExp.put(".*Android [0-9.]+;(?<model>(?!Build)[a-z0-9_.,)/(\s\\-+]+)Build/.*\\)Source/.*", DeviceType.MOBILE);
-		mapRegExp.put(".*Android [0-9.]+;(?<model>(?!Build)[a-z0-9_.,)/(\s\\-+]+)Build/.*\\)[a-z]+", DeviceType.MOBILE);
-		mapRegExp.put(".*Android [0-9.]+;(?<model>(?!Build)[a-z0-9_.,)/(\s\\-+]+)Build/.*Chrome/.*", DeviceType.MOBILE);
-		mapRegExp.put(".*Android [0-9.]+;(?<model>(?!Build)[a-z0-9_.,)/(\s\\-+]+)Build/.*\\)OPR/.*", DeviceType.MOBILE);
-		mapRegExp.put(".*Android [0-9.]+;(?<model>(?!Build)[a-z0-9_.,)/(\s\\-+]+)\\)AppleWebKit/.*", DeviceType.MOBILE);
-		mapRegExp.put(".*Android [0-9.]+;(?<model>(?!Build)[a-z0-9_.,)/(\s\\-+]+)Build/.*;Opera.*", DeviceType.MOBILE);
-		mapRegExp.put(".*Android [0-9.]+;(?<model>(?!Build)[a-z0-9_.,)/(\s\\-+]+)Build/.*\\)\\[", DeviceType.MOBILE);
-		mapRegExp.put(".*Android [0-9.]+;(?<model>(?!Build)[a-z0-9_.,)/(\s\\-+]+)Build/.*\\)$", DeviceType.MOBILE);
-		mapRegExp.put(".*Android [0-9.]+;(?<model>(?!Build)[a-z0-9_.,)/(\s\\-+]+);HMSCore.*", DeviceType.MOBILE);
-		mapRegExp.put(".*Android [0-9.]+;(?<model>(?!Build)[a-z0-9_.,)/(\s\\-+]+)MIUI/.*", DeviceType.MOBILE);
+		regExpDevices.put(".*Android [0-9.]+;(?<model>(?!Build)[a-z0-9_.,)/(\s\\-+]+);Build/.*;[a-z]{2}(\\-[a-z]+)?\\-[a-z]{2};\\)AppleWebKit/.*", DeviceType.MOBILE);
+		regExpDevices.put(".*Android [0-9.]+;(?<model>(?!Build)[a-z0-9_.,)/(\s\\-+]+);Build/.*;Tesseract/[0-9.]+\\)AppleWebKit/.*", DeviceType.MOBILE);
+		regExpDevices.put(".*Android [0-9.]+;(?<model>(?!Build)[a-z0-9_.,)/(\s\\-+]+);Tesseract/[0-9.]+\\)AppleWebKit/.*", DeviceType.MOBILE);
+		regExpDevices.put(".*Android [0-9.]+;(?<model>(?!Build)[a-z0-9_.,)/(\s\\-+]+)Build/.*\\)\\[[a-z0-9-_./:\s]+\\].*", DeviceType.MOBILE);
+		regExpDevices.put(".*Android [0-9.]+;(?<model>(?!Build)[a-z0-9_.,)/(\s\\-+]+);Build/.*;[a-z];\\)AppleWebKit/.*", DeviceType.MOBILE);
+		regExpDevices.put(".*Android [0-9.]+;(?<model>(?!Build)[a-z0-9_.,)/(\s\\-+]+);[a-z];[a-z]{2}\\)AppleWebKit/.*", DeviceType.MOBILE);
+		regExpDevices.put(".*Android [0-9.]+;(?<model>(?!Build)[a-z0-9_.,)/(\s\\-+]+)Build/.*;Mobile;rv:[0-9.]+\\).*", DeviceType.MOBILE);
+		regExpDevices.put(".*Android [0-9.]+;(?<model>(?!Build)[a-z0-9_.,)/(\s\\-+]+)Build/.*;Tablet;rv:[0-9.]+\\).*", DeviceType.MOBILE);
+		regExpDevices.put(".*Android [0-9.]+;(?<model>(?!Build)[a-z0-9_.,)/(\s\\-+#]+)Build/.*;wv\\)AppleWebKit/.*", DeviceType.MOBILE);
+		regExpDevices.put(".*Android [0-9.]+;(?<model>(?!Build)[a-z0-9_.,)/(\s\\-+#]+)Build/.*\\).*AppleWebKit/.*", DeviceType.MOBILE);
+		regExpDevices.put(".*Android [0-9.]+;(?<model>(?!Build)[a-z0-9_.,)/(\s\\-+]+)Build/.*\\)YandexSearch/.*", DeviceType.MOBILE);
+		regExpDevices.put(".*Android [0-9.]+;(?<model>(?!Build)[a-z0-9_.,)/(\s\\-+]+);[a-z]{2}\\)AppleWebKit/.*", DeviceType.MOBILE);
+		regExpDevices.put(".*Android [0-9.]+;(?<model>(?!Build)[a-z0-9_.,)/(\s\\-+]+)Build/.*\\)[a-z-_:]+/.*", DeviceType.MOBILE);
+		regExpDevices.put(".*Android [0-9.]+;(?<model>(?!Build)[a-z0-9_.,)/(\s\\-+]+)Build/.*\\);[a-z-_:]+.*", DeviceType.MOBILE);
+		regExpDevices.put(".*Android [0-9.]+;(?<model>(?!Build)[a-z0-9_.,)/(\s\\-+]+)Build/.*\\)[a-z-_:]+.*", DeviceType.MOBILE);
+		regExpDevices.put(".*Android [0-9.]+;(?<model>(?!Build)[a-z0-9_.,)/(\s\\-+]+)Build/.*\\)\\[ip.*\\]", DeviceType.MOBILE);
+		regExpDevices.put(".*Android [0-9.]+;(?<model>(?!Build)[a-z0-9_.,)/(\s\\-+]+)Build/.*\\)\\[FBAN.*", DeviceType.MOBILE);
+		regExpDevices.put(".*Android [0-9.]+;(?<model>(?!Build)[a-z0-9_.,)/(\s\\-+]+)Build/.*\\)Chrome/.*", DeviceType.MOBILE);
+		regExpDevices.put(".*Android [0-9.]+;(?<model>(?!Build)[a-z0-9_.,)/(\s\\-+]+)Build/.*\\)Source/.*", DeviceType.MOBILE);
+		regExpDevices.put(".*Android [0-9.]+;(?<model>(?!Build)[a-z0-9_.,)/(\s\\-+]+)Build/.*\\)[a-z]+", DeviceType.MOBILE);
+		regExpDevices.put(".*Android [0-9.]+;(?<model>(?!Build)[a-z0-9_.,)/(\s\\-+]+)Build/.*Chrome/.*", DeviceType.MOBILE);
+		regExpDevices.put(".*Android [0-9.]+;(?<model>(?!Build)[a-z0-9_.,)/(\s\\-+]+)Build/.*\\)OPR/.*", DeviceType.MOBILE);
+		regExpDevices.put(".*Android [0-9.]+;(?<model>(?!Build)[a-z0-9_.,)/(\s\\-+]+)\\)AppleWebKit/.*", DeviceType.MOBILE);
+		regExpDevices.put(".*Android [0-9.]+;(?<model>(?!Build)[a-z0-9_.,)/(\s\\-+]+)Build/.*;Opera.*", DeviceType.MOBILE);
+		regExpDevices.put(".*Android [0-9.]+;(?<model>(?!Build)[a-z0-9_.,)/(\s\\-+]+)Build/.*\\)\\[", DeviceType.MOBILE);
+		regExpDevices.put(".*Android [0-9.]+;(?<model>(?!Build)[a-z0-9_.,)/(\s\\-+]+)Build/.*\\)$", DeviceType.MOBILE);
+		regExpDevices.put(".*Android [0-9.]+;(?<model>(?!Build)[a-z0-9_.,)/(\s\\-+]+);HMSCore.*", DeviceType.MOBILE);
+		regExpDevices.put(".*Android [0-9.]+;(?<model>(?!Build)[a-z0-9_.,)/(\s\\-+]+)MIUI/.*", DeviceType.MOBILE);
 
-		mapRegExp.put(".*Android [0-9.]+;WebView/[0-9.]+;Microsoft;(?<model>(?!Build)[a-z0-9\s]+)\\)AppleWebKit/.*", DeviceType.MOBILE);
-		mapRegExp.put(".*Android [0-9.]+;Microsoft;(?<model>(?!Build)[a-z0-9_.,)/(\s\\-+]+)\\)AppleWebKit/.*", DeviceType.MOBILE);
-		mapRegExp.put(".*Android [0-9.]+;arm_64;(?<model>(?!Build)[a-z0-9_.,)/(\s\\-+]+)\\)AppleWebKit/.*", DeviceType.MOBILE);
-		mapRegExp.put(".*Android [0-9.]+;Mobile;(?<model>(?!Build)[a-z0-9_.,)/(\s\\-+#]+)Build/.*rv:.*", DeviceType.MOBILE);
-		mapRegExp.put(".*Android [0-9.]+;arm;(?<model>(?!Build)[a-z0-9_.,)/(\s\\-+]+)\\)AppleWebKit/.*", DeviceType.MOBILE);
-		mapRegExp.put(".*Android [0-9.]+;arm_64;(?<model>(?!Build)[a-z0-9_.,)/(\s\\-+]+)AppleWebKit/.*", DeviceType.MOBILE);
-		mapRegExp.put(".*Android [0-9.]+;NOKIA;(?<model>(?!Build)[a-z0-9\s]+)\\)AppleWebKit/.*", DeviceType.MOBILE);
+		regExpDevices.put(".*Android [0-9.]+;WebView/[0-9.]+;Microsoft;(?<model>(?!Build)[a-z0-9\s]+)\\)AppleWebKit/.*", DeviceType.MOBILE);
+		regExpDevices.put(".*Android [0-9.]+;Microsoft;(?<model>(?!Build)[a-z0-9_.,)/(\s\\-+]+)\\)AppleWebKit/.*", DeviceType.MOBILE);
+		regExpDevices.put(".*Android [0-9.]+;arm_64;(?<model>(?!Build)[a-z0-9_.,)/(\s\\-+]+)\\)AppleWebKit/.*", DeviceType.MOBILE);
+		regExpDevices.put(".*Android [0-9.]+;Mobile;(?<model>(?!Build)[a-z0-9_.,)/(\s\\-+#]+)Build/.*rv:.*", DeviceType.MOBILE);
+		regExpDevices.put(".*Android [0-9.]+;arm;(?<model>(?!Build)[a-z0-9_.,)/(\s\\-+]+)\\)AppleWebKit/.*", DeviceType.MOBILE);
+		regExpDevices.put(".*Android [0-9.]+;arm_64;(?<model>(?!Build)[a-z0-9_.,)/(\s\\-+]+)AppleWebKit/.*", DeviceType.MOBILE);
+		regExpDevices.put(".*Android [0-9.]+;NOKIA;(?<model>(?!Build)[a-z0-9\s]+)\\)AppleWebKit/.*", DeviceType.MOBILE);
 
-		mapRegExp.put(".*Windows Phone [0-9.]+;Android [0-9.]+;(?<model>(?!Build)[a-z0-9_.,;)/(\s\\-+]+)\\)AppleWebKit/.*", DeviceType.MOBILE);
-		mapRegExp.put(".*BlackBerry;[a-z];(?<model>(?!Build)[a-z0-9_.,)/(\s\\-+]+);[a-z]{2}\\-[a-z]{2}\\)AppleWebKit/.*", DeviceType.MOBILE);
-		mapRegExp.put(".*BlackBerry;[a-z];(?<model>(?!Build)[a-z0-9_.,)/(\s\\-+]+);[a-z]{2}\\)AppleWebKit/.*", DeviceType.MOBILE);
-		mapRegExp.put(".*Linux;Tizen [0-9.]+;(?<model>(?!Build)[a-z0-9_.,)/(\s\\-+]+)\\)AppleWebKit/.*", DeviceType.MOBILE);
-		mapRegExp.put(".*rv:[0-9.]+;IEMobile.*NOKIA;(?<model>(?!Build)[a-z0-9\s]+);[a-z0-9]+\\).*", DeviceType.MOBILE);
-		mapRegExp.put(".*Android;Mobile;(?<model>(?!Build)[a-z0-9_.,)/(\s\\-+]+);rv:.*Gecko/.*", DeviceType.MOBILE);
-		mapRegExp.put(".*\\(SAMSUNG;(?<model>(?!Build)[a-z0-9_.,)/(\s\\-+]+);[a-z];Bada/.*", DeviceType.MOBILE);
-		mapRegExp.put(".*IEMobile.*Microsoft;(?<model>(?!Build)[a-z0-9\s]+)\\).*", DeviceType.MOBILE);
-		mapRegExp.put(".*IEMobile.*NOKIA;(?<model>(?!Build)[a-z0-9\s]+)\\).*", DeviceType.MOBILE);
+		regExpDevices.put(".*Windows Phone [0-9.]+;Android [0-9.]+;(?<model>(?!Build)[a-z0-9_.,;)/(\s\\-+]+)\\)AppleWebKit/.*", DeviceType.MOBILE);
+		regExpDevices.put(".*BlackBerry;[a-z];(?<model>(?!Build)[a-z0-9_.,)/(\s\\-+]+);[a-z]{2}\\-[a-z]{2}\\)AppleWebKit/.*", DeviceType.MOBILE);
+		regExpDevices.put(".*BlackBerry;[a-z];(?<model>(?!Build)[a-z0-9_.,)/(\s\\-+]+);[a-z]{2}\\)AppleWebKit/.*", DeviceType.MOBILE);
+		regExpDevices.put(".*Linux;Tizen [0-9.]+;(?<model>(?!Build)[a-z0-9_.,)/(\s\\-+]+)\\)AppleWebKit/.*", DeviceType.MOBILE);
+		regExpDevices.put(".*rv:[0-9.]+;IEMobile.*NOKIA;(?<model>(?!Build)[a-z0-9\s]+);[a-z0-9]+\\).*", DeviceType.MOBILE);
+		regExpDevices.put(".*Android;Mobile;(?<model>(?!Build)[a-z0-9_.,)/(\s\\-+]+);rv:.*Gecko/.*", DeviceType.MOBILE);
+		regExpDevices.put(".*\\(SAMSUNG;(?<model>(?!Build)[a-z0-9_.,)/(\s\\-+]+);[a-z];Bada/.*", DeviceType.MOBILE);
+		regExpDevices.put(".*IEMobile.*Microsoft;(?<model>(?!Build)[a-z0-9\s]+)\\).*", DeviceType.MOBILE);
+		regExpDevices.put(".*IEMobile.*NOKIA;(?<model>(?!Build)[a-z0-9\s]+)\\).*", DeviceType.MOBILE);
 
 		// Определение без модели
-		mapRegExp.put(".*Tablet;rv:.*", DeviceType.TABLET);
-		mapRegExp.put(".*tablet_PC\\).*", DeviceType.TABLET);
+		regExpDevices.put(".*Tablet;rv:.*", DeviceType.TABLET);
+		regExpDevices.put(".*tablet_PC\\).*", DeviceType.TABLET);
 
-		mapRegExp.put(".*Cortana.*", DeviceType.VIRTUAL_ASSISTANT);
-		mapRegExp.put(".*YaSearchBrowser.*", DeviceType.VIRTUAL_ASSISTANT);
-		mapRegExp.put(".*HomePod.*", DeviceType.VIRTUAL_ASSISTANT);
+		regExpDevices.put(".*Cortana.*", DeviceType.VIRTUAL_ASSISTANT);
+		regExpDevices.put(".*YaSearchBrowser.*", DeviceType.VIRTUAL_ASSISTANT);
+		regExpDevices.put(".*HomePod.*", DeviceType.VIRTUAL_ASSISTANT);
 
-		mapRegExp.put(".*Nintendo.*", DeviceType.GAME_CONSOLE);
-		mapRegExp.put(".*PlayStation.*", DeviceType.GAME_CONSOLE);
+		regExpDevices.put(".*Nintendo.*", DeviceType.GAME_CONSOLE);
+		regExpDevices.put(".*PlayStation.*", DeviceType.GAME_CONSOLE);
 
-		mapRegExp.put(".*AppleTV.*", DeviceType.TV);
-		mapRegExp.put(".*DuneHD.*", DeviceType.TV);
-		mapRegExp.put(".*Dune HD TV.*", DeviceType.TV);
-		mapRegExp.put(".*DuneHD-CWMP.*", DeviceType.TV);
-		mapRegExp.put(".*GoogleTV.*", DeviceType.TV);
-		mapRegExp.put(".*HbbTV.*", DeviceType.TV);
-		mapRegExp.put(".*LG NetCast\\.TV.*", DeviceType.TV);
-		mapRegExp.put(".*Viera.*", DeviceType.TV);
-		mapRegExp.put(".*PHILIPSTV.*", DeviceType.TV);
-		mapRegExp.put(".*POV_TV.*", DeviceType.TV);
-		mapRegExp.put(".*Roku/DVP.*", DeviceType.TV);
-		mapRegExp.put(".*SMART-TV.*", DeviceType.TV);
-		mapRegExp.put(".*SmartTV.*", DeviceType.TV);
-		mapRegExp.put(".*Smartlabs.*", DeviceType.TV);
-		mapRegExp.put(".*TSBNetTV.*", DeviceType.TV);
-		mapRegExp.put(".*MTSTVBOX.*", DeviceType.TV);
-		mapRegExp.put(".*Sony-KDL.*", DeviceType.TV);
+		regExpDevices.put(".*AppleTV.*", DeviceType.TV);
+		regExpDevices.put(".*DuneHD.*", DeviceType.TV);
+		regExpDevices.put(".*Dune HD TV.*", DeviceType.TV);
+		regExpDevices.put(".*DuneHD-CWMP.*", DeviceType.TV);
+		regExpDevices.put(".*GoogleTV.*", DeviceType.TV);
+		regExpDevices.put(".*HbbTV.*", DeviceType.TV);
+		regExpDevices.put(".*LG NetCast\\.TV.*", DeviceType.TV);
+		regExpDevices.put(".*Viera.*", DeviceType.TV);
+		regExpDevices.put(".*PHILIPSTV.*", DeviceType.TV);
+		regExpDevices.put(".*POV_TV.*", DeviceType.TV);
+		regExpDevices.put(".*Roku/DVP.*", DeviceType.TV);
+		regExpDevices.put(".*SMART-TV.*", DeviceType.TV);
+		regExpDevices.put(".*SmartTV.*", DeviceType.TV);
+		regExpDevices.put(".*Smartlabs.*", DeviceType.TV);
+		regExpDevices.put(".*TSBNetTV.*", DeviceType.TV);
+		regExpDevices.put(".*MTSTVBOX.*", DeviceType.TV);
+		regExpDevices.put(".*Sony-KDL.*", DeviceType.TV);
 
-		mapRegExp.put(".*Windows Mobile.*", DeviceType.MOBILE);
-		mapRegExp.put(".*SamsungBrowser.*", DeviceType.MOBILE);
-		mapRegExp.put(".*Windows Phone.*", DeviceType.MOBILE);
-		mapRegExp.put(".*AlohaBrowser.*", DeviceType.MOBILE);
-		mapRegExp.put(".*NokiaBrowser.*", DeviceType.MOBILE);
-		mapRegExp.put(".*MiuiBrowser.*", DeviceType.MOBILE);
-		mapRegExp.put(".*Opera Mobi.*", DeviceType.MOBILE);
-		mapRegExp.put(".*Opera Mini.*", DeviceType.MOBILE);
-		mapRegExp.put(".*UC Browser.*", DeviceType.MOBILE);
-		mapRegExp.put(".*Windows CE.*", DeviceType.MOBILE);
-		mapRegExp.put(".*Blackberry.*", DeviceType.MOBILE);
-		mapRegExp.put(".*UCBrowser.*", DeviceType.MOBILE);
-		mapRegExp.put(".*NetFront.*", DeviceType.MOBILE);
-		mapRegExp.put(".*Dolphin.*", DeviceType.MOBILE);
-		mapRegExp.put(".*BaiduHD.*", DeviceType.MOBILE);
-		mapRegExp.put(".*BingWeb.*", DeviceType.MOBILE);
-		mapRegExp.put(".*Mobile/.*", DeviceType.MOBILE);
-		mapRegExp.put(".*Minimo.*", DeviceType.MOBILE);
-		mapRegExp.put(".*Kindle.*", DeviceType.MOBILE);
-		mapRegExp.put(".*Focus.*", DeviceType.MOBILE);
-		mapRegExp.put(".*MIUI.*", DeviceType.MOBILE);
-		mapRegExp.put(".*Bada.*", DeviceType.MOBILE);
-		mapRegExp.put(".*IEMobile.*", DeviceType.MOBILE);
-		mapRegExp.put(".*\\(iPod;.*", DeviceType.MOBILE);
-		mapRegExp.put(".*\\(iPod touch;.*", DeviceType.MOBILE);
-		mapRegExp.put(".*\\(iPad;.*", DeviceType.MOBILE);
-		mapRegExp.put(".*\\(iPhone;.*", DeviceType.MOBILE);
-		mapRegExp.put(".*Android.*", DeviceType.MOBILE);
+		regExpDevices.put(".*Windows Mobile.*", DeviceType.MOBILE);
+		regExpDevices.put(".*SamsungBrowser.*", DeviceType.MOBILE);
+		regExpDevices.put(".*Windows Phone.*", DeviceType.MOBILE);
+		regExpDevices.put(".*AlohaBrowser.*", DeviceType.MOBILE);
+		regExpDevices.put(".*NokiaBrowser.*", DeviceType.MOBILE);
+		regExpDevices.put(".*MiuiBrowser.*", DeviceType.MOBILE);
+		regExpDevices.put(".*Opera Mobi.*", DeviceType.MOBILE);
+		regExpDevices.put(".*Opera Mini.*", DeviceType.MOBILE);
+		regExpDevices.put(".*UC Browser.*", DeviceType.MOBILE);
+		regExpDevices.put(".*Windows CE.*", DeviceType.MOBILE);
+		regExpDevices.put(".*Blackberry.*", DeviceType.MOBILE);
+		regExpDevices.put(".*UCBrowser.*", DeviceType.MOBILE);
+		regExpDevices.put(".*NetFront.*", DeviceType.MOBILE);
+		regExpDevices.put(".*Dolphin.*", DeviceType.MOBILE);
+		regExpDevices.put(".*BaiduHD.*", DeviceType.MOBILE);
+		regExpDevices.put(".*BingWeb.*", DeviceType.MOBILE);
+		regExpDevices.put(".*Mobile/.*", DeviceType.MOBILE);
+		regExpDevices.put(".*Minimo.*", DeviceType.MOBILE);
+		regExpDevices.put(".*Kindle.*", DeviceType.MOBILE);
+		regExpDevices.put(".*Focus.*", DeviceType.MOBILE);
+		regExpDevices.put(".*MIUI.*", DeviceType.MOBILE);
+		regExpDevices.put(".*Bada.*", DeviceType.MOBILE);
+		regExpDevices.put(".*IEMobile.*", DeviceType.MOBILE);
+		regExpDevices.put(".*\\(iPod;.*", DeviceType.MOBILE);
+		regExpDevices.put(".*\\(iPod touch;.*", DeviceType.MOBILE);
+		regExpDevices.put(".*\\(iPad;.*", DeviceType.MOBILE);
+		regExpDevices.put(".*\\(iPhone;.*", DeviceType.MOBILE);
+		regExpDevices.put(".*Android.*", DeviceType.MOBILE);
 
-		mapRegExp.put(".*Mac_PowerPC.*", DeviceType.PC);
-		mapRegExp.put(".*Macintosh.*", DeviceType.PC);
-		mapRegExp.put(".*AmigaOS.*", DeviceType.PC);
-		mapRegExp.put(".*NetBSD.*", DeviceType.PC);
-		mapRegExp.put(".*Darwin.*", DeviceType.PC);
-		mapRegExp.put(".*Haiku.*", DeviceType.PC);
-		mapRegExp.put(".*OS/2.*", DeviceType.PC);
-		mapRegExp.put(".*Suse.*", DeviceType.PC);
-		mapRegExp.put(".*Kubuntu.*", DeviceType.PC);
-		mapRegExp.put(".*Ubuntu.*", DeviceType.PC);
-		mapRegExp.put(".*Linux.*", DeviceType.PC);
-		mapRegExp.put(".*Mac OS.*", DeviceType.PC);
-		mapRegExp.put(".*Windows.*", DeviceType.PC);
-		mapRegExp.put(".*Win.*", DeviceType.PC);
+		regExpDevices.put(".*Mac_PowerPC.*", DeviceType.PC);
+		regExpDevices.put(".*Macintosh.*", DeviceType.PC);
+		regExpDevices.put(".*AmigaOS.*", DeviceType.PC);
+		regExpDevices.put(".*NetBSD.*", DeviceType.PC);
+		regExpDevices.put(".*Darwin.*", DeviceType.PC);
+		regExpDevices.put(".*Haiku.*", DeviceType.PC);
+		regExpDevices.put(".*OS/2.*", DeviceType.PC);
+		regExpDevices.put(".*Suse.*", DeviceType.PC);
+		regExpDevices.put(".*Kubuntu.*", DeviceType.PC);
+		regExpDevices.put(".*Ubuntu.*", DeviceType.PC);
+		regExpDevices.put(".*Linux.*", DeviceType.PC);
+		regExpDevices.put(".*Mac OS.*", DeviceType.PC);
+		regExpDevices.put(".*Windows.*", DeviceType.PC);
+		regExpDevices.put(".*Win.*", DeviceType.PC);
 
-		return mapRegExp;
+		return regExpDevices;
 	}
 }

@@ -37,6 +37,7 @@ public class OperatingSystem
 	 *
 	 * @see OperatingSystemType
 	 */
+	@NotNull
 	private OperatingSystemType operatingSystem = OperatingSystemType.UNKNOWN;
 
 	/**
@@ -45,7 +46,7 @@ public class OperatingSystem
 	 * @see #getRegExpOperatingSystems()
 	 */
 	@NotNull
-	private final Map<String, OperatingSystemType> regExpOperatingSystems = this.getRegExpOperatingSystems();
+	private final Map<@NotNull String, @NotNull OperatingSystemType> regExpOperatingSystems = this.getRegExpOperatingSystems();
 
 	OperatingSystem() {}
 
@@ -100,7 +101,8 @@ public class OperatingSystem
 	 *
 	 * @return идентификатор и название операционной системы
 	 */
-	public static Map<Long, String> getAll()
+	@NotNull
+	public static Map<@NotNull Long, @NotNull String> getAll()
 	{
 		Map<Long, String> typesOperatingSystem = new HashMap<>();
 
@@ -183,7 +185,7 @@ public class OperatingSystem
 	 * Возвращает список шаблонов регулярных выражений для определения операционной системы.
 	 */
 	@NotNull
-	private Map<String, OperatingSystemType> getRegExpOperatingSystems()
+	private Map<@NotNull String, @NotNull OperatingSystemType> getRegExpOperatingSystems()
 	{
 		Map<String, OperatingSystemType> regExpOperatingSystems = new LinkedHashMap<>();
 

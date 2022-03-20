@@ -27,7 +27,7 @@ public interface UserAgentParsing
 	 * Должен возвращать все значения.
 	 */
 	@NotNull
-	Map<String, String> getAll();
+	Map<@NotNull String, @NotNull String> getAll();
 
 	/**
 	 * Должен возвращать ID браузера.

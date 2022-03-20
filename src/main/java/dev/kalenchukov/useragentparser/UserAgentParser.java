@@ -17,10 +17,13 @@ import java.util.Map;
  */
 public class UserAgentParser implements UserAgentParsing
 {
+	@NotNull
 	private final Browser browser = new Browser();
 
+	@NotNull
 	private final Device device = new Device();
 
+	@NotNull
 	private final OperatingSystem operatingSystem = new OperatingSystem();
 
 	/**
@@ -38,9 +41,9 @@ public class UserAgentParser implements UserAgentParsing
 		this.operatingSystem.setUserAgent(userAgent);
 	}
 
-	@Override
 	@NotNull
-	public Map<String, String> getAll()
+	@Override
+	public Map<@NotNull String, @NotNull String> getAll()
 	{
 		Map<String, String> allUserAgentInfo = new HashMap<>();
 
@@ -59,64 +62,64 @@ public class UserAgentParser implements UserAgentParsing
 		return allUserAgentInfo;
 	}
 
-	@Override
 	@Nullable
+	@Override
 	public Long getBrowserId()
 	{
 		return this.browser.getId();
 	}
 
-	@Override
 	@Nullable
+	@Override
 	public String getBrowserName()
 	{
 		return this.browser.getName();
 	}
 
-	@Override
 	@Nullable
+	@Override
 	public String getBrowserVersion()
 	{
 		return this.browser.getVersion();
 	}
 
-	@Override
 	@Nullable
+	@Override
 	public Long getDeviceId()
 	{
 		return this.device.getId();
 	}
 
-	@Override
 	@Nullable
+	@Override
 	public String getDeviceType()
 	{
 		return this.device.getType();
 	}
 
-	@Override
 	@Nullable
+	@Override
 	public String getDeviceModel()
 	{
 		return this.device.getModel();
 	}
 
-	@Override
 	@Nullable
+	@Override
 	public Long getOperatingSystemId()
 	{
 		return this.operatingSystem.getId();
 	}
 
-	@Override
 	@Nullable
+	@Override
 	public String getOperatingSystemName()
 	{
 		return this.operatingSystem.getName();
 	}
 
-	@Override
 	@Nullable
+	@Override
 	public String getOperatingSystemVersion()
 	{
 		return this.operatingSystem.getVersion();

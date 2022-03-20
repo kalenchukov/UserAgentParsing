@@ -45,7 +45,8 @@ public class Browser
 	 *
 	 * @see #getRegExpBrowsers()
 	 */
-	private final Map<String, BrowserType> regExpBrowsers = this.getRegExpBrowsers();
+	@NotNull
+	private final Map<@NotNull String, @NotNull BrowserType> regExpBrowsers = this.getRegExpBrowsers();
 
 	Browser() {}
 
@@ -101,7 +102,7 @@ public class Browser
 	 * @return идентификатор и название браузера
 	 */
 	@NotNull
-	public static Map<Long, String> getAll()
+	public static Map<@NotNull Long, @NotNull String> getAll()
 	{
 		Map<Long, String> typesBrowsers = new HashMap<>();
 
@@ -184,7 +185,7 @@ public class Browser
 	 * Возвращает список регулярных выражений для определения браузера.
 	 */
 	@NotNull
-	private Map<String, BrowserType> getRegExpBrowsers()
+	private Map<@NotNull String, @NotNull BrowserType> getRegExpBrowsers()
 	{
 		Map<String, BrowserType> regExpBrowsers = new LinkedHashMap<>();
 

@@ -46,7 +46,7 @@ public class Device
 	 * @see #getRegExpDevices()
 	 */
 	@NotNull
-	private final Map<String, DeviceType> regExpDevices = this.getRegExpDevices();
+	private final Map<@NotNull String, @NotNull DeviceType> regExpDevices = this.getRegExpDevices();
 
 	Device() {}
 
@@ -102,7 +102,7 @@ public class Device
 	 * @return идентификатор и тип устройства
 	 */
 	@NotNull
-	public static Map<Long, String> getAll()
+	public static Map<@NotNull Long, @NotNull String> getAll()
 	{
 		Map<Long, String> typesDevices = new HashMap<>();
 
@@ -185,7 +185,7 @@ public class Device
 	 * Возвращает список шаблонов регулярных выражений для определения устройства.
 	 */
 	@NotNull
-	private Map<String, DeviceType> getRegExpDevices()
+	private Map<@NotNull String, @NotNull DeviceType> getRegExpDevices()
 	{
 		Map<String, DeviceType> regExpDevices = new LinkedHashMap<>();
 

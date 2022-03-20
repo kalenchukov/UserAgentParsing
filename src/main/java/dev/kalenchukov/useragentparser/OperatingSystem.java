@@ -57,7 +57,7 @@ public class OperatingSystem
 	 * @return название операционной системы
 	 */
 	@Nullable
-	public static String getById(@NotNull Long id)
+	public static String getById(@NotNull final Long id)
 	{
 		for (OperatingSystemType operatingSystem: OperatingSystemType.values())
 		{
@@ -80,7 +80,7 @@ public class OperatingSystem
 	 * @return идентификатор операционной системы
 	 */
 	@Nullable
-	public static Long getByName(@NotNull String name)
+	public static Long getByName(@NotNull final String name)
 	{
 		for (OperatingSystemType operatingSystem: OperatingSystemType.values())
 		{
@@ -122,7 +122,7 @@ public class OperatingSystem
 	 *
 	 * @param userAgent строка user-agent
 	 */
-	void setUserAgent(@NotNull String userAgent)
+	void setUserAgent(@NotNull final String userAgent)
 	{
 		this.userAgent = userAgent;
 		this.operatingSystem = OperatingSystemType.UNKNOWN;

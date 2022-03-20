@@ -57,7 +57,7 @@ public class Browser
 	 * @return название браузера
 	 */
 	@Nullable
-	public static String getById(@NotNull Long id)
+	public static String getById(@NotNull final Long id)
 	{
 		for (BrowserType browser: BrowserType.values())
 		{
@@ -80,7 +80,7 @@ public class Browser
 	 * @return идентификатор браузера
 	 */
 	@Nullable
-	public static Long getByName(@NotNull String name)
+	public static Long getByName(@NotNull final String name)
 	{
 		for (BrowserType browser: BrowserType.values())
 		{
@@ -122,7 +122,7 @@ public class Browser
 	 *
 	 * @param userAgent строка user-agent
 	 */
-	void setUserAgent(@NotNull String userAgent)
+	void setUserAgent(@NotNull final String userAgent)
 	{
 		this.userAgent = userAgent;
 		this.browser = BrowserType.UNKNOWN;

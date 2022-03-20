@@ -57,7 +57,7 @@ public class Device
 	 * @return тип устройства
 	 */
 	@Nullable
-	public static String getById(@NotNull Long id)
+	public static String getById(@NotNull final Long id)
 	{
 		for (DeviceType device : DeviceType.values())
 		{
@@ -80,7 +80,7 @@ public class Device
 	 * @return идентификатор устройства
 	 */
 	@Nullable
-	public static Long getByType(@NotNull String type)
+	public static Long getByType(@NotNull final String type)
 	{
 		for (DeviceType device: DeviceType.values())
 		{
@@ -122,7 +122,7 @@ public class Device
 	 *
 	 * @param userAgent строка user-agent
 	 */
-	void setUserAgent(@NotNull String userAgent)
+	void setUserAgent(@NotNull final String userAgent)
 	{
 		this.userAgent = userAgent;
 		this.device = DeviceType.UNKNOWN;

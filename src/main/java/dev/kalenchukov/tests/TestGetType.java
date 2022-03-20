@@ -4,7 +4,7 @@ import dev.kalenchukov.useragentparser.Browser;
 import dev.kalenchukov.useragentparser.Device;
 import dev.kalenchukov.useragentparser.OperatingSystem;
 
-class MainGetType
+class TestGetType
 {
 	public static void main(String[] args)
 	{

@@ -5,18 +5,11 @@
     <modelVersion>4.0.0</modelVersion>
 
 	<groupId>dev.kalenchukov</groupId>
-	<artifactId>useragentparser</artifactId>
+	<artifactId>user-agent-parser</artifactId>
+	<version>1.0.0</version>
 
 	<name>UserAgentParser</name>
 	<description>Получение информации о клиенте по строке user-agent</description>
-	<dependencies>
-		<dependency>
-			<groupId>org.jetbrains</groupId>
-			<artifactId>annotations</artifactId>
-			<version>22.0.0</version>
-		</dependency>
-	</dependencies>
-	<version>1.0.0</version>
 	<url>https://github.com/kalenchukov/UserAgentParser</url>
 
 	<licenses>
@@ -31,10 +24,9 @@
 			<id>kalenchukov</id>
 			<name>Алексей Каленчуков</name>
 			<email>aleksey.kalenchukov@yandex.ru</email>
+			<url>https://opensource.org/licenses/MIT</url>
 		</developer>
 	</developers>
-
-	<packaging>jar</packaging>
 
 	<properties>
 		<maven.compiler.source>16</maven.compiler.source>
@@ -42,10 +34,12 @@
 		<encoding>UTF-8</encoding>
 	</properties>
 
-	<scm>
-		<url>https://github.com/kalenchukov/UserAgentParser/</url>
-		<connection>scm:git:https://github.com/kalenchukov/UserAgentParser.git</connection>
-		<developerConnection>scm:git:git@github.com:kalenchukov/UserAgentParser.git</developerConnection>
-	</scm>
+	<dependencies>
+		<dependency>
+			<groupId>org.jetbrains</groupId>
+			<artifactId>annotations</artifactId>
+			<version>23.0.0</version>
+		</dependency>
+	</dependencies>
 
 </project>

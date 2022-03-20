@@ -1,6 +1,4 @@
-package dev.kalenchukov.test;
-
-import dev.kalenchukov.useragentparser.*;
+package dev.kalenchukov.tests;
 
 import java.io.*;
 
@@ -25,10 +23,10 @@ class Package
 
 		try
 		{
-			fileReader = new FileReader(System.getProperty("user.dir") + "/src/test/resources/all");
-			fileWriterY = new FileWriter(System.getProperty("user.dir") + "/src/test/resources/mobile_yes", true);
-			fileWriterN = new FileWriter(System.getProperty("user.dir") + "/src/test/resources/mobile_not", true);
-			fileWriterModel = new FileWriter(System.getProperty("user.dir") + "/src/test/resources/mobile_model", true);
+			fileReader = new FileReader(System.getProperty("user.dir") + "/src/tests/resources/all");
+			fileWriterY = new FileWriter(System.getProperty("user.dir") + "/src/tests/resources/mobile_yes", true);
+			fileWriterN = new FileWriter(System.getProperty("user.dir") + "/src/tests/resources/mobile_not", true);
+			fileWriterModel = new FileWriter(System.getProperty("user.dir") + "/src/tests/resources/mobile_model", true);
 
 			BufferedReader reader = new BufferedReader(fileReader);
 

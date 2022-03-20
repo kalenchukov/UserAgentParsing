@@ -1,4 +1,4 @@
-package dev.kalenchukov.test;
+package dev.kalenchukov.tests;
 
 import dev.kalenchukov.useragentparser.Browser;
 import dev.kalenchukov.useragentparser.Device;

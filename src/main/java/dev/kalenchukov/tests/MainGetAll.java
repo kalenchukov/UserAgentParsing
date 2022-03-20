@@ -1,4 +1,4 @@
-package dev.kalenchukov.test;
+package dev.kalenchukov.tests;
 
 import dev.kalenchukov.useragentparser.UserAgentParser;
 import dev.kalenchukov.useragentparser.UserAgentParsing;

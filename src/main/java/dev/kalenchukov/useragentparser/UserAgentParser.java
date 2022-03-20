@@ -14,23 +14,30 @@ import java.util.Map;
 import java.util.Objects;
 
 /**
- * Реализация интерфейса парсинга.
+ * Реализация интерфейса парсинга строки user-agent.
  */
 public final class UserAgentParser implements UserAgentParsing
 {
+	/**
+	 * Объект браузера по умолчанию.
+	 */
 	@NotNull
 	private final Browser browser = new Browser();
 
+	/**
+	 * Объект устройства по умолчанию.
+	 */
 	@NotNull
 	private final Device device = new Device();
 
+	/**
+	 * Объект операционной системы по умолчанию.
+	 */
 	@NotNull
 	private final OperatingSystem operatingSystem = new OperatingSystem();
 
 	/**
-	 * Устанавливает строку user-agent.
-	 *
-	 * @param userAgent строка user-agent
+	 * @see UserAgentParsing#setUserAgent(String)
 	 */
 	@Override
 	public void setUserAgent(@NotNull String userAgent)
@@ -44,6 +51,9 @@ public final class UserAgentParser implements UserAgentParsing
 		this.operatingSystem.setUserAgent(userAgent);
 	}
 
+	/**
+	 * @see UserAgentParsing#getAll()
+	 */
 	@NotNull
 	@Override
 	public Map<@NotNull String, @NotNull String> getAll()
@@ -65,6 +75,9 @@ public final class UserAgentParser implements UserAgentParsing
 		return allUserAgentInfo;
 	}
 
+	/**
+	 * @see UserAgentParsing#getBrowserId()
+	 */
 	@Nullable
 	@Override
 	public Long getBrowserId()
@@ -72,6 +85,9 @@ public final class UserAgentParser implements UserAgentParsing
 		return this.browser.getId();
 	}
 
+	/**
+	 * @see UserAgentParsing#getBrowserName()
+	 */
 	@Nullable
 	@Override
 	public String getBrowserName()
@@ -79,6 +95,9 @@ public final class UserAgentParser implements UserAgentParsing
 		return this.browser.getName();
 	}
 
+	/**
+	 * @see UserAgentParsing#getBrowserVersion()
+	 */
 	@Nullable
 	@Override
 	public String getBrowserVersion()
@@ -86,6 +105,9 @@ public final class UserAgentParser implements UserAgentParsing
 		return this.browser.getVersion();
 	}
 
+	/**
+	 * @see UserAgentParsing#getDeviceId()
+	 */
 	@Nullable
 	@Override
 	public Long getDeviceId()
@@ -93,6 +115,9 @@ public final class UserAgentParser implements UserAgentParsing
 		return this.device.getId();
 	}
 
+	/**
+	 * @see UserAgentParsing#getDeviceType()
+	 */
 	@Nullable
 	@Override
 	public String getDeviceType()
@@ -100,6 +125,9 @@ public final class UserAgentParser implements UserAgentParsing
 		return this.device.getType();
 	}
 
+	/**
+	 * @see UserAgentParsing#getDeviceModel()
+	 */
 	@Nullable
 	@Override
 	public String getDeviceModel()
@@ -107,6 +135,9 @@ public final class UserAgentParser implements UserAgentParsing
 		return this.device.getModel();
 	}
 
+	/**
+	 * @see UserAgentParsing#getOperatingSystemId()
+	 */
 	@Nullable
 	@Override
 	public Long getOperatingSystemId()
@@ -114,6 +145,9 @@ public final class UserAgentParser implements UserAgentParsing
 		return this.operatingSystem.getId();
 	}
 
+	/**
+	 * @see UserAgentParsing#getOperatingSystemName()
+	 */
 	@Nullable
 	@Override
 	public String getOperatingSystemName()
@@ -121,6 +155,9 @@ public final class UserAgentParser implements UserAgentParsing
 		return this.operatingSystem.getName();
 	}
 
+	/**
+	 * @see UserAgentParsing#getOperatingSystemVersion()
+	 */
 	@Nullable
 	@Override
 	public String getOperatingSystemVersion()
@@ -129,12 +166,14 @@ public final class UserAgentParser implements UserAgentParsing
 	}
 
 	/**
-	 * Форматирует user agent.
-	 * Удаляет пробелы между определёнными символами.
-	 * Удаляет множественные пробелы.
+	 * Форматирует user-agent.
+	 * <ul>
+	 *     <li>Удаляет пробелы между определёнными символами</li>
+	 *     <li>Удаляет множественные пробелы</li>
+	 * </ul>
 	 *
-	 * @param userAgent
-	 * @return userAgent
+	 * @param userAgent Строка user-agent.
+	 * @return Отформатированную строку user-agent.
 	 */
 	@NotNull
 	private String format(@NotNull final String userAgent)

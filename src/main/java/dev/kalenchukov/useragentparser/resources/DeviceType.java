@@ -49,7 +49,7 @@ public enum DeviceType
 	);
 
 	/**
-	 * ID устройства.
+	 * Идентификатор устройства.
 	 */
 	@Nullable
 	private final Long id;
@@ -61,11 +61,10 @@ public enum DeviceType
 	private final String type;
 
 	/**
-	 * Устанавливает ID устройства.
-	 * Устанавливает тип устройства.
+	 * Устанавливает идентификатор и тип устройства.
 	 *
-	 * @param id ID устройства
-	 * @param type тип устройства
+	 * @param id Идентификатор устройства.
+	 * @param type Тип устройства.
 	 */
 	DeviceType(@Nullable final Long id, @Nullable final String type)
 	{
@@ -73,12 +72,22 @@ public enum DeviceType
 		this.type = type;
 	}
 
+	/**
+	 * Возвращает идентификатор устройства.
+	 *
+	 * @return Идентификатор устройства.
+	 */
 	@Nullable
 	public Long getId()
 	{
 		return this.id;
 	}
 
+	/**
+	 * Возвращает название устройства.
+	 *
+	 * @return Название устройства.
+	 */
 	@Nullable
 	public String getType()
 	{

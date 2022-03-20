@@ -12,73 +12,93 @@ import org.jetbrains.annotations.Nullable;
 import java.util.Map;
 
 /**
- * Интерфейс для парсеров.
+ * Интерфейс для парсеров строки user-agent.
  */
 public interface UserAgentParsing
 {
 	/**
-	 * Должен принимать строку user-agent о которой необходимо возвращать информацию.
+	 * Устанавливает строку user-agent о которой необходимо возвращать информацию.
 	 *
-	 * @param userAgent строка user-agent
+	 * @param userAgent Строка user-agent.
 	 */
 	void setUserAgent(@NotNull String userAgent);
 
 	/**
-	 * Должен возвращать все значения.
+	 * Возвращает всю информацию о строке user-agent.
+	 *
+	 * @return Коллекция с информацией о user-agent.
 	 */
 	@NotNull
 	Map<@NotNull String, @NotNull String> getAll();
 
 	/**
-	 * Должен возвращать ID браузера.
+	 * Возвращает идентификатор браузера.
+	 *
+	 * @return Идентификатор браузера.
 	 */
 	@Nullable
 	Long getBrowserId();
 
 	/**
-	 * Должен возвращать название браузера.
+	 * Возвращает название браузера.
+	 *
+	 * @return Название браузера.
 	 */
 	@Nullable
 	String getBrowserName();
 
 	/**
-	 * Должен возвращать версию браузера.
+	 * Возвращает версию браузера.
+	 *
+	 * @return Версия браузера.
 	 */
 	@Nullable
 	String getBrowserVersion();
 
 	/**
-	 * Должен возвращать ID устройства.
+	 * Возвращает идентификатор устройства.
+	 *
+	 * @return Идентификатор устройства.
 	 */
 	@Nullable
 	Long getDeviceId();
 
 	/**
-	 * Должен возвращать тип устройства.
+	 * Возвращает тип устройства.
+	 *
+	 * @return Тип устройства.
 	 */
 	@Nullable
 	String getDeviceType();
 
 	/**
-	 * Должен возвращать модель устройства.
+	 * Возвращает модель устройства.
+	 *
+	 * @return Модель устройства.
 	 */
 	@Nullable
 	String getDeviceModel();
 
 	/**
-	 * Должен возвращать ID операционной системы.
+	 * Возвращает идентификатор операционной системы.
+	 *
+	 * @return Идентификатор операционной системы.
 	 */
 	@Nullable
 	Long getOperatingSystemId();
 
 	/**
-	 * Должен возвращать название операционной системы.
+	 * Возвращает название операционной системы.
+	 *
+	 * @return Название операционной системы.
 	 */
 	@Nullable
 	String getOperatingSystemName();
 
 	/**
-	 * Должен возвращать версию операционной системы.
+	 * Возвращает версию операционной системы.
+	 *
+	 * @return Версия операционной системы.
 	 */
 	@Nullable
 	String getOperatingSystemVersion();

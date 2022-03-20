@@ -53,10 +53,10 @@ public final class OperatingSystem
 	OperatingSystem() {}
 
 	/**
-	 * Возвращает название операционной системы по идентификатору
+	 * Возвращает название операционной системы по идентификатору.
 	 *
-	 * @param id идентификатор операционной системы
-	 * @return название операционной системы
+	 * @param id Идентификатор операционной системы.
+	 * @return Название операционной системы.
 	 */
 	@Nullable
 	public static String getById(@NotNull final Long id)
@@ -67,8 +67,7 @@ public final class OperatingSystem
 		{
 			if (operatingSystem.getId() != null)
 			{
-				if (operatingSystem != OperatingSystemType.UNKNOWN && operatingSystem.getId().equals(id))
-				{
+				if (operatingSystem != OperatingSystemType.UNKNOWN && operatingSystem.getId().equals(id)) {
 					return operatingSystem.getName();
 				}
 			}
@@ -78,10 +77,10 @@ public final class OperatingSystem
 	}
 
 	/**
-	 * Возвращает идентификатор операционной системы по названию
+	 * Возвращает идентификатор операционной системы по названию.
 	 *
-	 * @param name название операционной системы
-	 * @return идентификатор операционной системы
+	 * @param name Название операционной системы.
+	 * @return Идентификатор операционной системы.
 	 */
 	@Nullable
 	public static Long getByName(@NotNull final String name)
@@ -92,8 +91,7 @@ public final class OperatingSystem
 		{
 			if (operatingSystem.getName() != null)
 			{
-				if (operatingSystem != OperatingSystemType.UNKNOWN && operatingSystem.getName().equals(name))
-				{
+				if (operatingSystem != OperatingSystemType.UNKNOWN && operatingSystem.getName().equals(name)) {
 					return operatingSystem.getId();
 				}
 			}
@@ -103,9 +101,9 @@ public final class OperatingSystem
 	}
 
 	/**
-	 * Возвращает все типы операционных систем
+	 * Возвращает все типы операционных систем.
 	 *
-	 * @return идентификатор и название операционной системы
+	 * @return Коллекцию с идентификатором и названием операционной системы.
 	 */
 	@NotNull
 	public static Map<@NotNull Long, @NotNull String> getAll()
@@ -114,8 +112,7 @@ public final class OperatingSystem
 
 		for (OperatingSystemType operatingSystem: OperatingSystemType.values())
 		{
-			if (operatingSystem != OperatingSystemType.UNKNOWN)
-			{
+			if (operatingSystem != OperatingSystemType.UNKNOWN) {
 				typesOperatingSystem.put(operatingSystem.getId(), operatingSystem.getName());
 			}
 		}
@@ -126,7 +123,7 @@ public final class OperatingSystem
 	/**
 	 * Устанавливает строку user-agent.
 	 *
-	 * @param userAgent строка user-agent
+	 * @param userAgent Строка user-agent.
 	 */
 	void setUserAgent(@NotNull final String userAgent)
 	{
@@ -136,24 +133,34 @@ public final class OperatingSystem
 		this.operatingSystem = OperatingSystemType.UNKNOWN;
 		this.version = null;
 
-		if (!userAgent.equals(""))
-		{
+		if (!userAgent.equals("")) {
 			this.execute();
 		}
 	}
 
+	/**
+	 * @see OperatingSystemType#getId()
+	 */
 	@Nullable
 	Long getId()
 	{
 		return this.operatingSystem.getId();
 	}
 
+	/**
+	 * @see OperatingSystemType#getName()
+	 */
 	@Nullable
 	String getName()
 	{
 		return this.operatingSystem.getName();
 	}
 
+	/**
+	 * Возвращает версию операционной системы.
+	 *
+	 * @return Версия операционной системы.
+	 */
 	@Nullable
 	String getVersion()
 	{
@@ -161,7 +168,7 @@ public final class OperatingSystem
 	}
 
 	/**
-	 * Выполняет поиск шаблона регулярного выражения в строке user-agent.
+	 * Выполняет поиск шаблона регулярного выражения в строке user-agent, и присваивает значения полям класса.
 	 */
 	private void execute()
 	{
@@ -177,8 +184,7 @@ public final class OperatingSystem
 
 				if (matcher.matches())
 				{
-					if (matcher.groupCount() > 0)
-					{
+					if (matcher.groupCount() > 0) {
 						this.version = matcher.group("version").replace("_", ".").trim();
 					}
 
@@ -191,6 +197,8 @@ public final class OperatingSystem
 
 	/**
 	 * Возвращает список шаблонов регулярных выражений для определения операционной системы.
+	 *
+	 * @return Коллекцию строк регулярных выражений для операционных систем.
 	 */
 	@NotNull
 	private Map<@NotNull String, @NotNull OperatingSystemType> getRegExpOperatingSystems()

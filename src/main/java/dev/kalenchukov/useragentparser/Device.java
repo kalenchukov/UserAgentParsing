@@ -53,10 +53,10 @@ public final class Device
 	Device() {}
 
 	/**
-	 * Возвращает тип устройства по идентификатору
+	 * Возвращает тип устройства по идентификатору.
 	 *
-	 * @param id идентификатор устройства
-	 * @return тип устройства
+	 * @param id Идентификатор устройства.
+	 * @return Тип устройства.
 	 */
 	@Nullable
 	public static String getById(@NotNull final Long id)
@@ -67,8 +67,7 @@ public final class Device
 		{
 			if (device.getId() != null)
 			{
-				if (device != DeviceType.UNKNOWN && device.getId().equals(id))
-				{
+				if (device != DeviceType.UNKNOWN && device.getId().equals(id)) {
 					return device.getType();
 				}
 			}
@@ -78,10 +77,10 @@ public final class Device
 	}
 
 	/**
-	 * Возвращает идентификатор устройства по типу
+	 * Возвращает идентификатор устройства по типу.
 	 *
-	 * @param type тип устройства
-	 * @return идентификатор устройства
+	 * @param type Тип устройства.
+	 * @return Идентификатор устройства.
 	 */
 	@Nullable
 	public static Long getByType(@NotNull final String type)
@@ -92,8 +91,7 @@ public final class Device
 		{
 			if (device.getType() != null)
 			{
-				if (device != DeviceType.UNKNOWN && device.getType().equals(type))
-				{
+				if (device != DeviceType.UNKNOWN && device.getType().equals(type)) {
 					return device.getId();
 				}
 			}
@@ -103,9 +101,9 @@ public final class Device
 	}
 
 	/**
-	 * Возвращает все типы устройств
+	 * Возвращает все типы устройств.
 	 *
-	 * @return идентификатор и тип устройства
+	 * @return Коллекцию с идентификатором и типом устройства.
 	 */
 	@NotNull
 	public static Map<@NotNull Long, @NotNull String> getAll()
@@ -114,8 +112,7 @@ public final class Device
 
 		for (DeviceType device : DeviceType.values())
 		{
-			if (device != DeviceType.UNKNOWN)
-			{
+			if (device != DeviceType.UNKNOWN) {
 				typesDevices.put(device.getId(), device.getType());
 			}
 		}
@@ -126,7 +123,7 @@ public final class Device
 	/**
 	 * Устанавливает строку user-agent.
 	 *
-	 * @param userAgent строка user-agent
+	 * @param userAgent Строка user-agent.
 	 */
 	void setUserAgent(@NotNull final String userAgent)
 	{
@@ -141,18 +138,29 @@ public final class Device
 		}
 	}
 
+	/**
+	 * @see DeviceType#getId()
+	 */
 	@Nullable
 	Long getId()
 	{
 		return this.device.getId();
 	}
 
+	/**
+	 * @see DeviceType#getType()
+	 */
 	@Nullable
 	String getType()
 	{
 		return this.device.getType();
 	}
 
+	/**
+	 * Возвращает модель устройства.
+	 *
+	 * @return Модель устройства.
+	 */
 	@Nullable
 	String getModel()
 	{
@@ -160,7 +168,7 @@ public final class Device
 	}
 
 	/**
-	 * Выполняет поиск шаблона регулярного выражения в строке user-agent.
+	 * Выполняет поиск шаблона регулярного выражения в строке user-agent, и присваивает значения полям класса.
 	 */
 	private void execute()
 	{
@@ -189,6 +197,8 @@ public final class Device
 
 	/**
 	 * Возвращает список шаблонов регулярных выражений для определения устройства.
+	 *
+	 * @return Коллекцию строк регулярных выражений для устройств.
 	 */
 	@NotNull
 	private Map<@NotNull String, @NotNull DeviceType> getRegExpDevices()

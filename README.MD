@@ -40,7 +40,7 @@ userAgentParser.setUserAgent(
     "Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101 Firefox/91.0"
 );
 
-// Возвращает ID браузера
+// Возвращает идентификатор браузера
 userAgentParser.getBrowserId();
 /*
     Результат выполнения: 1
@@ -58,7 +58,7 @@ userAgentParser.getBrowserVersion();
     Результат выполнения: 89.0.4389.105
 */
 
-// Возвращает ID устройства
+// Возвращает идентификатор устройства
 userAgentParser.getDeviceId();
 /*
     Результат выполнения: 2
@@ -76,7 +76,7 @@ userAgentParser.getDeviceModel();
     Результат выполнения: SM-A300FU
 */
     
-// Возвращает ID операционной системы
+// Возвращает идентификатор операционной системы
 userAgentParser.getOperatingSystemId();
 /*
     Результат выполнения: 5

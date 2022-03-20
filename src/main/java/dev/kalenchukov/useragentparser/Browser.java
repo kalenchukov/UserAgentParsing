@@ -53,10 +53,10 @@ public final class Browser
 	Browser() {}
 
 	/**
-	 * Возвращает название браузера по идентификатору
+	 * Возвращает название браузера по идентификатору.
 	 *
-	 * @param id идентификатор браузера
-	 * @return название браузера
+	 * @param id Идентификатор браузера.
+	 * @return Название браузера.
 	 */
 	@Nullable
 	public static String getById(@NotNull final Long id)
@@ -67,8 +67,7 @@ public final class Browser
 		{
 			if (browser.getId() != null)
 			{
-				if (browser != BrowserType.UNKNOWN && browser.getId().equals(id))
-				{
+				if (browser != BrowserType.UNKNOWN && browser.getId().equals(id)) {
 					return browser.getName();
 				}
 			}
@@ -78,10 +77,10 @@ public final class Browser
 	}
 
 	/**
-	 * Возвращает идентификатор браузера по названию
+	 * Возвращает идентификатор браузера по названию.
 	 *
-	 * @param name название браузера
-	 * @return идентификатор браузера
+	 * @param name Название браузера.
+	 * @return Идентификатор браузера.
 	 */
 	@Nullable
 	public static Long getByName(@NotNull final String name)
@@ -102,9 +101,9 @@ public final class Browser
 	}
 
 	/**
-	 * Возвращает все типы браузеров
+	 * Возвращает все типы браузеров.
 	 *
-	 * @return идентификатор и название браузера
+	 * @return Коллекцию с идентификатором и названием браузера.
 	 */
 	@NotNull
 	public static Map<@NotNull Long, @NotNull String> getAll()
@@ -124,7 +123,7 @@ public final class Browser
 	/**
 	 * Устанавливает строку user-agent.
 	 *
-	 * @param userAgent строка user-agent
+	 * @param userAgent Строка user-agent.
 	 */
 	void setUserAgent(@NotNull final String userAgent)
 	{
@@ -139,18 +138,29 @@ public final class Browser
 		}
 	}
 
+	/**
+	 * @see BrowserType#getId()
+	 */
 	@Nullable
 	Long getId()
 	{
 		return this.browser.getId();
 	}
 
+	/**
+	 * @see BrowserType#getName()
+	 */
 	@Nullable
 	String getName()
 	{
 		return this.browser.getName();
 	}
 
+	/**
+	 * Возвращает версию браузера.
+	 *
+	 * @return Версия браузера.
+	 */
 	@Nullable
 	String getVersion()
 	{
@@ -158,7 +168,7 @@ public final class Browser
 	}
 
 	/**
-	 * Выполняет поиск шаблона регулярного выражения в строке user-agent.
+	 * Выполняет поиск шаблона регулярного выражения в строке user-agent, и присваивает значения полям класса.
 	 */
 	private void execute()
 	{
@@ -187,6 +197,8 @@ public final class Browser
 
 	/**
 	 * Возвращает список регулярных выражений для определения браузера.
+	 *
+	 * @return Коллекцию строк регулярных выражений для браузеров.
 	 */
 	@NotNull
 	private Map<@NotNull String, @NotNull BrowserType> getRegExpBrowsers()

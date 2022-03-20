@@ -399,7 +399,7 @@ public enum BrowserType
 	);
 
 	/**
-	 * ID браузера.
+	 * Идентификатор браузера.
 	 */
 	@Nullable
 	private final Long id;
@@ -411,11 +411,10 @@ public enum BrowserType
 	private final String name;
 
 	/**
-	 * Устанавливает ID браузера.
-	 * Устанавливает название браузера.
+	 * Устанавливает идентификатор и название браузера.
 	 *
-	 * @param id ID браузера
-	 * @param name название браузера
+	 * @param id Идентификатор браузера.
+	 * @param name Название браузера.
 	 */
 	BrowserType(@Nullable final Long id, @Nullable final String name)
 	{
@@ -423,12 +422,22 @@ public enum BrowserType
 		this.name = name;
 	}
 
+	/**
+	 * Возвращает идентификатор браузера.
+	 *
+	 * @return Идентификатор браузера.
+	 */
 	@Nullable
 	public Long getId()
 	{
 		return this.id;
 	}
 
+	/**
+	 * Возвращает название браузера.
+	 *
+	 * @return Название браузера.
+	 */
 	@Nullable
 	public String getName()
 	{

@@ -214,7 +214,7 @@ public enum OperatingSystemType
 	);
 
 	/**
-	 * ID операционной системы.
+	 * Идентификатор операционной системы.
 	 */
 	@Nullable
 	private final Long id;
@@ -226,11 +226,10 @@ public enum OperatingSystemType
 	private final String name;
 
 	/**
-	 * Устанавливает ID операционной системы.
-	 * Устанавливает название операционной системы.
+	 * Устанавливает идентификатор и название операционной системы.
 	 *
-	 * @param id ID операционной системы
-	 * @param name название операционной системы
+	 * @param id Идентификатор операционной системы.
+	 * @param name Название операционной системы.
 	 */
 	OperatingSystemType(@Nullable final Long id, @Nullable final String name)
 	{
@@ -238,12 +237,22 @@ public enum OperatingSystemType
 		this.name = name;
 	}
 
+	/**
+	 * Возвращает идентификатор операционной системы.
+	 *
+	 * @return Идентификатор операционной системы.
+	 */
 	@Nullable
 	public Long getId()
 	{
 		return this.id;
 	}
 
+	/**
+	 * Возвращает название операционной системы.
+	 *
+	 * @return Название операционной системы.
+	 */
 	@Nullable
 	public String getName()
 	{

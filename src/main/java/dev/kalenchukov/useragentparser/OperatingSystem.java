@@ -13,6 +13,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -60,6 +61,8 @@ public final class OperatingSystem
 	@Nullable
 	public static String getById(@NotNull final Long id)
 	{
+		Objects.requireNonNull(id);
+
 		for (OperatingSystemType operatingSystem: OperatingSystemType.values())
 		{
 			if (operatingSystem.getId() != null)
@@ -83,6 +86,8 @@ public final class OperatingSystem
 	@Nullable
 	public static Long getByName(@NotNull final String name)
 	{
+		Objects.requireNonNull(name);
+
 		for (OperatingSystemType operatingSystem: OperatingSystemType.values())
 		{
 			if (operatingSystem.getName() != null)
@@ -125,6 +130,8 @@ public final class OperatingSystem
 	 */
 	void setUserAgent(@NotNull final String userAgent)
 	{
+		Objects.requireNonNull(userAgent);
+
 		this.userAgent = userAgent;
 		this.operatingSystem = OperatingSystemType.UNKNOWN;
 		this.version = null;

@@ -11,6 +11,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 /**
  * Реализация интерфейса парсинга.
@@ -34,6 +35,8 @@ public final class UserAgentParser implements UserAgentParsing
 	@Override
 	public void setUserAgent(@NotNull String userAgent)
 	{
+		Objects.requireNonNull(userAgent);
+
 		userAgent = format(userAgent);
 
 		this.device.setUserAgent(userAgent);
@@ -136,6 +139,8 @@ public final class UserAgentParser implements UserAgentParsing
 	@NotNull
 	private String format(@NotNull final String userAgent)
 	{
+		Objects.requireNonNull(userAgent);
+
 		return userAgent
 			.replaceAll("(\s+)?\\.(\s+)?", ".")
 			.replaceAll("(\s+)?-(\s+)?", "-")

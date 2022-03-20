@@ -13,6 +13,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -60,6 +61,8 @@ public final class Device
 	@Nullable
 	public static String getById(@NotNull final Long id)
 	{
+		Objects.requireNonNull(id);
+
 		for (DeviceType device : DeviceType.values())
 		{
 			if (device.getId() != null)
@@ -83,6 +86,8 @@ public final class Device
 	@Nullable
 	public static Long getByType(@NotNull final String type)
 	{
+		Objects.requireNonNull(type);
+
 		for (DeviceType device: DeviceType.values())
 		{
 			if (device.getType() != null)
@@ -125,12 +130,13 @@ public final class Device
 	 */
 	void setUserAgent(@NotNull final String userAgent)
 	{
+		Objects.requireNonNull(userAgent);
+
 		this.userAgent = userAgent;
 		this.device = DeviceType.UNKNOWN;
 		this.model = null;
 
-		if (!userAgent.equals(""))
-		{
+		if (!userAgent.equals("")) {
 			this.execute();
 		}
 	}
@@ -170,8 +176,7 @@ public final class Device
 
 				if (matcher.matches())
 				{
-					if (matcher.groupCount() > 0)
-					{
+					if (matcher.groupCount() > 0) {
 						this.model = matcher.group("model").trim();
 					}
 

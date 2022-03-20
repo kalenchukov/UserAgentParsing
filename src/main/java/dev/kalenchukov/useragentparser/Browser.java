@@ -13,6 +13,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -60,6 +61,8 @@ public final class Browser
 	@Nullable
 	public static String getById(@NotNull final Long id)
 	{
+		Objects.requireNonNull(id);
+
 		for (BrowserType browser: BrowserType.values())
 		{
 			if (browser.getId() != null)
@@ -83,12 +86,13 @@ public final class Browser
 	@Nullable
 	public static Long getByName(@NotNull final String name)
 	{
+		Objects.requireNonNull(name);
+
 		for (BrowserType browser: BrowserType.values())
 		{
 			if (browser.getName() != null)
 			{
-				if (browser != BrowserType.UNKNOWN && browser.getName().equals(name))
-				{
+				if (browser != BrowserType.UNKNOWN && browser.getName().equals(name)) {
 					return browser.getId();
 				}
 			}
@@ -109,8 +113,7 @@ public final class Browser
 
 		for (BrowserType browser : BrowserType.values())
 		{
-			if (browser != BrowserType.UNKNOWN)
-			{
+			if (browser != BrowserType.UNKNOWN) {
 				typesBrowsers.put(browser.getId(), browser.getName());
 			}
 		}
@@ -125,12 +128,13 @@ public final class Browser
 	 */
 	void setUserAgent(@NotNull final String userAgent)
 	{
+		Objects.requireNonNull(userAgent);
+
 		this.userAgent = userAgent;
 		this.browser = BrowserType.UNKNOWN;
 		this.version = null;
 
-		if (!userAgent.equals(""))
-		{
+		if (!userAgent.equals("")) {
 			execute();
 		}
 	}
@@ -170,8 +174,7 @@ public final class Browser
 
 				if (matcher.matches())
 				{
-					if (matcher.groupCount() > 0)
-					{
+					if (matcher.groupCount() > 0) {
 						this.version = matcher.group("version").replace("_", ".").trim();
 					}
 

@@ -4,7 +4,7 @@
  * E-mail: mailto:aleksey.kalenchukov@yandex.ru
  */
 
-package dev.kalenchukov.tests;
+package dev.kalenchukov.useragentparser.tests;
 
 import dev.kalenchukov.useragentparser.Browser;
 import dev.kalenchukov.useragentparser.Device;

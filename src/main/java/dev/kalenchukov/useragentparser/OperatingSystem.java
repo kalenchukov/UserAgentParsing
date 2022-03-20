@@ -6,6 +6,7 @@
 
 package dev.kalenchukov.useragentparser;
 
+import dev.kalenchukov.useragentparser.resources.OperatingSystemType;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 

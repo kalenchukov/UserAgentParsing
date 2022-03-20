@@ -4,14 +4,14 @@
  * E-mail: mailto:aleksey.kalenchukov@yandex.ru
  */
 
-package dev.kalenchukov.useragentparser;
+package dev.kalenchukov.useragentparser.resources;
 
 import org.jetbrains.annotations.Nullable;
 
 /**
  * Типы возможных устройств.
  */
-enum DeviceType
+public enum DeviceType
 {
 	UNKNOWN(
 		null,
@@ -74,13 +74,13 @@ enum DeviceType
 	}
 
 	@Nullable
-	Long getId()
+	public Long getId()
 	{
 		return this.id;
 	}
 
 	@Nullable
-	String getType()
+	public String getType()
 	{
 		return this.type;
 	}

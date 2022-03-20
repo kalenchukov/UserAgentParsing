@@ -4,14 +4,14 @@
  * E-mail: mailto:aleksey.kalenchukov@yandex.ru
  */
 
-package dev.kalenchukov.useragentparser;
+package dev.kalenchukov.useragentparser.resources;
 
 import org.jetbrains.annotations.Nullable;
 
 /**
  * Типы возможных браузеров.
  */
-enum BrowserType
+public enum BrowserType
 {
 	UNKNOWN(
 		null,
@@ -424,13 +424,13 @@ enum BrowserType
 	}
 
 	@Nullable
-	Long getId()
+	public Long getId()
 	{
 		return this.id;
 	}
 
 	@Nullable
-	String getName()
+	public String getName()
 	{
 		return this.name;
 	}

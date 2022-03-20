@@ -232,7 +232,7 @@ enum OperatingSystemType
 	 * @param id ID операционной системы
 	 * @param name название операционной системы
 	 */
-	OperatingSystemType(@Nullable Long id, @Nullable String name)
+	OperatingSystemType(@Nullable final Long id, @Nullable final String name)
 	{
 		this.id = id;
 		this.name = name;

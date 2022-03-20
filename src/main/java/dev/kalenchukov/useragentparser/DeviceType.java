@@ -67,7 +67,7 @@ enum DeviceType
 	 * @param id ID устройства
 	 * @param type тип устройства
 	 */
-	DeviceType(@Nullable Long id, @Nullable String type)
+	DeviceType(@Nullable final Long id, @Nullable final String type)
 	{
 		this.id = id;
 		this.type = type;

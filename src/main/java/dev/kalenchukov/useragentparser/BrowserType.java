@@ -417,7 +417,7 @@ enum BrowserType
 	 * @param id ID браузера
 	 * @param name название браузера
 	 */
-	BrowserType(@Nullable Long id, @Nullable String name)
+	BrowserType(@Nullable final Long id, @Nullable final String name)
 	{
 		this.id = id;
 		this.name = name;

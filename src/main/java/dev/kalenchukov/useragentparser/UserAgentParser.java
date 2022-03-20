@@ -134,7 +134,7 @@ public class UserAgentParser implements UserAgentParsing
 	 * @return userAgent
 	 */
 	@NotNull
-	private String format(@NotNull String userAgent)
+	private String format(@NotNull final String userAgent)
 	{
 		return userAgent
 			.replaceAll("(\s+)?\\.(\s+)?", ".")

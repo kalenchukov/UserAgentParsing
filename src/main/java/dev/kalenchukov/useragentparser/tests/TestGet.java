@@ -9,7 +9,7 @@ package dev.kalenchukov.useragentparser.tests;
 import dev.kalenchukov.useragentparser.UserAgentParser;
 import dev.kalenchukov.useragentparser.UserAgentParsing;
 
-class TestGet
+public final class TestGet
 {
 	public static void main(String[] args)
 	{

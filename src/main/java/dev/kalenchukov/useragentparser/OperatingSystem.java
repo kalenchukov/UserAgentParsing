@@ -19,7 +19,7 @@ import java.util.regex.Pattern;
 /**
  * Класс определяющий операционную систему.
  */
-public class OperatingSystem
+public final class OperatingSystem
 {
 	/**
 	 * Строка user-agent.

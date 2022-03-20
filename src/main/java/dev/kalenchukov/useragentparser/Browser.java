@@ -19,7 +19,7 @@ import java.util.regex.Pattern;
 /**
  * Класс определяющий браузер.
  */
-public class Browser
+public final class Browser
 {
 	/**
 	 * Строка user-agent.

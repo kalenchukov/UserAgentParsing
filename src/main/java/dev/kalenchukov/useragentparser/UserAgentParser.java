@@ -15,7 +15,7 @@ import java.util.Map;
 /**
  * Реализация интерфейса парсинга.
  */
-public class UserAgentParser implements UserAgentParsing
+public final class UserAgentParser implements UserAgentParsing
 {
 	@NotNull
 	private final Browser browser = new Browser();

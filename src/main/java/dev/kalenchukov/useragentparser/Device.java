@@ -19,7 +19,7 @@ import java.util.regex.Pattern;
 /**
  * Класс определяющий устройство.
  */
-public class Device
+public final class Device
 {
 	/**
 	 * Строка user-agent.

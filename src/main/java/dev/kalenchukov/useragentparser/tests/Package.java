@@ -11,7 +11,7 @@ import dev.kalenchukov.useragentparser.UserAgentParsing;
 
 import java.io.*;
 
-class Package
+public final class Package
 {
 	public static void main(String[] args)
 	{

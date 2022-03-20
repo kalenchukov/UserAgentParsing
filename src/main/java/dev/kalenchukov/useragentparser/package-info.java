@@ -1,9 +1,6 @@
-/**
- * Получение информации о клиенте по строке user-agent
- *
- * @author <a href="mailto:aleksey.kalenchukov@yandex.ru">Алексей Каленчуков</a>
- * @copyright © 2021 Алексей Каленчуков
- * @package UserAgentParser
- * @version 1.1.0
+/*
+ * Copyright © 2022 Алексей Каленчуков
+ * GitHub: https://github.com/kalenchukov
+ * E-mail: mailto:aleksey.kalenchukov@yandex.ru
  */
 package dev.kalenchukov.useragentparser;

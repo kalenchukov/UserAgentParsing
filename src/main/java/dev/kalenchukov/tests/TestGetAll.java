@@ -3,7 +3,7 @@ package dev.kalenchukov.tests;
 import dev.kalenchukov.useragentparser.UserAgentParser;
 import dev.kalenchukov.useragentparser.UserAgentParsing;
 
-class MainGetAll
+class TestGetAll
 {
 	public static void main(String[] args)
 	{

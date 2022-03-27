@@ -12,7 +12,7 @@
 
 	<groupId>dev.kalenchukov</groupId>
 	<artifactId>user-agent-parser</artifactId>
-	<version>1.1.0</version>
+	<version>1.2.0</version>
 
 	<name>UserAgentParser</name>
 	<description>Получение информации о клиенте по строке user-agent</description>

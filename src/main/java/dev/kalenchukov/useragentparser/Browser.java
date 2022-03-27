@@ -50,8 +50,6 @@ public final class Browser
 	@NotNull
 	private final Map<@NotNull String, @NotNull BrowserType> regExpBrowsers = this.getRegExpBrowsers();
 
-	Browser() {}
-
 	/**
 	 * Возвращает название браузера по идентификатору.
 	 *
@@ -125,7 +123,7 @@ public final class Browser
 	 *
 	 * @param userAgent Строка user-agent.
 	 */
-	void setUserAgent(@NotNull final String userAgent)
+	public void setUserAgent(@NotNull final String userAgent)
 	{
 		Objects.requireNonNull(userAgent);
 
@@ -142,7 +140,7 @@ public final class Browser
 	 * @see BrowserType#getId()
 	 */
 	@Nullable
-	Long getId()
+	public Long getId()
 	{
 		return this.browser.getId();
 	}
@@ -151,7 +149,7 @@ public final class Browser
 	 * @see BrowserType#getName()
 	 */
 	@Nullable
-	String getName()
+	public String getName()
 	{
 		return this.browser.getName();
 	}
@@ -162,7 +160,7 @@ public final class Browser
 	 * @return Версия браузера.
 	 */
 	@Nullable
-	String getVersion()
+	public String getVersion()
 	{
 		return this.version;
 	}

@@ -50,8 +50,6 @@ public final class OperatingSystem
 	@NotNull
 	private final Map<@NotNull String, @NotNull OperatingSystemType> regExpOperatingSystems = this.getRegExpOperatingSystems();
 
-	OperatingSystem() {}
-
 	/**
 	 * Возвращает название операционной системы по идентификатору.
 	 *
@@ -125,7 +123,7 @@ public final class OperatingSystem
 	 *
 	 * @param userAgent Строка user-agent.
 	 */
-	void setUserAgent(@NotNull final String userAgent)
+	public void setUserAgent(@NotNull final String userAgent)
 	{
 		Objects.requireNonNull(userAgent);
 
@@ -142,7 +140,7 @@ public final class OperatingSystem
 	 * @see OperatingSystemType#getId()
 	 */
 	@Nullable
-	Long getId()
+	public Long getId()
 	{
 		return this.operatingSystem.getId();
 	}
@@ -151,7 +149,7 @@ public final class OperatingSystem
 	 * @see OperatingSystemType#getName()
 	 */
 	@Nullable
-	String getName()
+	public String getName()
 	{
 		return this.operatingSystem.getName();
 	}
@@ -162,7 +160,7 @@ public final class OperatingSystem
 	 * @return Версия операционной системы.
 	 */
 	@Nullable
-	String getVersion()
+	public String getVersion()
 	{
 		return this.version;
 	}

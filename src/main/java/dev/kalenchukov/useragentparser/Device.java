@@ -50,8 +50,6 @@ public final class Device
 	@NotNull
 	private final Map<@NotNull String, @NotNull DeviceType> regExpDevices = this.getRegExpDevices();
 
-	Device() {}
-
 	/**
 	 * Возвращает тип устройства по идентификатору.
 	 *
@@ -125,7 +123,7 @@ public final class Device
 	 *
 	 * @param userAgent Строка user-agent.
 	 */
-	void setUserAgent(@NotNull final String userAgent)
+	public void setUserAgent(@NotNull final String userAgent)
 	{
 		Objects.requireNonNull(userAgent);
 
@@ -142,7 +140,7 @@ public final class Device
 	 * @see DeviceType#getId()
 	 */
 	@Nullable
-	Long getId()
+	public Long getId()
 	{
 		return this.device.getId();
 	}
@@ -151,7 +149,7 @@ public final class Device
 	 * @see DeviceType#getType()
 	 */
 	@Nullable
-	String getType()
+	public String getType()
 	{
 		return this.device.getType();
 	}
@@ -162,7 +160,7 @@ public final class Device
 	 * @return Модель устройства.
 	 */
 	@Nullable
-	String getModel()
+	public String getModel()
 	{
 		return this.model;
 	}

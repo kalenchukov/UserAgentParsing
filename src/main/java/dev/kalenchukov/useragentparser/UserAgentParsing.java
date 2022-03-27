@@ -9,6 +9,7 @@ package dev.kalenchukov.useragentparser;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -29,15 +30,7 @@ public interface UserAgentParsing
 	 * @return Коллекция с информацией о user-agent.
 	 */
 	@NotNull
-	Map<@NotNull String, @NotNull String> getAll();
-
-	/**
-	 * Возвращает идентификатор браузера.
-	 *
-	 * @return Идентификатор браузера.
-	 */
-	@Nullable
-	Long getBrowserId();
+	Map<@NotNull String, @Nullable String> getAll();
 
 	/**
 	 * Возвращает название браузера.
@@ -56,14 +49,6 @@ public interface UserAgentParsing
 	String getBrowserVersion();
 
 	/**
-	 * Возвращает идентификатор устройства.
-	 *
-	 * @return Идентификатор устройства.
-	 */
-	@Nullable
-	Long getDeviceId();
-
-	/**
 	 * Возвращает тип устройства.
 	 *
 	 * @return Тип устройства.
@@ -78,14 +63,6 @@ public interface UserAgentParsing
 	 */
 	@Nullable
 	String getDeviceModel();
-
-	/**
-	 * Возвращает идентификатор операционной системы.
-	 *
-	 * @return Идентификатор операционной системы.
-	 */
-	@Nullable
-	Long getOperatingSystemId();
 
 	/**
 	 * Возвращает название операционной системы.

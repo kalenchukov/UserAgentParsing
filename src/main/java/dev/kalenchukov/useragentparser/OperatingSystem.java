@@ -10,10 +10,7 @@ import dev.kalenchukov.useragentparser.resources.OperatingSystemType;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -51,71 +48,23 @@ public final class OperatingSystem
 	private final Map<@NotNull String, @NotNull OperatingSystemType> regExpOperatingSystems = this.getRegExpOperatingSystems();
 
 	/**
-	 * Возвращает название операционной системы по идентификатору.
+	 * Возвращает все названия операционных систем.
 	 *
-	 * @param id Идентификатор операционной системы.
-	 * @return Название операционной системы.
-	 */
-	@Nullable
-	public static String getById(@NotNull final Long id)
-	{
-		Objects.requireNonNull(id);
-
-		for (OperatingSystemType operatingSystem: OperatingSystemType.values())
-		{
-			if (operatingSystem.getId() != null)
-			{
-				if (operatingSystem != OperatingSystemType.UNKNOWN && operatingSystem.getId().equals(id)) {
-					return operatingSystem.getName();
-				}
-			}
-		}
-
-		return null;
-	}
-
-	/**
-	 * Возвращает идентификатор операционной системы по названию.
-	 *
-	 * @param name Название операционной системы.
-	 * @return Идентификатор операционной системы.
-	 */
-	@Nullable
-	public static Long getByName(@NotNull final String name)
-	{
-		Objects.requireNonNull(name);
-
-		for (OperatingSystemType operatingSystem: OperatingSystemType.values())
-		{
-			if (operatingSystem.getName() != null)
-			{
-				if (operatingSystem != OperatingSystemType.UNKNOWN && operatingSystem.getName().equals(name)) {
-					return operatingSystem.getId();
-				}
-			}
-		}
-
-		return null;
-	}
-
-	/**
-	 * Возвращает все типы операционных систем.
-	 *
-	 * @return Коллекцию с идентификатором и названием операционной системы.
+	 * @return Коллекцию с названиями операционных системы.
 	 */
 	@NotNull
-	public static Map<@NotNull Long, @NotNull String> getAll()
+	public static List<@NotNull String> getAll()
 	{
-		Map<Long, String> typesOperatingSystem = new HashMap<>();
+		List<String> operatingSystems = new ArrayList<>();
 
-		for (OperatingSystemType operatingSystem: OperatingSystemType.values())
+		for (OperatingSystemType operatingSystem : OperatingSystemType.values())
 		{
 			if (operatingSystem != OperatingSystemType.UNKNOWN) {
-				typesOperatingSystem.put(operatingSystem.getId(), operatingSystem.getName());
+				operatingSystems.add(operatingSystem.getName());
 			}
 		}
 
-		return typesOperatingSystem;
+		return operatingSystems;
 	}
 
 	/**
@@ -134,15 +83,6 @@ public final class OperatingSystem
 		if (!userAgent.isEmpty()) {
 			this.execute();
 		}
-	}
-
-	/**
-	 * @see OperatingSystemType#getId()
-	 */
-	@Nullable
-	public Long getId()
-	{
-		return this.operatingSystem.getId();
 	}
 
 	/**

@@ -44,7 +44,7 @@ public final class UserAgentParser implements UserAgentParsing
 	{
 		Objects.requireNonNull(userAgent);
 
-		userAgent = format(userAgent);
+		userAgent = this.format(userAgent);
 
 		this.device.setUserAgent(userAgent);
 		this.browser.setUserAgent(userAgent);
@@ -56,33 +56,20 @@ public final class UserAgentParser implements UserAgentParsing
 	 */
 	@NotNull
 	@Override
-	public Map<@NotNull String, @NotNull String> getAll()
+	public Map<@NotNull String, @Nullable String> getAll()
 	{
-		Map<String, String> allUserAgentInfo = new HashMap<>();
+		Map<String, String> allInfo = new HashMap<>();
 
-		allUserAgentInfo.put("browser_id", String.valueOf(this.browser.getId()));
-		allUserAgentInfo.put("browser_name", this.browser.getName());
-		allUserAgentInfo.put("browser_version", this.browser.getVersion());
+		allInfo.put("browser_name", this.browser.getName());
+		allInfo.put("browser_version", this.browser.getVersion());
 
-		allUserAgentInfo.put("device_id", String.valueOf(this.device.getId()));
-		allUserAgentInfo.put("device_type", this.device.getType());
-		allUserAgentInfo.put("device_model", this.device.getModel());
+		allInfo.put("device_type", this.device.getType());
+		allInfo.put("device_model", this.device.getModel());
 
-		allUserAgentInfo.put("operating_system_id", String.valueOf(this.operatingSystem.getId()));
-		allUserAgentInfo.put("operating_system_name", this.operatingSystem.getName());
-		allUserAgentInfo.put("operating_system_version", this.operatingSystem.getVersion());
+		allInfo.put("operating_system_name", this.operatingSystem.getName());
+		allInfo.put("operating_system_version", this.operatingSystem.getVersion());
 
-		return allUserAgentInfo;
-	}
-
-	/**
-	 * @see UserAgentParsing#getBrowserId()
-	 */
-	@Nullable
-	@Override
-	public Long getBrowserId()
-	{
-		return this.browser.getId();
+		return allInfo;
 	}
 
 	/**
@@ -106,16 +93,6 @@ public final class UserAgentParser implements UserAgentParsing
 	}
 
 	/**
-	 * @see UserAgentParsing#getDeviceId()
-	 */
-	@Nullable
-	@Override
-	public Long getDeviceId()
-	{
-		return this.device.getId();
-	}
-
-	/**
 	 * @see UserAgentParsing#getDeviceType()
 	 */
 	@Nullable
@@ -133,16 +110,6 @@ public final class UserAgentParser implements UserAgentParsing
 	public String getDeviceModel()
 	{
 		return this.device.getModel();
-	}
-
-	/**
-	 * @see UserAgentParsing#getOperatingSystemId()
-	 */
-	@Nullable
-	@Override
-	public Long getOperatingSystemId()
-	{
-		return this.operatingSystem.getId();
 	}
 
 	/**

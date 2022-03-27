@@ -10,10 +10,7 @@ import dev.kalenchukov.useragentparser.resources.DeviceType;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -51,71 +48,23 @@ public final class Device
 	private final Map<@NotNull String, @NotNull DeviceType> regExpDevices = this.getRegExpDevices();
 
 	/**
-	 * Возвращает тип устройства по идентификатору.
-	 *
-	 * @param id Идентификатор устройства.
-	 * @return Тип устройства.
-	 */
-	@Nullable
-	public static String getById(@NotNull final Long id)
-	{
-		Objects.requireNonNull(id);
-
-		for (DeviceType device : DeviceType.values())
-		{
-			if (device.getId() != null)
-			{
-				if (device != DeviceType.UNKNOWN && device.getId().equals(id)) {
-					return device.getType();
-				}
-			}
-		}
-
-		return null;
-	}
-
-	/**
-	 * Возвращает идентификатор устройства по типу.
-	 *
-	 * @param type Тип устройства.
-	 * @return Идентификатор устройства.
-	 */
-	@Nullable
-	public static Long getByType(@NotNull final String type)
-	{
-		Objects.requireNonNull(type);
-
-		for (DeviceType device: DeviceType.values())
-		{
-			if (device.getType() != null)
-			{
-				if (device != DeviceType.UNKNOWN && device.getType().equals(type)) {
-					return device.getId();
-				}
-			}
-		}
-
-		return null;
-	}
-
-	/**
 	 * Возвращает все типы устройств.
 	 *
-	 * @return Коллекцию с идентификатором и типом устройства.
+	 * @return Коллекцию с типами устройств.
 	 */
 	@NotNull
-	public static Map<@NotNull Long, @NotNull String> getAll()
+	public static List<@NotNull String> getAll()
 	{
-		Map<Long, String> typesDevices = new HashMap<>();
+		List<String> devices = new ArrayList<>();
 
 		for (DeviceType device : DeviceType.values())
 		{
 			if (device != DeviceType.UNKNOWN) {
-				typesDevices.put(device.getId(), device.getType());
+				devices.add(device.getType());
 			}
 		}
 
-		return typesDevices;
+		return devices;
 	}
 
 	/**
@@ -134,15 +83,6 @@ public final class Device
 		if (!userAgent.isEmpty()) {
 			this.execute();
 		}
-	}
-
-	/**
-	 * @see DeviceType#getId()
-	 */
-	@Nullable
-	public Long getId()
-	{
-		return this.device.getId();
 	}
 
 	/**
@@ -194,9 +134,9 @@ public final class Device
 	}
 
 	/**
-	 * Возвращает список шаблонов регулярных выражений для определения устройства.
+	 * Возвращает список шаблонов регулярных выражений для определения типа устройства.
 	 *
-	 * @return Коллекцию строк регулярных выражений для устройств.
+	 * @return Коллекцию регулярных выражений для типов устройств.
 	 */
 	@NotNull
 	private Map<@NotNull String, @NotNull DeviceType> getRegExpDevices()

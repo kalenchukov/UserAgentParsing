@@ -10,10 +10,7 @@ import dev.kalenchukov.useragentparser.resources.BrowserType;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -51,71 +48,23 @@ public final class Browser
 	private final Map<@NotNull String, @NotNull BrowserType> regExpBrowsers = this.getRegExpBrowsers();
 
 	/**
-	 * Возвращает название браузера по идентификатору.
+	 * Возвращает названия всех браузеров.
 	 *
-	 * @param id Идентификатор браузера.
-	 * @return Название браузера.
-	 */
-	@Nullable
-	public static String getById(@NotNull final Long id)
-	{
-		Objects.requireNonNull(id);
-
-		for (BrowserType browser: BrowserType.values())
-		{
-			if (browser.getId() != null)
-			{
-				if (browser != BrowserType.UNKNOWN && browser.getId().equals(id)) {
-					return browser.getName();
-				}
-			}
-		}
-
-		return null;
-	}
-
-	/**
-	 * Возвращает идентификатор браузера по названию.
-	 *
-	 * @param name Название браузера.
-	 * @return Идентификатор браузера.
-	 */
-	@Nullable
-	public static Long getByName(@NotNull final String name)
-	{
-		Objects.requireNonNull(name);
-
-		for (BrowserType browser: BrowserType.values())
-		{
-			if (browser.getName() != null)
-			{
-				if (browser != BrowserType.UNKNOWN && browser.getName().equals(name)) {
-					return browser.getId();
-				}
-			}
-		}
-
-		return null;
-	}
-
-	/**
-	 * Возвращает все типы браузеров.
-	 *
-	 * @return Коллекцию с идентификатором и названием браузера.
+	 * @return Коллекцию с названиями браузеров.
 	 */
 	@NotNull
-	public static Map<@NotNull Long, @NotNull String> getAll()
+	public static List<@NotNull String> getAll()
 	{
-		Map<Long, String> typesBrowsers = new HashMap<>();
+		List<String> browsers = new ArrayList<>();
 
 		for (BrowserType browser : BrowserType.values())
 		{
 			if (browser != BrowserType.UNKNOWN) {
-				typesBrowsers.put(browser.getId(), browser.getName());
+				browsers.add(browser.getName());
 			}
 		}
 
-		return typesBrowsers;
+		return browsers;
 	}
 
 	/**
@@ -134,15 +83,6 @@ public final class Browser
 		if (!userAgent.isEmpty()) {
 			execute();
 		}
-	}
-
-	/**
-	 * @see BrowserType#getId()
-	 */
-	@Nullable
-	public Long getId()
-	{
-		return this.browser.getId();
 	}
 
 	/**

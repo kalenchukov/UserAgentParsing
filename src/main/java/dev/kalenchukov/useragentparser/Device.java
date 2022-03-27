@@ -131,7 +131,7 @@ public final class Device
 		this.device = DeviceType.UNKNOWN;
 		this.model = null;
 
-		if (!userAgent.equals("")) {
+		if (!userAgent.isEmpty()) {
 			this.execute();
 		}
 	}

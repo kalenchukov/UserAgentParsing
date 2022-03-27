@@ -131,7 +131,7 @@ public final class OperatingSystem
 		this.operatingSystem = OperatingSystemType.UNKNOWN;
 		this.version = null;
 
-		if (!userAgent.equals("")) {
+		if (!userAgent.isEmpty()) {
 			this.execute();
 		}
 	}

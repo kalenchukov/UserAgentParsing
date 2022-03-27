@@ -131,7 +131,7 @@ public final class Browser
 		this.browser = BrowserType.UNKNOWN;
 		this.version = null;
 
-		if (!userAgent.equals("")) {
+		if (!userAgent.isEmpty()) {
 			execute();
 		}
 	}

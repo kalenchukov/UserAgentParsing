@@ -12,7 +12,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.Map;
 
 /**
- * Интерфейс для парсеров строки user-agent.
+ * Интерфейс для парсинга строки user-agent.
  */
 public interface UserAgentParsing
 {

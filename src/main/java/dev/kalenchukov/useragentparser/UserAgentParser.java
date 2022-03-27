@@ -14,7 +14,7 @@ import java.util.Map;
 import java.util.Objects;
 
 /**
- * Реализация интерфейса парсинга строки user-agent.
+ * Класс парсинга строки user-agent.
  */
 public final class UserAgentParser implements UserAgentParsing
 {

@@ -35,7 +35,7 @@ public interface UserAgentParsing
 	/**
 	 * Возвращает название браузера.
 	 *
-	 * @return Название браузера.
+	 * @return Название браузера, или {@code null} если браузер не определён.
 	 */
 	@Nullable
 	String getBrowserName();
@@ -43,7 +43,7 @@ public interface UserAgentParsing
 	/**
 	 * Возвращает версию браузера.
 	 *
-	 * @return Версия браузера.
+	 * @return Версия браузера, или {@code null} если версия браузера не определена.
 	 */
 	@Nullable
 	String getBrowserVersion();
@@ -51,7 +51,7 @@ public interface UserAgentParsing
 	/**
 	 * Возвращает тип устройства.
 	 *
-	 * @return Тип устройства.
+	 * @return Тип устройства, или {@code null} если устройство не определено.
 	 */
 	@Nullable
 	String getDeviceType();
@@ -59,7 +59,7 @@ public interface UserAgentParsing
 	/**
 	 * Возвращает модель устройства.
 	 *
-	 * @return Модель устройства.
+	 * @return Модель устройства, или {@code null} если устройство не определено.
 	 */
 	@Nullable
 	String getDeviceModel();
@@ -67,7 +67,7 @@ public interface UserAgentParsing
 	/**
 	 * Возвращает название операционной системы.
 	 *
-	 * @return Название операционной системы.
+	 * @return Название операционной системы, или {@code null} если операционная система не определена.
 	 */
 	@Nullable
 	String getOperatingSystemName();
@@ -75,7 +75,7 @@ public interface UserAgentParsing
 	/**
 	 * Возвращает версию операционной системы.
 	 *
-	 * @return Версия операционной системы.
+	 * @return Версия операционной системы, или {@code null} если версия операционной системы не определена.
 	 */
 	@Nullable
 	String getOperatingSystemVersion();

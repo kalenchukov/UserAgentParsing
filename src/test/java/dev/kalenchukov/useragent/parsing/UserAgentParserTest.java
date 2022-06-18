@@ -1,4 +1,4 @@
-package dev.kalenchukov.useragentparser;
+package dev.kalenchukov.useragent.parsing;
 
 import org.junit.Test;
 

@@ -11,12 +11,12 @@
     <modelVersion>4.0.0</modelVersion>
 
 	<groupId>dev.kalenchukov</groupId>
-	<artifactId>user-agent-parser</artifactId>
+	<artifactId>useragent-parsing</artifactId>
 	<version>2.0.0</version>
 
-	<name>UserAgentParser</name>
+	<name>UserAgentParsing</name>
 	<description>Получение информации о клиенте по строке user-agent</description>
-	<url>https://github.com/kalenchukov/UserAgentParser</url>
+	<url>https://github.com/kalenchukov/UserAgentParsing</url>
 
 	<licenses>
 		<license>
@@ -35,8 +35,8 @@
 	</developers>
 
 	<properties>
-		<maven.compiler.source>16</maven.compiler.source>
-		<maven.compiler.target>16</maven.compiler.target>
+		<maven.compiler.source>18</maven.compiler.source>
+		<maven.compiler.target>18</maven.compiler.target>
 		<encoding>UTF-8</encoding>
 	</properties>
 

@@ -1,4 +1,4 @@
-# UserAgentParser
+# UserAgentParsing
 Получение информации о клиенте по строке user-agent.
 
 ### Получение всех данных

@@ -1,10 +1,10 @@
-package dev.kalenchukov.useragentparser;
+package dev.kalenchukov.useragent.parsing;
 
-import dev.kalenchukov.useragentparser.resources.DeviceType;
+import dev.kalenchukov.useragent.parsing.resources.DeviceType;
+import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.List;
-import java.util.Map;
 
 import static org.junit.Assert.*;
 
@@ -20,7 +20,7 @@ public class DeviceTest
 		List<String> devices = Device.getAll();
 
 		// Отнимается 1 так как в результат Device.getAll() не попадает DeviceType.UNKNOWN
-		assertEquals(DeviceType.values().length - 1, devices.size());
+		Assert.assertEquals(DeviceType.values().length - 1, devices.size());
 	}
 
 	@Test

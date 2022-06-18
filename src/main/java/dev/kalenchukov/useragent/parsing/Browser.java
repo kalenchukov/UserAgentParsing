@@ -4,9 +4,9 @@
  * E-mail: mailto:aleksey.kalenchukov@yandex.ru
  */
 
-package dev.kalenchukov.useragentparser;
+package dev.kalenchukov.useragent.parsing;
 
-import dev.kalenchukov.useragentparser.resources.BrowserType;
+import dev.kalenchukov.useragent.parsing.resources.BrowserType;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 

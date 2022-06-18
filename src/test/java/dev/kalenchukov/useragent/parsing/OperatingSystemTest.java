@@ -1,10 +1,10 @@
-package dev.kalenchukov.useragentparser;
+package dev.kalenchukov.useragent.parsing;
 
-import dev.kalenchukov.useragentparser.resources.OperatingSystemType;
+import dev.kalenchukov.useragent.parsing.resources.OperatingSystemType;
+import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.List;
-import java.util.Map;
 
 import static org.junit.Assert.*;
 
@@ -20,7 +20,7 @@ public class OperatingSystemTest
 		List<String> operatingSystems = OperatingSystem.getAll();
 
 		// Отнимается 1 так как в результат OperatingSystem.getAll() не попадает OperatingSystemType.UNKNOWN
-		assertEquals(OperatingSystemType.values().length - 1, operatingSystems.size());
+		Assert.assertEquals(OperatingSystemType.values().length - 1, operatingSystems.size());
 	}
 
 	@Test

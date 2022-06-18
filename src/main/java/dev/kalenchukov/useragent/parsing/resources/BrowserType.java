@@ -4,7 +4,7 @@
  * E-mail: mailto:aleksey.kalenchukov@yandex.ru
  */
 
-package dev.kalenchukov.useragentparser.resources;
+package dev.kalenchukov.useragent.parsing.resources;
 
 import org.jetbrains.annotations.Nullable;
 

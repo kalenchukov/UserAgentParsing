@@ -1,12 +1,10 @@
-package dev.kalenchukov.useragentparser;
+package dev.kalenchukov.useragent.parsing;
 
-import dev.kalenchukov.useragentparser.resources.BrowserType;
-import org.jetbrains.annotations.NotNull;
+import dev.kalenchukov.useragent.parsing.resources.BrowserType;
+import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.List;
-import java.util.Map;
-import java.util.Optional;
 
 import static org.junit.Assert.*;
 
@@ -22,7 +20,7 @@ public class BrowserTest
 		List<String> browsers = Browser.getAll();
 
 		// Отнимается 1 так как в результат Browser.getAll() не попадает BrowserType.UNKNOWN
-		assertEquals(BrowserType.values().length - 1, browsers.size());
+		Assert.assertEquals(BrowserType.values().length - 1, browsers.size());
 	}
 
 	@Test

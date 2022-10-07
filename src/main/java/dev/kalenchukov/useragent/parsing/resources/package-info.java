@@ -22,4 +22,7 @@
  * SOFTWARE.
  */
 
+/**
+ * Предоставляет перечисления, необходимые для определения типов.
+ */
 package dev.kalenchukov.useragent.parsing.resources;

@@ -41,13 +41,13 @@ public final class OperatingSystem
 	 * Строка user-agent.
 	 */
 	@Nullable
-	private String userAgent = null;
+	private String userAgent;
 
 	/**
 	 * Версия операционной системы.
 	 */
 	@Nullable
-	private String version = null;
+	private String version;
 
 	/**
 	 * Тип операционной системы.
@@ -55,7 +55,17 @@ public final class OperatingSystem
 	 * @see OperatingSystemType
 	 */
 	@NotNull
-	private OperatingSystemType operatingSystem = OperatingSystemType.UNKNOWN;
+	private OperatingSystemType operatingSystem;
+
+	/**
+	 * Конструктор для {@code Device}.
+	 */
+	public OperatingSystem()
+	{
+		this.userAgent = null;
+		this.version = null;
+		this.operatingSystem = OperatingSystemType.UNKNOWN;
+	}
 
 	/**
 	 * Список регулярных выражений для определения типа операционной системы.

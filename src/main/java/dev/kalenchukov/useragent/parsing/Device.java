@@ -114,7 +114,9 @@ public final class Device
 	}
 
 	/**
-	 * @see DeviceType#getType()
+	 * Возвращает тип устройства.
+	 *
+	 * @return Тип устройства.
 	 */
 	@Nullable
 	public String getType()

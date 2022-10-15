@@ -114,7 +114,9 @@ public final class Browser
 	}
 
 	/**
-	 * @see BrowserType#getName()
+	 * Возвращает название браузера.
+	 *
+	 * @return Название браузера.
 	 */
 	@Nullable
 	public String getName()

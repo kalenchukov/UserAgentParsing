@@ -114,7 +114,9 @@ public final class OperatingSystem
 	}
 
 	/**
-	 * @see OperatingSystemType#getName()
+	 * Возвращает название операционной системы.
+	 *
+	 * @return Название операционной системы.
 	 */
 	@Nullable
 	public String getName()

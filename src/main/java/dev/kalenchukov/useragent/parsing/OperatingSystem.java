@@ -58,6 +58,14 @@ public final class OperatingSystem
 	private OperatingSystemType operatingSystem;
 
 	/**
+	 * Список регулярных выражений для определения типа операционной системы.
+	 *
+	 * @see OperatingSystem#getRegExpOperatingSystems()
+	 */
+	@NotNull
+	private final Map<@NotNull String, @NotNull OperatingSystemType> regExpOperatingSystems;
+
+	/**
 	 * Конструктор для {@code Device}.
 	 */
 	public OperatingSystem()
@@ -65,15 +73,8 @@ public final class OperatingSystem
 		this.userAgent = null;
 		this.version = null;
 		this.operatingSystem = OperatingSystemType.UNKNOWN;
+		this.regExpOperatingSystems = this.getRegExpOperatingSystems();
 	}
-
-	/**
-	 * Список регулярных выражений для определения типа операционной системы.
-	 *
-	 * @see #getRegExpOperatingSystems()
-	 */
-	@NotNull
-	private final Map<@NotNull String, @NotNull OperatingSystemType> regExpOperatingSystems = this.getRegExpOperatingSystems();
 
 	/**
 	 * Возвращает все названия операционных систем.

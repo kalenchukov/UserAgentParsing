@@ -58,6 +58,14 @@ public final class Device
 	private DeviceType device;
 
 	/**
+	 * Список регулярных выражений для определения типа устройства.
+	 *
+	 * @see #getRegExpDevices()
+	 */
+	@NotNull
+	private final Map<@NotNull String, @NotNull DeviceType> regExpDevices;
+
+	/**
 	 * Конструктор для {@code Device}.
 	 */
 	public Device()
@@ -65,16 +73,8 @@ public final class Device
 		this.userAgent = null;
 		this.model = null;
 		this.device = DeviceType.UNKNOWN;
+		this.regExpDevices = this.getRegExpDevices();
 	}
-
-	/**
-	 * Список регулярных выражений для определения типа устройства.
-	 *
-	 * @see #getRegExpDevices()
-	 */
-	@NotNull
-	private final Map<@NotNull String, @NotNull DeviceType> regExpDevices = this.getRegExpDevices();
-
 	/**
 	 * Возвращает все типы устройств.
 	 *

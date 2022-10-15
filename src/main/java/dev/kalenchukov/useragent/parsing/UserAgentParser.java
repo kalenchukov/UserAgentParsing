@@ -40,19 +40,29 @@ public final class UserAgentParser implements UserAgentParsing
 	 * Объект браузера по умолчанию.
 	 */
 	@NotNull
-	private final Browser browser = new Browser();
+	private final Browser browser;
 
 	/**
 	 * Объект устройства по умолчанию.
 	 */
 	@NotNull
-	private final Device device = new Device();
+	private final Device device;
 
 	/**
 	 * Объект операционной системы по умолчанию.
 	 */
 	@NotNull
-	private final OperatingSystem operatingSystem = new OperatingSystem();
+	private final OperatingSystem operatingSystem;
+
+	/**
+	 * Конструктор для {@code UserAgentParser}.
+	 */
+	public UserAgentParser()
+	{
+		this.browser = new Browser();
+		this.device = new Device();
+		this.operatingSystem = new OperatingSystem();
+	}
 
 	/**
 	 * @see UserAgentParsing#setUserAgent(String)

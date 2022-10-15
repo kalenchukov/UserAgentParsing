@@ -41,13 +41,13 @@ public final class Device
 	 * Строка user-agent.
 	 */
 	@Nullable
-	private String userAgent = null;
+	private String userAgent;
 
 	/**
 	 * Модель устройства.
 	 */
 	@Nullable
-	private String model = null;
+	private String model;
 
 	/**
 	 * Тип устройства.
@@ -55,7 +55,17 @@ public final class Device
 	 * @see DeviceType
 	 */
 	@NotNull
-	private DeviceType device = DeviceType.UNKNOWN;
+	private DeviceType device;
+
+	/**
+	 * Конструктор для {@code Device}.
+	 */
+	public Device()
+	{
+		this.userAgent = null;
+		this.model = null;
+		this.device = DeviceType.UNKNOWN;
+	}
 
 	/**
 	 * Список регулярных выражений для определения типа устройства.

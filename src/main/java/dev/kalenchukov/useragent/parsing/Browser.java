@@ -41,13 +41,13 @@ public final class Browser
 	 * Строка user-agent.
 	 */
 	@Nullable
-	private String userAgent = null;
+	private String userAgent;
 
 	/**
 	 * Версия браузера.
 	 */
 	@Nullable
-	private String version = null;
+	private String version;
 
 	/**
 	 * Тип браузера.
@@ -55,7 +55,17 @@ public final class Browser
 	 * @see BrowserType
 	 */
 	@NotNull
-	private BrowserType browser = BrowserType.UNKNOWN;
+	private BrowserType browser;
+
+	/**
+	 * Конструктор для {@code Browser}.
+	 */
+	public Browser()
+	{
+		this.userAgent = null;
+		this.version = null;
+		this.browser = BrowserType.UNKNOWN;
+	}
 
 	/**
 	 * Список регулярных выражений для определения типа браузера.

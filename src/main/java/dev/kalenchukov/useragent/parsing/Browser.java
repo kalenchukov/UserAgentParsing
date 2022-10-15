@@ -58,6 +58,14 @@ public final class Browser
 	private BrowserType browser;
 
 	/**
+	 * Список регулярных выражений для определения типа браузера.
+	 *
+	 * @see #getRegExpBrowsers()
+	 */
+	@NotNull
+	private final Map<@NotNull String, @NotNull BrowserType> regExpBrowsers;
+
+	/**
 	 * Конструктор для {@code Browser}.
 	 */
 	public Browser()
@@ -65,15 +73,8 @@ public final class Browser
 		this.userAgent = null;
 		this.version = null;
 		this.browser = BrowserType.UNKNOWN;
+		this.regExpBrowsers = this.getRegExpBrowsers();
 	}
-
-	/**
-	 * Список регулярных выражений для определения типа браузера.
-	 *
-	 * @see #getRegExpBrowsers()
-	 */
-	@NotNull
-	private final Map<@NotNull String, @NotNull BrowserType> regExpBrowsers = this.getRegExpBrowsers();
 
 	/**
 	 * Возвращает названия всех браузеров.

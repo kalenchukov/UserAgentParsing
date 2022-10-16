@@ -31,162 +31,282 @@ import org.jetbrains.annotations.Nullable;
  */
 public enum OperatingSystemType
 {
+	/**
+	 * Не определён.
+	 */
 	UNKNOWN(
 		null
 	),
 
+	/**
+	 * Windows.
+	 */
 	WINDOWS(
 		"Windows"
 	),
 
+	/**
+	 * Kubuntu.
+	 */
 	KUBUNTU(
 		"Kubuntu"
 	),
 
+	/**
+	 * Mac OS X.
+	 */
 	MAC_OS_X(
 		"Mac OS X"
 	),
 
+	/**
+	 * Mac OS 9.
+	 */
 	MAC_OS_9(
 		"Mac OS 9"
 	),
 
+	/**
+	 * Android.
+	 */
 	ANDROID(
 		"Android"
 	),
 
+	/**
+	 * iOS.
+	 */
 	IOS(
 		"iOS"
 	),
 
+	/**
+	 * Linux.
+	 */
 	LINUX(
 		"Linux"
 	),
 
+	/**
+	 * Ubuntu.
+	 */
 	UBUNTU(
 		"Ubuntu"
 	),
 
+	/**
+	 * Mandriva Linux.
+	 */
 	MANDRIVA_LINUX(
 		"Mandriva Linux"
 	),
 
+	/**
+	 * ASPLinux.
+	 */
 	ASPLINUX(
 		"ASPLinux"
 	),
 
+	/**
+	 * OpenSUSE
+	 */
 	OPENSUSE(
 		"OpenSUSE"
 	),
 
+	/**
+	 * Bada.
+	 */
 	BADA(
 		"Bada"
 	),
 
+	/**
+	 * Chrome OS.
+	 */
 	CHROME_OS(
 		"Chrome OS"
 	),
 
+	/**
+	 * Darwin.
+	 */
 	DARWIN(
 		"Darwin"
 	),
 
+	/**
+	 * NetBSD.
+	 */
 	NETBSD(
 		"NetBSD"
 	),
 
+	/**
+	 * BlackBerry OS.
+	 */
 	BLACKBERRY_OS(
 		"BlackBerry OS"
 	),
 
+	/**
+	 * AmigaOS.
+	 */
 	AMIGAOS(
 		"AmigaOS"
 	),
 
+	/**
+	 * Haiku.
+	 */
 	HAIKU(
 		"Haiku"
 	),
 
+	/**
+	 * Windows Mobile.
+	 */
 	WINDOWS_MOBILE(
 		"Windows Mobile"
 	),
 
+	/**
+	 * Windows Phone.
+	 */
 	WINDOWS_PHONE(
 		"Windows Phone"
 	),
 
+	/**
+	 * Symbian OS.
+	 */
 	SYMBIAN_OS(
 		"Symbian OS"
 	),
 
+	/**
+	 * Solaris.
+	 */
 	SOLARIS(
 		"Solaris"
 	),
 
+	/**
+	 * Windows CE.
+	 */
 	WINDOWS_CE(
 		"Windows CE"
 	),
 
+	/**
+	 * BeOS.
+	 */
 	BEOS(
 		"BeOS"
 	),
 
+	/**
+	 * Fedora.
+	 */
 	FEDORA(
 		"Fedora"
 	),
 
+	/**
+	 * OpenBSD.
+	 */
 	OPENBSD(
 		"OpenBSD"
 	),
 
+	/**
+	 * Linux Mint.
+	 */
 	LINUX_MINT(
 		"Linux Mint"
 	),
 
+	/**
+	 * FreeBSD.
+	 */
 	FREEBSD(
 		"FreeBSD"
 	),
 
+	/**
+	 * Linux Gentoo.
+	 */
 	LINUX_GENTOO(
 		"Linux Gentoo"
 	),
 
+	/**
+	 * Slackware Linux.
+	 */
 	SLACKWARE_LINUX(
 		"Slackware Linux"
 	),
 
+	/**
+	 * MIDP.
+	 */
 	MIDP(
 		"MIDP"
 	),
 
+	/**
+	 * CentOS.
+	 */
 	CENTOS(
 		"CentOS"
 	),
 
+	/**
+	 * Red Hat.
+	 */
 	RED_HAT(
 		"Red Hat"
 	),
 
+	/**
+	 * SunOS.
+	 */
 	SUNOS(
 		"SunOS"
 	),
 
+	/**
+	 * KaiOS.
+	 */
 	KAIOS(
 		"KaiOS"
 	),
 
+	/**
+	 * WebOS.
+	 */
 	WEBOS(
 		"WebOS"
 	),
 
+	/**
+	 * Apple TV OS.
+	 */
 	TV_OS(
 		"Apple TV OS"
 	),
 
+	/**
+	 * MAUI.
+	 */
 	MAUI(
 		"MAUI"
 	),
 
+	/**
+	 * Tizen.
+	 */
 	TIZEN(
 		"Tizen"
 	);

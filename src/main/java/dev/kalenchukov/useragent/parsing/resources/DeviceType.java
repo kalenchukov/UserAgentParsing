@@ -31,30 +31,51 @@ import org.jetbrains.annotations.Nullable;
  */
 public enum DeviceType
 {
+	/**
+	 * Не определён.
+	 */
 	UNKNOWN(
 		null
 	),
 
+	/**
+	 * Персональный компьютер.
+	 */
 	PC(
 		"PC"
 	),
 
+	/**
+	 * Мобильное устройство.
+	 */
 	MOBILE(
 		"Mobile"
 	),
 
+	/**
+	 * Планшетное устройство.
+	 */
 	TABLET(
 		"Tablet"
 	),
 
+	/**
+	 * Игровая консоль.
+	 */
 	GAME_CONSOLE(
 		"Game console"
 	),
 
+	/**
+	 * Телевизор.
+	 */
 	TV(
 		"TV"
 	),
 
+	/**
+	 * Виртуальный помощник.
+	 */
 	VIRTUAL_ASSISTANT(
 		"Virtual assistant"
 	);

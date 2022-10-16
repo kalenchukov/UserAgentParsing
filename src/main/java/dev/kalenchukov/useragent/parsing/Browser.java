@@ -59,8 +59,6 @@ public final class Browser
 
 	/**
 	 * Список регулярных выражений для определения типа браузера.
-	 *
-	 * @see #getRegExpBrowsers()
 	 */
 	@NotNull
 	private final Map<@NotNull String, @NotNull BrowserType> regExpBrowsers;

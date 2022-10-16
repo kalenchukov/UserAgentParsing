@@ -59,8 +59,6 @@ public final class OperatingSystem
 
 	/**
 	 * Список регулярных выражений для определения типа операционной системы.
-	 *
-	 * @see OperatingSystem#getRegExpOperatingSystems()
 	 */
 	@NotNull
 	private final Map<@NotNull String, @NotNull OperatingSystemType> regExpOperatingSystems;

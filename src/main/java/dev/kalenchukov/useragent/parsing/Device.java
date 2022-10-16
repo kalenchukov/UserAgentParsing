@@ -59,8 +59,6 @@ public final class Device
 
 	/**
 	 * Список регулярных выражений для определения типа устройства.
-	 *
-	 * @see Device#getRegExpDevices()
 	 */
 	@NotNull
 	private final Map<@NotNull String, @NotNull DeviceType> regExpDevices;

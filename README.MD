@@ -127,23 +127,3 @@ Device.getAll();
 ```java
 OperatingSystem.getAll();
 ```
-
-## Установка
-
-Для установки этого проекта, введите в терминале:
-
-```bash
-git clone https://github.com/kalenchukov/UserAgentParsing.git
-```
-
-## Версии
-
-Доступные [версии](https://github.com/kalenchukov/UserAgentParsing/releases).
-
-## Авторы
-
-[Алексей Каленчуков](https://github.com/kalenchukov)
-
-## Лицензия
-
-[MIT](https://opensource.org/licenses/MIT)

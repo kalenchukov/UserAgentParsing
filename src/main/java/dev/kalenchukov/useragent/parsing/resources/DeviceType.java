@@ -89,7 +89,7 @@ public enum DeviceType
 	/**
 	 * Устанавливает тип устройства.
 	 *
-	 * @param type Тип устройства.
+	 * @param type тип устройства.
 	 */
 	DeviceType(@Nullable final String type)
 	{
@@ -99,7 +99,7 @@ public enum DeviceType
 	/**
 	 * Возвращает тип устройства.
 	 *
-	 * @return Тип устройства.
+	 * @return тип устройства.
 	 */
 	@Nullable
 	public String getType()

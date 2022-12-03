@@ -320,7 +320,7 @@ public enum OperatingSystemType
 	/**
 	 * Устанавливает название операционной системы.
 	 *
-	 * @param name Название операционной системы.
+	 * @param name название операционной системы.
 	 */
 	OperatingSystemType(@Nullable final String name)
 	{
@@ -330,7 +330,7 @@ public enum OperatingSystemType
 	/**
 	 * Возвращает название операционной системы.
 	 *
-	 * @return Название операционной системы.
+	 * @return название операционной системы.
 	 */
 	@Nullable
 	public String getName()

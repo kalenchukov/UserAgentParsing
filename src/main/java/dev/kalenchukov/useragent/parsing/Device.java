@@ -76,7 +76,7 @@ public final class Device
 	/**
 	 * Возвращает все типы устройств.
 	 *
-	 * @return Коллекцию с типами устройств.
+	 * @return коллекцию с типами устройств.
 	 */
 	@NotNull
 	public static List<@NotNull String> getAll()
@@ -96,7 +96,7 @@ public final class Device
 	/**
 	 * Устанавливает строку user-agent.
 	 *
-	 * @param userAgent Строка user-agent.
+	 * @param userAgent строка user-agent.
 	 */
 	public void setUserAgent(@NotNull final String userAgent)
 	{
@@ -114,7 +114,7 @@ public final class Device
 	/**
 	 * Возвращает тип устройства.
 	 *
-	 * @return Тип устройства.
+	 * @return тип устройства.
 	 */
 	@Nullable
 	public String getType()
@@ -125,7 +125,7 @@ public final class Device
 	/**
 	 * Возвращает модель устройства.
 	 *
-	 * @return Модель устройства.
+	 * @return модель устройства.
 	 */
 	@Nullable
 	public String getModel()
@@ -164,7 +164,7 @@ public final class Device
 	/**
 	 * Возвращает список шаблонов регулярных выражений для определения типа устройства.
 	 *
-	 * @return Коллекцию регулярных выражений для типов устройств.
+	 * @return коллекцию регулярных выражений для типов устройств.
 	 */
 	@NotNull
 	private Map<@NotNull String, @NotNull DeviceType> getRegExpDevices()

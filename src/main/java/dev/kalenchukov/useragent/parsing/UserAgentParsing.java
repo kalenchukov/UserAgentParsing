@@ -38,14 +38,14 @@ public interface UserAgentParsing
 	/**
 	 * Устанавливает строку user-agent о которой необходимо возвращать информацию.
 	 *
-	 * @param userAgent Строка user-agent.
+	 * @param userAgent строка user-agent.
 	 */
 	void setUserAgent(@NotNull String userAgent);
 
 	/**
 	 * Возвращает всю информацию о строке user-agent.
 	 *
-	 * @return Коллекция с информацией о user-agent.
+	 * @return коллекция с информацией о user-agent.
 	 */
 	@NotNull
 	Map<@NotNull String, @Nullable String> getAll();
@@ -53,7 +53,7 @@ public interface UserAgentParsing
 	/**
 	 * Возвращает название браузера.
 	 *
-	 * @return Название браузера, или {@code null} если браузер не определён.
+	 * @return название браузера, или {@code null} если браузер не определён.
 	 */
 	@Nullable
 	String getBrowserName();
@@ -61,7 +61,7 @@ public interface UserAgentParsing
 	/**
 	 * Возвращает версию браузера.
 	 *
-	 * @return Версия браузера, или {@code null} если версия браузера не определена.
+	 * @return версия браузера, или {@code null} если версия браузера не определена.
 	 */
 	@Nullable
 	String getBrowserVersion();
@@ -69,7 +69,7 @@ public interface UserAgentParsing
 	/**
 	 * Возвращает тип устройства.
 	 *
-	 * @return Тип устройства, или {@code null} если устройство не определено.
+	 * @return тип устройства, или {@code null} если устройство не определено.
 	 */
 	@Nullable
 	String getDeviceType();
@@ -77,7 +77,7 @@ public interface UserAgentParsing
 	/**
 	 * Возвращает модель устройства.
 	 *
-	 * @return Модель устройства, или {@code null} если устройство не определено.
+	 * @return модель устройства, или {@code null} если устройство не определено.
 	 */
 	@Nullable
 	String getDeviceModel();
@@ -85,7 +85,7 @@ public interface UserAgentParsing
 	/**
 	 * Возвращает название операционной системы.
 	 *
-	 * @return Название операционной системы, или {@code null} если операционная система не определена.
+	 * @return название операционной системы, или {@code null} если операционная система не определена.
 	 */
 	@Nullable
 	String getOperatingSystemName();
@@ -93,7 +93,7 @@ public interface UserAgentParsing
 	/**
 	 * Возвращает версию операционной системы.
 	 *
-	 * @return Версия операционной системы, или {@code null} если версия операционной системы не определена.
+	 * @return версия операционной системы, или {@code null} если версия операционной системы не определена.
 	 */
 	@Nullable
 	String getOperatingSystemVersion();

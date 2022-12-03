@@ -167,8 +167,8 @@ public final class UserAgentParser implements UserAgentParsing
 	 *     <li>Удаляет множественные пробелы</li>
 	 * </ul>
 	 *
-	 * @param userAgent Строка user-agent.
-	 * @return Отформатированную строку user-agent.
+	 * @param userAgent строка user-agent.
+	 * @return отформатированную строку user-agent.
 	 */
 	@NotNull
 	private String format(@NotNull final String userAgent)

@@ -77,7 +77,7 @@ public final class Browser
 	/**
 	 * Возвращает названия всех браузеров.
 	 *
-	 * @return Коллекцию с названиями браузеров.
+	 * @return коллекцию с названиями браузеров.
 	 */
 	@NotNull
 	public static List<@NotNull String> getAll()
@@ -97,7 +97,7 @@ public final class Browser
 	/**
 	 * Устанавливает строку user-agent.
 	 *
-	 * @param userAgent Строка user-agent.
+	 * @param userAgent строка user-agent.
 	 */
 	public void setUserAgent(@NotNull final String userAgent)
 	{
@@ -115,7 +115,7 @@ public final class Browser
 	/**
 	 * Возвращает название браузера.
 	 *
-	 * @return Название браузера.
+	 * @return название браузера.
 	 */
 	@Nullable
 	public String getName()
@@ -126,7 +126,7 @@ public final class Browser
 	/**
 	 * Возвращает версию браузера.
 	 *
-	 * @return Версия браузера.
+	 * @return версия браузера.
 	 */
 	@Nullable
 	public String getVersion()
@@ -165,7 +165,7 @@ public final class Browser
 	/**
 	 * Возвращает список регулярных выражений для определения браузера.
 	 *
-	 * @return Коллекцию строк регулярных выражений для браузеров.
+	 * @return коллекцию строк регулярных выражений для браузеров.
 	 */
 	@NotNull
 	private Map<@NotNull String, @NotNull BrowserType> getRegExpBrowsers()

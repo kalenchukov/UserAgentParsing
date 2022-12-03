@@ -77,7 +77,7 @@ public final class OperatingSystem
 	/**
 	 * Возвращает все названия операционных систем.
 	 *
-	 * @return Коллекцию с названиями операционных системы.
+	 * @return коллекцию с названиями операционных системы.
 	 */
 	@NotNull
 	public static List<@NotNull String> getAll()
@@ -97,7 +97,7 @@ public final class OperatingSystem
 	/**
 	 * Устанавливает строку user-agent.
 	 *
-	 * @param userAgent Строка user-agent.
+	 * @param userAgent строка user-agent.
 	 */
 	public void setUserAgent(@NotNull final String userAgent)
 	{
@@ -115,7 +115,7 @@ public final class OperatingSystem
 	/**
 	 * Возвращает название операционной системы.
 	 *
-	 * @return Название операционной системы.
+	 * @return название операционной системы.
 	 */
 	@Nullable
 	public String getName()
@@ -126,7 +126,7 @@ public final class OperatingSystem
 	/**
 	 * Возвращает версию операционной системы.
 	 *
-	 * @return Версия операционной системы.
+	 * @return версия операционной системы.
 	 */
 	@Nullable
 	public String getVersion()
@@ -165,7 +165,7 @@ public final class OperatingSystem
 	/**
 	 * Возвращает список шаблонов регулярных выражений для определения операционной системы.
 	 *
-	 * @return Коллекцию строк регулярных выражений для операционных систем.
+	 * @return коллекцию строк регулярных выражений для операционных систем.
 	 */
 	@NotNull
 	private Map<@NotNull String, @NotNull OperatingSystemType> getRegExpOperatingSystems()

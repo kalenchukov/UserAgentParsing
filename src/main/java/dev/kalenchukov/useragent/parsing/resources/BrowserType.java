@@ -579,7 +579,7 @@ public enum BrowserType
 	/**
 	 * Устанавливает название браузера.
 	 *
-	 * @param name Название браузера.
+	 * @param name название браузера.
 	 */
 	BrowserType(@Nullable final String name)
 	{
@@ -589,7 +589,7 @@ public enum BrowserType
 	/**
 	 * Возвращает название браузера.
 	 *
-	 * @return Название браузера.
+	 * @return название браузера.
 	 */
 	@Nullable
 	public String getName()

@@ -1,11 +1,8 @@
 # UserAgentParsing
-
 Получение информации о клиенте по строке user-agent.
 
 ## Использование
-
 #### Получение всех данных
-
 ```java
 UserAgentParsing userAgentParser = new UserAgentParser();
 userAgentParser.setUserAgent(
@@ -28,7 +25,6 @@ userAgentParser.getAll();
 ```
 
 #### Получение данных по отдельности
-
 ```java
 UserAgentParsing userAgentParser = new UserAgentParser();
 userAgentParser.setUserAgent(
@@ -61,7 +57,6 @@ userAgentParser.getOperatingSystemVersion();
 ```
 
 #### Получение информации о браузере
-
 ```java
 Browser browser = new Browser();
 browser.setUserAgent(
@@ -78,7 +73,6 @@ browser.getVersion();
 ```
 
 #### Получение информации об устройстве
-
 ```java
 Device device = new Device();
 device.setUserAgent(
@@ -94,7 +88,6 @@ device.getModel();
 ```
 
 #### Получение информации об операционной системе
-
 ```java
 OperatingSystem operatingSystem = new OperatingSystem();
 operatingSystem.setUserAgent(
@@ -111,19 +104,16 @@ operatingSystem.getVersion();
 ```
 
 #### Получение списка всех названий браузеров
-
 ```java
 Browser.getAll();
 ```
 
 #### Получение списка всех типов устройств
-
 ```java
 Device.getAll();
 ```
 
 #### Получение списка всех названий операционных систем
-
 ```java
 OperatingSystem.getAll();
 ```

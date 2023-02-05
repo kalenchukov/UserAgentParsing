@@ -25,12 +25,12 @@
 package dev.kalenchukov.useragent.parsing;
 
 import dev.kalenchukov.useragent.parsing.resources.OperatingSystemType;
-import org.junit.Assert;
-import org.junit.Test;
+
+import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class OperatingSystemTest
 {
@@ -44,7 +44,7 @@ public class OperatingSystemTest
 		List<String> operatingSystems = OperatingSystem.getAll();
 
 		// Отнимается 1 так как в результат OperatingSystem.getAll() не попадает OperatingSystemType.UNKNOWN
-		Assert.assertEquals(OperatingSystemType.values().length - 1, operatingSystems.size());
+		assertEquals(OperatingSystemType.values().length - 1, operatingSystems.size());
 	}
 
 	@Test

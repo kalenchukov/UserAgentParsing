@@ -25,12 +25,12 @@
 package dev.kalenchukov.useragent.parsing;
 
 import dev.kalenchukov.useragent.parsing.resources.DeviceType;
-import org.junit.Assert;
-import org.junit.Test;
+
+import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class DeviceTest
 {
@@ -44,7 +44,7 @@ public class DeviceTest
 		List<String> devices = Device.getAll();
 
 		// Отнимается 1 так как в результат Device.getAll() не попадает DeviceType.UNKNOWN
-		Assert.assertEquals(DeviceType.values().length - 1, devices.size());
+		assertEquals(DeviceType.values().length - 1, devices.size());
 	}
 
 	@Test

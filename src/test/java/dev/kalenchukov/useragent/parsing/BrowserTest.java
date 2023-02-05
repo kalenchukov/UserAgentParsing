@@ -25,12 +25,12 @@
 package dev.kalenchukov.useragent.parsing;
 
 import dev.kalenchukov.useragent.parsing.resources.BrowserType;
-import org.junit.Assert;
-import org.junit.Test;
+
+import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class BrowserTest
 {
@@ -44,7 +44,7 @@ public class BrowserTest
 		List<String> browsers = Browser.getAll();
 
 		// Отнимается 1 так как в результат Browser.getAll() не попадает BrowserType.UNKNOWN
-		Assert.assertEquals(BrowserType.values().length - 1, browsers.size());
+		assertEquals(BrowserType.values().length - 1, browsers.size());
 	}
 
 	@Test

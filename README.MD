@@ -1,4 +1,5 @@
-# UserAgentParsing
+# Справка
+## UserAgentParsing
 Получение информации о клиенте по строке user-agent.
 
 ## Использование

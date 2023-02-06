@@ -30,14 +30,20 @@ import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Класс проверки методов класса {@link UserAgentParser}.
+ */
 public class UserAgentParserTest
 {
 	private static final String USER_AGENT =
 		"Mozilla/5.0 (Linux; Android 6.0.1; SM-A300FU Build/MMB29M; wv) AppleWebKit/537.36 " +
 			"(KHTML, like Gecko) Version/4.0 Chrome/89.0.4389.105 Mobile Safari/537.36";
 
+	/**
+	 * Проверка метода {@link UserAgentParser#setUserAgent(String)}.
+	 */
 	@Test
-	public void setUserAgent()
+	public void testSetUserAgent()
 	{
 		UserAgentParsing userAgentParser = new UserAgentParser();
 
@@ -62,8 +68,11 @@ public class UserAgentParserTest
 		assertNotNull(userAgentParser.getOperatingSystemVersion());
 	}
 
+	/**
+	 * Проверка метода {@link UserAgentParser#getAll()}.
+	 */
 	@Test
-	public void getAll()
+	public void testGetAll()
 	{
 		UserAgentParsing userAgentParser = new UserAgentParser();
 		userAgentParser.setUserAgent(USER_AGENT);
@@ -80,8 +89,11 @@ public class UserAgentParserTest
 		assertEquals("6.0.1", allInfo.get("operating_system_version"));
 	}
 
+	/**
+	 * Проверка метода {@link UserAgentParser#getBrowserName()}.
+	 */
 	@Test
-	public void getBrowserName()
+	public void testGetBrowserName()
 	{
 		UserAgentParsing userAgentParser = new UserAgentParser();
 		userAgentParser.setUserAgent(USER_AGENT);
@@ -89,8 +101,11 @@ public class UserAgentParserTest
 		assertEquals("Google Chrome", userAgentParser.getBrowserName());
 	}
 
+	/**
+	 * Проверка метода {@link UserAgentParser#getBrowserVersion()}.
+	 */
 	@Test
-	public void getBrowserVersion()
+	public void testGetBrowserVersion()
 	{
 		UserAgentParsing userAgentParser = new UserAgentParser();
 		userAgentParser.setUserAgent(USER_AGENT);
@@ -98,8 +113,11 @@ public class UserAgentParserTest
 		assertEquals("89.0.4389.105", userAgentParser.getBrowserVersion());
 	}
 
+	/**
+	 * Проверка метода {@link UserAgentParser#getDeviceType()}.
+	 */
 	@Test
-	public void getDeviceType()
+	public void testGetDeviceType()
 	{
 		UserAgentParsing userAgentParser = new UserAgentParser();
 		userAgentParser.setUserAgent(USER_AGENT);
@@ -107,8 +125,11 @@ public class UserAgentParserTest
 		assertEquals("Mobile", userAgentParser.getDeviceType());
 	}
 
+	/**
+	 * Проверка метода {@link UserAgentParser#getDeviceModel()}.
+	 */
 	@Test
-	public void getDeviceModel()
+	public void testGetDeviceModel()
 	{
 		UserAgentParsing userAgentParser = new UserAgentParser();
 		userAgentParser.setUserAgent(USER_AGENT);
@@ -116,8 +137,11 @@ public class UserAgentParserTest
 		assertEquals("SM-A300FU", userAgentParser.getDeviceModel());
 	}
 
+	/**
+	 * Проверка метода {@link UserAgentParser#getOperatingSystemName()}.
+	 */
 	@Test
-	public void getOperatingSystemName()
+	public void testGetOperatingSystemName()
 	{
 		UserAgentParsing userAgentParser = new UserAgentParser();
 		userAgentParser.setUserAgent(USER_AGENT);
@@ -125,8 +149,11 @@ public class UserAgentParserTest
 		assertEquals("Android", userAgentParser.getOperatingSystemName());
 	}
 
+	/**
+	 * Проверка метода {@link UserAgentParser#getOperatingSystemVersion()}.
+	 */
 	@Test
-	public void getOperatingSystemVersion()
+	public void testGetOperatingSystemVersion()
 	{
 		UserAgentParsing userAgentParser = new UserAgentParser();
 		userAgentParser.setUserAgent(USER_AGENT);

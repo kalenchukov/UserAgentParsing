@@ -32,12 +32,18 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Класс проверки методов класса {@link Browser}.
+ */
 public class BrowserTest
 {
 	private static final String USER_AGENT =
 		"Mozilla/5.0 (Linux; Android 6.0.1; SM-A300FU Build/MMB29M; wv) AppleWebKit/537.36 " +
 			"(KHTML, like Gecko) Version/4.0 Chrome/89.0.4389.105 Mobile Safari/537.36";
 
+	/**
+	 * Проверка метода {@link Browser#getAll()}.
+	 */
 	@Test
 	public void testGetAll()
 	{
@@ -47,6 +53,9 @@ public class BrowserTest
 		assertEquals(BrowserType.values().length - 1, browsers.size());
 	}
 
+	/**
+	 * Проверка метода {@link Browser#setUserAgent(String)}.
+	 */
 	@Test
 	public void testSetUserAgent()
 	{
@@ -61,6 +70,9 @@ public class BrowserTest
 		assertNotNull(browser.getVersion());
 	}
 
+	/**
+	 * Проверка метода {@link Browser#getName()}.
+	 */
 	@Test
 	public void testGetName()
 	{
@@ -70,6 +82,9 @@ public class BrowserTest
 		assertEquals("Google Chrome", browser.getName());
 	}
 
+	/**
+	 * Проверка метода {@link Browser#getVersion()}.
+	 */
 	@Test
 	public void testGetVersion()
 	{

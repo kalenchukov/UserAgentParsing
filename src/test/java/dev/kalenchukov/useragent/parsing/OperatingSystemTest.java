@@ -32,12 +32,18 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Класс проверки методов класса {@link OperatingSystem}.
+ */
 public class OperatingSystemTest
 {
 	private static final String USER_AGENT =
 		"Mozilla/5.0 (Linux; Android 6.0.1; SM-A300FU Build/MMB29M; wv) AppleWebKit/537.36 " +
 			"(KHTML, like Gecko) Version/4.0 Chrome/89.0.4389.105 Mobile Safari/537.36";
 
+	/**
+	 * Проверка метода {@link OperatingSystem#getAll()}.
+	 */
 	@Test
 	public void testGetAll()
 	{
@@ -47,6 +53,9 @@ public class OperatingSystemTest
 		assertEquals(OperatingSystemType.values().length - 1, operatingSystems.size());
 	}
 
+	/**
+	 * Проверка метода {@link OperatingSystem#setUserAgent(String)}.
+	 */
 	@Test
 	public void testSetUserAgent()
 	{
@@ -61,6 +70,9 @@ public class OperatingSystemTest
 		assertNotNull(operatingSystem.getVersion());
 	}
 
+	/**
+	 * Проверка метода {@link OperatingSystem#getName()}.
+	 */
 	@Test
 	public void testGetName()
 	{
@@ -70,6 +82,9 @@ public class OperatingSystemTest
 		assertEquals("Android", operatingSystem.getName());
 	}
 
+	/**
+	 * Проверка метода {@link OperatingSystem#getVersion()}.
+	 */
 	@Test
 	public void testGetVersion()
 	{

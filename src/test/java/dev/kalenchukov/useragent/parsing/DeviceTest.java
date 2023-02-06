@@ -32,12 +32,18 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Класс проверки методов класса {@link Device}.
+ */
 public class DeviceTest
 {
 	private static final String USER_AGENT =
 		"Mozilla/5.0 (Linux; Android 6.0.1; SM-A300FU Build/MMB29M; wv) AppleWebKit/537.36 " +
 			"(KHTML, like Gecko) Version/4.0 Chrome/89.0.4389.105 Mobile Safari/537.36";
 
+	/**
+	 * Проверка метода {@link Device#getAll()}.
+	 */
 	@Test
 	public void testGetAll()
 	{
@@ -47,6 +53,9 @@ public class DeviceTest
 		assertEquals(DeviceType.values().length - 1, devices.size());
 	}
 
+	/**
+	 * Проверка метода {@link Device#setUserAgent(String)}.
+	 */
 	@Test
 	public void testSetUserAgent()
 	{
@@ -61,8 +70,11 @@ public class DeviceTest
 		assertNotNull(device.getModel());
 	}
 
+	/**
+	 * Проверка метода {@link Device#getType()}.
+	 */
 	@Test
-	public void getType()
+	public void testGetType()
 	{
 		Device device = new Device();
 		device.setUserAgent(USER_AGENT);
@@ -70,8 +82,11 @@ public class DeviceTest
 		assertEquals("Mobile", device.getType());
 	}
 
+	/**
+	 * Проверка метода {@link Device#getModel()}.
+	 */
 	@Test
-	public void getModel()
+	public void testGetModel()
 	{
 		Device device = new Device();
 		device.setUserAgent(USER_AGENT);

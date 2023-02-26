@@ -65,7 +65,9 @@ public final class UserAgentParser implements UserAgentParsing
 	}
 
 	/**
-	 * @see UserAgentParsing#setUserAgent(String)
+	 * {@inheritDoc}
+	 *
+	 * @param userAgent {@inheritDoc}
 	 */
 	@Override
 	public void setUserAgent(@NotNull String userAgent)
@@ -80,7 +82,9 @@ public final class UserAgentParser implements UserAgentParsing
 	}
 
 	/**
-	 * @see UserAgentParsing#getAll()
+	 * {@inheritDoc}
+	 *
+	 * @return {@inheritDoc}
 	 */
 	@NotNull
 	@Override
@@ -101,7 +105,9 @@ public final class UserAgentParser implements UserAgentParsing
 	}
 
 	/**
-	 * @see UserAgentParsing#getBrowserName()
+	 * {@inheritDoc}
+	 *
+	 * @return {@inheritDoc}
 	 */
 	@Nullable
 	@Override
@@ -111,7 +117,9 @@ public final class UserAgentParser implements UserAgentParsing
 	}
 
 	/**
-	 * @see UserAgentParsing#getBrowserVersion()
+	 * {@inheritDoc}
+	 *
+	 * @return {@inheritDoc}
 	 */
 	@Nullable
 	@Override
@@ -121,7 +129,9 @@ public final class UserAgentParser implements UserAgentParsing
 	}
 
 	/**
-	 * @see UserAgentParsing#getDeviceType()
+	 * {@inheritDoc}
+	 *
+	 * @return {@inheritDoc}
 	 */
 	@Nullable
 	@Override
@@ -131,7 +141,9 @@ public final class UserAgentParser implements UserAgentParsing
 	}
 
 	/**
-	 * @see UserAgentParsing#getDeviceModel()
+	 * {@inheritDoc}
+	 *
+	 * @return {@inheritDoc}
 	 */
 	@Nullable
 	@Override
@@ -141,7 +153,9 @@ public final class UserAgentParser implements UserAgentParsing
 	}
 
 	/**
-	 * @see UserAgentParsing#getOperatingSystemName()
+	 * {@inheritDoc}
+	 *
+	 * @return {@inheritDoc}
 	 */
 	@Nullable
 	@Override
@@ -151,7 +165,9 @@ public final class UserAgentParser implements UserAgentParsing
 	}
 
 	/**
-	 * @see UserAgentParsing#getOperatingSystemVersion()
+	 * {@inheritDoc}
+	 *
+	 * @return {@inheritDoc}
 	 */
 	@Nullable
 	@Override

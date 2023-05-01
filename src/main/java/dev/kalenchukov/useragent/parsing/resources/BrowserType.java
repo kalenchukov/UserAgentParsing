@@ -28,6 +28,8 @@ import org.jetbrains.annotations.Nullable;
 
 /**
  * Типы возможных браузеров.
+ *
+ * @author Aleksey Kalenchukov
  */
 public enum BrowserType
 {

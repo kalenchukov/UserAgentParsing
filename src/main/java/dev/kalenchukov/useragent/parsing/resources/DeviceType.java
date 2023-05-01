@@ -28,6 +28,8 @@ import org.jetbrains.annotations.Nullable;
 
 /**
  * Типы возможных устройств.
+ *
+ * @author Aleksey Kalenchukov
  */
 public enum DeviceType
 {

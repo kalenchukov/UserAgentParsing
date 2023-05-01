@@ -34,6 +34,8 @@ import java.util.regex.Pattern;
 
 /**
  * Класс определяющий устройство.
+ *
+ * @author Aleksey Kalenchukov
  */
 public final class Device
 {

@@ -34,6 +34,8 @@ import java.util.regex.Pattern;
 
 /**
  * Класс определяющий операционную систему.
+ *
+ * @author Aleksey Kalenchukov
  */
 public final class OperatingSystem
 {

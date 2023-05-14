@@ -35,7 +35,7 @@ import java.util.regex.Pattern;
 /**
  * Класс определяющий браузер.
  *
- * @author Aleksey Kalenchukov
+ * @author Алексей Каленчуков
  */
 public final class Browser
 {

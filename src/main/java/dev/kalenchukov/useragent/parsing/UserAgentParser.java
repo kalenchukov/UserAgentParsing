@@ -34,7 +34,7 @@ import java.util.Objects;
 /**
  * Класс парсинга строки user-agent.
  *
- * @author Aleksey Kalenchukov
+ * @author Алексей Каленчуков
  */
 public final class UserAgentParser implements UserAgentParsing
 {

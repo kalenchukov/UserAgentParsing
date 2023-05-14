@@ -33,7 +33,7 @@ import java.util.Map;
 /**
  * Интерфейс для парсинга строки user-agent.
  *
- * @author Aleksey Kalenchukov
+ * @author Алексей Каленчуков
  */
 public interface UserAgentParsing
 {

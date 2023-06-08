@@ -47,7 +47,7 @@ public class OperatingSystemTest
 	 * Проверка метода {@link OperatingSystem#getAll()}.
 	 */
 	@Test
-	public void testGetAll()
+	public void getAll()
 	{
 		List<String> operatingSystems = OperatingSystem.getAll();
 
@@ -59,7 +59,7 @@ public class OperatingSystemTest
 	 * Проверка метода {@link OperatingSystem#setUserAgent(String)}.
 	 */
 	@Test
-	public void testSetUserAgent()
+	public void setUserAgent()
 	{
 		OperatingSystem operatingSystem = new OperatingSystem();
 
@@ -76,7 +76,7 @@ public class OperatingSystemTest
 	 * Проверка метода {@link OperatingSystem#getName()}.
 	 */
 	@Test
-	public void testGetName()
+	public void getName()
 	{
 		OperatingSystem operatingSystem = new OperatingSystem();
 		operatingSystem.setUserAgent(USER_AGENT);
@@ -88,7 +88,7 @@ public class OperatingSystemTest
 	 * Проверка метода {@link OperatingSystem#getVersion()}.
 	 */
 	@Test
-	public void testGetVersion()
+	public void getVersion()
 	{
 		OperatingSystem operatingSystem = new OperatingSystem();
 		operatingSystem.setUserAgent(USER_AGENT);

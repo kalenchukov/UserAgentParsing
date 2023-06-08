@@ -47,7 +47,7 @@ public class DeviceTest
 	 * Проверка метода {@link Device#getAll()}.
 	 */
 	@Test
-	public void testGetAll()
+	public void getAll()
 	{
 		List<String> devices = Device.getAll();
 
@@ -59,7 +59,7 @@ public class DeviceTest
 	 * Проверка метода {@link Device#setUserAgent(String)}.
 	 */
 	@Test
-	public void testSetUserAgent()
+	public void setUserAgent()
 	{
 		Device device = new Device();
 
@@ -76,7 +76,7 @@ public class DeviceTest
 	 * Проверка метода {@link Device#getType()}.
 	 */
 	@Test
-	public void testGetType()
+	public void getType()
 	{
 		Device device = new Device();
 		device.setUserAgent(USER_AGENT);
@@ -88,7 +88,7 @@ public class DeviceTest
 	 * Проверка метода {@link Device#getModel()}.
 	 */
 	@Test
-	public void testGetModel()
+	public void getModel()
 	{
 		Device device = new Device();
 		device.setUserAgent(USER_AGENT);

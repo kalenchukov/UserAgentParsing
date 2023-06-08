@@ -47,7 +47,7 @@ public class BrowserTest
 	 * Проверка метода {@link Browser#getAll()}.
 	 */
 	@Test
-	public void testGetAll()
+	public void getAll()
 	{
 		List<String> browsers = Browser.getAll();
 
@@ -59,7 +59,7 @@ public class BrowserTest
 	 * Проверка метода {@link Browser#setUserAgent(String)}.
 	 */
 	@Test
-	public void testSetUserAgent()
+	public void setUserAgent()
 	{
 		Browser browser = new Browser();
 
@@ -76,7 +76,7 @@ public class BrowserTest
 	 * Проверка метода {@link Browser#getName()}.
 	 */
 	@Test
-	public void testGetName()
+	public void getName()
 	{
 		Browser browser = new Browser();
 		browser.setUserAgent(USER_AGENT);
@@ -88,7 +88,7 @@ public class BrowserTest
 	 * Проверка метода {@link Browser#getVersion()}.
 	 */
 	@Test
-	public void testGetVersion()
+	public void getVersion()
 	{
 		Browser browser = new Browser();
 		browser.setUserAgent(USER_AGENT);

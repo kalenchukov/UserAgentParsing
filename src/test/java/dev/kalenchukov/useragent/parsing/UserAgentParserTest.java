@@ -45,7 +45,7 @@ public class UserAgentParserTest
 	 * Проверка метода {@link UserAgentParser#setUserAgent(String)}.
 	 */
 	@Test
-	public void testSetUserAgent()
+	public void setUserAgent()
 	{
 		UserAgentParsing userAgentParser = new UserAgentParser();
 
@@ -74,7 +74,7 @@ public class UserAgentParserTest
 	 * Проверка метода {@link UserAgentParser#getAll()}.
 	 */
 	@Test
-	public void testGetAll()
+	public void getAll()
 	{
 		UserAgentParsing userAgentParser = new UserAgentParser();
 		userAgentParser.setUserAgent(USER_AGENT);
@@ -95,7 +95,7 @@ public class UserAgentParserTest
 	 * Проверка метода {@link UserAgentParser#getBrowserName()}.
 	 */
 	@Test
-	public void testGetBrowserName()
+	public void getBrowserName()
 	{
 		UserAgentParsing userAgentParser = new UserAgentParser();
 		userAgentParser.setUserAgent(USER_AGENT);
@@ -107,7 +107,7 @@ public class UserAgentParserTest
 	 * Проверка метода {@link UserAgentParser#getBrowserVersion()}.
 	 */
 	@Test
-	public void testGetBrowserVersion()
+	public void getBrowserVersion()
 	{
 		UserAgentParsing userAgentParser = new UserAgentParser();
 		userAgentParser.setUserAgent(USER_AGENT);
@@ -119,7 +119,7 @@ public class UserAgentParserTest
 	 * Проверка метода {@link UserAgentParser#getDeviceType()}.
 	 */
 	@Test
-	public void testGetDeviceType()
+	public void getDeviceType()
 	{
 		UserAgentParsing userAgentParser = new UserAgentParser();
 		userAgentParser.setUserAgent(USER_AGENT);
@@ -131,7 +131,7 @@ public class UserAgentParserTest
 	 * Проверка метода {@link UserAgentParser#getDeviceModel()}.
 	 */
 	@Test
-	public void testGetDeviceModel()
+	public void getDeviceModel()
 	{
 		UserAgentParsing userAgentParser = new UserAgentParser();
 		userAgentParser.setUserAgent(USER_AGENT);
@@ -143,7 +143,7 @@ public class UserAgentParserTest
 	 * Проверка метода {@link UserAgentParser#getOperatingSystemName()}.
 	 */
 	@Test
-	public void testGetOperatingSystemName()
+	public void getOperatingSystemName()
 	{
 		UserAgentParsing userAgentParser = new UserAgentParser();
 		userAgentParser.setUserAgent(USER_AGENT);
@@ -155,7 +155,7 @@ public class UserAgentParserTest
 	 * Проверка метода {@link UserAgentParser#getOperatingSystemVersion()}.
 	 */
 	@Test
-	public void testGetOperatingSystemVersion()
+	public void getOperatingSystemVersion()
 	{
 		UserAgentParsing userAgentParser = new UserAgentParser();
 		userAgentParser.setUserAgent(USER_AGENT);

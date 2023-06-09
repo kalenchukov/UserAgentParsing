@@ -51,8 +51,10 @@ public class DeviceTest
 	{
 		List<String> devices = Device.getAll();
 
+		Integer actual = devices.size();
+
 		// Отнимается 1 так как в результат Device.getAll() не попадает DeviceType.UNKNOWN
-		assertEquals(DeviceType.values().length - 1, devices.size());
+		assertEquals(DeviceType.values().length - 1, actual);
 	}
 
 	/**
@@ -81,7 +83,9 @@ public class DeviceTest
 		Device device = new Device();
 		device.setUserAgent(USER_AGENT);
 
-		assertEquals("Mobile", device.getType());
+		String actual = device.getType();
+
+		assertEquals("Mobile", actual);
 	}
 
 	/**
@@ -93,6 +97,8 @@ public class DeviceTest
 		Device device = new Device();
 		device.setUserAgent(USER_AGENT);
 
-		assertEquals("SM-A300FU", device.getModel());
+		String actual = device.getModel();
+
+		assertEquals("SM-A300FU", actual);
 	}
 }

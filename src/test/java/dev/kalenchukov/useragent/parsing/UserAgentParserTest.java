@@ -79,16 +79,16 @@ public class UserAgentParserTest
 		UserAgentParsing userAgentParser = new UserAgentParser();
 		userAgentParser.setUserAgent(USER_AGENT);
 
-		Map<String, String> allInfo = userAgentParser.getAll();
+		Map<String, String> actual = userAgentParser.getAll();
 
-		assertEquals("Google Chrome", allInfo.get("browser_name"));
-		assertEquals("89.0.4389.105", allInfo.get("browser_version"));
+		assertEquals("Google Chrome", actual.get("browser_name"));
+		assertEquals("89.0.4389.105", actual.get("browser_version"));
 
-		assertEquals("Mobile", allInfo.get("device_type"));
-		assertEquals("SM-A300FU", allInfo.get("device_model"));
+		assertEquals("Mobile", actual.get("device_type"));
+		assertEquals("SM-A300FU", actual.get("device_model"));
 
-		assertEquals("Android", allInfo.get("operating_system_name"));
-		assertEquals("6.0.1", allInfo.get("operating_system_version"));
+		assertEquals("Android", actual.get("operating_system_name"));
+		assertEquals("6.0.1", actual.get("operating_system_version"));
 	}
 
 	/**
@@ -100,7 +100,9 @@ public class UserAgentParserTest
 		UserAgentParsing userAgentParser = new UserAgentParser();
 		userAgentParser.setUserAgent(USER_AGENT);
 
-		assertEquals("Google Chrome", userAgentParser.getBrowserName());
+		String actual = userAgentParser.getBrowserName();
+
+		assertEquals("Google Chrome", actual);
 	}
 
 	/**
@@ -112,7 +114,9 @@ public class UserAgentParserTest
 		UserAgentParsing userAgentParser = new UserAgentParser();
 		userAgentParser.setUserAgent(USER_AGENT);
 
-		assertEquals("89.0.4389.105", userAgentParser.getBrowserVersion());
+		String actual = userAgentParser.getBrowserVersion();
+
+		assertEquals("89.0.4389.105", actual);
 	}
 
 	/**
@@ -124,7 +128,9 @@ public class UserAgentParserTest
 		UserAgentParsing userAgentParser = new UserAgentParser();
 		userAgentParser.setUserAgent(USER_AGENT);
 
-		assertEquals("Mobile", userAgentParser.getDeviceType());
+		String actual = userAgentParser.getDeviceType();
+
+		assertEquals("Mobile", actual);
 	}
 
 	/**
@@ -136,7 +142,9 @@ public class UserAgentParserTest
 		UserAgentParsing userAgentParser = new UserAgentParser();
 		userAgentParser.setUserAgent(USER_AGENT);
 
-		assertEquals("SM-A300FU", userAgentParser.getDeviceModel());
+		String actual = userAgentParser.getDeviceModel();
+
+		assertEquals("SM-A300FU", actual);
 	}
 
 	/**
@@ -148,7 +156,9 @@ public class UserAgentParserTest
 		UserAgentParsing userAgentParser = new UserAgentParser();
 		userAgentParser.setUserAgent(USER_AGENT);
 
-		assertEquals("Android", userAgentParser.getOperatingSystemName());
+		String actual = userAgentParser.getOperatingSystemName();
+
+		assertEquals("Android", actual);
 	}
 
 	/**
@@ -160,6 +170,8 @@ public class UserAgentParserTest
 		UserAgentParsing userAgentParser = new UserAgentParser();
 		userAgentParser.setUserAgent(USER_AGENT);
 
-		assertEquals("6.0.1", userAgentParser.getOperatingSystemVersion());
+		String actual = userAgentParser.getOperatingSystemVersion();
+
+		assertEquals("6.0.1", actual);
 	}
 }

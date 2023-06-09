@@ -51,8 +51,10 @@ public class BrowserTest
 	{
 		List<String> browsers = Browser.getAll();
 
+		Integer actual = browsers.size();
+
 		// Отнимается 1 так как в результат Browser.getAll() не попадает BrowserType.UNKNOWN
-		assertEquals(BrowserType.values().length - 1, browsers.size());
+		assertEquals(BrowserType.values().length - 1, actual);
 	}
 
 	/**
@@ -81,7 +83,9 @@ public class BrowserTest
 		Browser browser = new Browser();
 		browser.setUserAgent(USER_AGENT);
 
-		assertEquals("Google Chrome", browser.getName());
+		String actual = browser.getName();
+
+		assertEquals("Google Chrome", actual);
 	}
 
 	/**
@@ -93,6 +97,8 @@ public class BrowserTest
 		Browser browser = new Browser();
 		browser.setUserAgent(USER_AGENT);
 
-		assertEquals("89.0.4389.105", browser.getVersion());
+		String actual = browser.getVersion();
+
+		assertEquals("89.0.4389.105", actual);
 	}
 }

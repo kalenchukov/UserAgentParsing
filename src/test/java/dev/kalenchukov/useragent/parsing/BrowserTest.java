@@ -26,12 +26,11 @@ package dev.kalenchukov.useragent.parsing;
 
 import dev.kalenchukov.useragent.parsing.resources.BrowserType;
 
-import dev.kalenchukov.useragent.parsing.resources.DeviceType;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 /**
  * Класс проверки методов класса {@link Browser}.
@@ -54,9 +53,9 @@ public class BrowserTest
 		// Отнимается 1 так как в результат Browser.getAll() не попадает BrowserType.UNKNOWN
 		Integer expectedSize = BrowserType.values().length - 1;
 
-		Integer actualSize = browsers.size();
+		int actualSize = browsers.size();
 
-		assertEquals(expectedSize, actualSize);
+		assertThat(actualSize).isEqualTo(expectedSize);
 	}
 
 	/**
@@ -67,13 +66,13 @@ public class BrowserTest
 	{
 		Browser browser = new Browser();
 
-		assertNull(browser.getName());
-		assertNull(browser.getVersion());
+		assertThat(browser.getName()).isNull();
+		assertThat(browser.getVersion()).isNull();
 
 		browser.setUserAgent(USER_AGENT);
 
-		assertNotNull(browser.getName());
-		assertNotNull(browser.getVersion());
+		assertThat(browser.getName()).isNotNull();
+		assertThat(browser.getVersion()).isNotNull();
 	}
 
 	/**
@@ -87,7 +86,7 @@ public class BrowserTest
 
 		String actualName = browser.getName();
 
-		assertEquals("Google Chrome", actualName);
+		assertThat(actualName).isEqualTo("Google Chrome");
 	}
 
 	/**
@@ -101,6 +100,6 @@ public class BrowserTest
 
 		String actualVersion = browser.getVersion();
 
-		assertEquals("89.0.4389.105", actualVersion);
+		assertThat(actualVersion).isEqualTo("89.0.4389.105");
 	}
 }

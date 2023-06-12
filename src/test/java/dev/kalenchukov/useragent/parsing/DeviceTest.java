@@ -26,12 +26,11 @@ package dev.kalenchukov.useragent.parsing;
 
 import dev.kalenchukov.useragent.parsing.resources.DeviceType;
 
-import dev.kalenchukov.useragent.parsing.resources.OperatingSystemType;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 /**
  * Класс проверки методов класса {@link Device}.
@@ -54,9 +53,9 @@ public class DeviceTest
 		// Отнимается 1 так как в результат Device.getAll() не попадает DeviceType.UNKNOWN
 		Integer expectedSize = DeviceType.values().length - 1;
 
-		Integer actualSize = devices.size();
+		int actualSize = devices.size();
 
-		assertEquals(expectedSize, actualSize);
+		assertThat(actualSize).isEqualTo(expectedSize);
 	}
 
 	/**
@@ -67,13 +66,13 @@ public class DeviceTest
 	{
 		Device device = new Device();
 
-		assertNull(device.getType());
-		assertNull(device.getModel());
+		assertThat(device.getType()).isNull();
+		assertThat(device.getModel()).isNull();
 
 		device.setUserAgent(USER_AGENT);
 
-		assertNotNull(device.getType());
-		assertNotNull(device.getModel());
+		assertThat(device.getType()).isNotNull();
+		assertThat(device.getModel()).isNotNull();
 	}
 
 	/**
@@ -87,7 +86,7 @@ public class DeviceTest
 
 		String actualType = device.getType();
 
-		assertEquals("Mobile", actualType);
+		assertThat(actualType).isEqualTo("Mobile");
 	}
 
 	/**
@@ -101,6 +100,6 @@ public class DeviceTest
 
 		String actualModel = device.getModel();
 
-		assertEquals("SM-A300FU", actualModel);
+		assertThat(actualModel).isEqualTo("SM-A300FU");
 	}
 }

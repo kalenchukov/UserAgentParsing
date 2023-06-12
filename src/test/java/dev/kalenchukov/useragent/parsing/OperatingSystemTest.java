@@ -30,7 +30,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 /**
  * Класс проверки методов класса {@link OperatingSystem}.
@@ -53,9 +53,9 @@ public class OperatingSystemTest
 		// Отнимается 1 так как в результат OperatingSystem.getAll() не попадает OperatingSystemType.UNKNOWN
 		Integer expectedSize = OperatingSystemType.values().length - 1;
 
-		Integer actualSize = operatingSystems.size();
+		int actualSize = operatingSystems.size();
 
-		assertEquals(expectedSize, actualSize);
+		assertThat(actualSize).isEqualTo(expectedSize);
 	}
 
 	/**
@@ -66,13 +66,13 @@ public class OperatingSystemTest
 	{
 		OperatingSystem operatingSystem = new OperatingSystem();
 
-		assertNull(operatingSystem.getName());
-		assertNull(operatingSystem.getVersion());
+		assertThat(operatingSystem.getName()).isNull();
+		assertThat(operatingSystem.getVersion()).isNull();
 
 		operatingSystem.setUserAgent(USER_AGENT);
 
-		assertNotNull(operatingSystem.getName());
-		assertNotNull(operatingSystem.getVersion());
+		assertThat(operatingSystem.getName()).isNotNull();
+		assertThat(operatingSystem.getVersion()).isNotNull();
 	}
 
 	/**
@@ -86,7 +86,7 @@ public class OperatingSystemTest
 
 		String actualName = operatingSystem.getName();
 
-		assertEquals("Android", actualName);
+		assertThat(actualName).isEqualTo("Android");
 	}
 
 	/**
@@ -100,6 +100,6 @@ public class OperatingSystemTest
 
 		String actualVersion = operatingSystem.getVersion();
 
-		assertEquals("6.0.1", actualVersion);
+		assertThat(actualVersion).isEqualTo("6.0.1");
 	}
 }

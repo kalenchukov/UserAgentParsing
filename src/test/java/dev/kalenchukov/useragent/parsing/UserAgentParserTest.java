@@ -28,7 +28,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Map;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 /**
  * Класс проверки методов класса {@link UserAgentParser}.
@@ -49,25 +49,25 @@ public class UserAgentParserTest
 	{
 		UserAgentParsing userAgentParser = new UserAgentParser();
 
-		assertNull(userAgentParser.getDeviceType());
-		assertNull(userAgentParser.getDeviceModel());
+		assertThat(userAgentParser.getDeviceType()).isNull();
+		assertThat(userAgentParser.getDeviceModel()).isNull();
 
-		assertNull(userAgentParser.getBrowserName());
-		assertNull(userAgentParser.getBrowserVersion());
+		assertThat(userAgentParser.getBrowserName()).isNull();
+		assertThat(userAgentParser.getBrowserVersion()).isNull();
 
-		assertNull(userAgentParser.getOperatingSystemName());
-		assertNull(userAgentParser.getOperatingSystemVersion());
+		assertThat(userAgentParser.getOperatingSystemName()).isNull();
+		assertThat(userAgentParser.getOperatingSystemVersion()).isNull();
 
 		userAgentParser.setUserAgent(USER_AGENT);
 
-		assertNotNull(userAgentParser.getDeviceType());
-		assertNotNull(userAgentParser.getDeviceModel());
+		assertThat(userAgentParser.getDeviceType()).isNotNull();
+		assertThat(userAgentParser.getDeviceModel()).isNotNull();
 
-		assertNotNull(userAgentParser.getBrowserName());
-		assertNotNull(userAgentParser.getBrowserVersion());
+		assertThat(userAgentParser.getBrowserName()).isNotNull();
+		assertThat(userAgentParser.getBrowserVersion()).isNotNull();
 
-		assertNotNull(userAgentParser.getOperatingSystemName());
-		assertNotNull(userAgentParser.getOperatingSystemVersion());
+		assertThat(userAgentParser.getOperatingSystemName()).isNotNull();
+		assertThat(userAgentParser.getOperatingSystemVersion()).isNotNull();
 	}
 
 	/**
@@ -87,12 +87,12 @@ public class UserAgentParserTest
 		String actualOperatingSystemName = data.get("operating_system_name");
 		String actualOperatingSystemVersion = data.get("operating_system_version");
 
-		assertEquals("Google Chrome", actualBrowserName);
-		assertEquals("89.0.4389.105", actualBrowserVersion);
-		assertEquals("Mobile", actualDeviceType);
-		assertEquals("SM-A300FU", actualDeviceModel);
-		assertEquals("Android", actualOperatingSystemName);
-		assertEquals("6.0.1", actualOperatingSystemVersion);
+		assertThat(actualBrowserName).isEqualTo("Google Chrome");
+		assertThat(actualBrowserVersion).isEqualTo("89.0.4389.105");
+		assertThat(actualDeviceType).isEqualTo("Mobile");
+		assertThat(actualDeviceModel).isEqualTo("SM-A300FU");
+		assertThat(actualOperatingSystemName).isEqualTo("Android");
+		assertThat(actualOperatingSystemVersion).isEqualTo("6.0.1");
 	}
 
 	/**
@@ -106,7 +106,7 @@ public class UserAgentParserTest
 
 		String actualBrowserName = userAgentParser.getBrowserName();
 
-		assertEquals("Google Chrome", actualBrowserName);
+		assertThat(actualBrowserName).isEqualTo("Google Chrome");
 	}
 
 	/**
@@ -120,7 +120,7 @@ public class UserAgentParserTest
 
 		String actualBrowserVersion = userAgentParser.getBrowserVersion();
 
-		assertEquals("89.0.4389.105", actualBrowserVersion);
+		assertThat(actualBrowserVersion).isEqualTo("89.0.4389.105");
 	}
 
 	/**
@@ -134,7 +134,7 @@ public class UserAgentParserTest
 
 		String actualDeviceType = userAgentParser.getDeviceType();
 
-		assertEquals("Mobile", actualDeviceType);
+		assertThat(actualDeviceType).isEqualTo("Mobile");
 	}
 
 	/**
@@ -148,7 +148,7 @@ public class UserAgentParserTest
 
 		String actualDeviceModel = userAgentParser.getDeviceModel();
 
-		assertEquals("SM-A300FU", actualDeviceModel);
+		assertThat(actualDeviceModel).isEqualTo("SM-A300FU");
 	}
 
 	/**
@@ -162,7 +162,7 @@ public class UserAgentParserTest
 
 		String actualOperatingSystemName = userAgentParser.getOperatingSystemName();
 
-		assertEquals("Android", actualOperatingSystemName);
+		assertThat(actualOperatingSystemName).isEqualTo("Android");
 	}
 
 	/**
@@ -176,6 +176,6 @@ public class UserAgentParserTest
 
 		String actualOperatingSystemVersion = userAgentParser.getOperatingSystemVersion();
 
-		assertEquals("6.0.1", actualOperatingSystemVersion);
+		assertThat(actualOperatingSystemVersion).isEqualTo("6.0.1");
 	}
 }

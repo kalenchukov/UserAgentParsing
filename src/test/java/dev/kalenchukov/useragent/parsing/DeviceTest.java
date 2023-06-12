@@ -26,6 +26,7 @@ package dev.kalenchukov.useragent.parsing;
 
 import dev.kalenchukov.useragent.parsing.resources.DeviceType;
 
+import dev.kalenchukov.useragent.parsing.resources.OperatingSystemType;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -50,11 +51,12 @@ public class DeviceTest
 	public void getAll()
 	{
 		List<String> devices = Device.getAll();
-
-		Integer actual = devices.size();
-
 		// Отнимается 1 так как в результат Device.getAll() не попадает DeviceType.UNKNOWN
-		assertEquals(DeviceType.values().length - 1, actual);
+		Integer expectedSize = DeviceType.values().length - 1;
+
+		Integer actualSize = devices.size();
+
+		assertEquals(expectedSize, actualSize);
 	}
 
 	/**
@@ -83,9 +85,9 @@ public class DeviceTest
 		Device device = new Device();
 		device.setUserAgent(USER_AGENT);
 
-		String actual = device.getType();
+		String actualType = device.getType();
 
-		assertEquals("Mobile", actual);
+		assertEquals("Mobile", actualType);
 	}
 
 	/**
@@ -97,8 +99,8 @@ public class DeviceTest
 		Device device = new Device();
 		device.setUserAgent(USER_AGENT);
 
-		String actual = device.getModel();
+		String actualModel = device.getModel();
 
-		assertEquals("SM-A300FU", actual);
+		assertEquals("SM-A300FU", actualModel);
 	}
 }

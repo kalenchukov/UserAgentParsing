@@ -26,6 +26,7 @@ package dev.kalenchukov.useragent.parsing;
 
 import dev.kalenchukov.useragent.parsing.resources.BrowserType;
 
+import dev.kalenchukov.useragent.parsing.resources.DeviceType;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -50,11 +51,12 @@ public class BrowserTest
 	public void getAll()
 	{
 		List<String> browsers = Browser.getAll();
-
-		Integer actual = browsers.size();
-
 		// Отнимается 1 так как в результат Browser.getAll() не попадает BrowserType.UNKNOWN
-		assertEquals(BrowserType.values().length - 1, actual);
+		Integer expectedSize = BrowserType.values().length - 1;
+
+		Integer actualSize = browsers.size();
+
+		assertEquals(expectedSize, actualSize);
 	}
 
 	/**
@@ -83,9 +85,9 @@ public class BrowserTest
 		Browser browser = new Browser();
 		browser.setUserAgent(USER_AGENT);
 
-		String actual = browser.getName();
+		String actualName = browser.getName();
 
-		assertEquals("Google Chrome", actual);
+		assertEquals("Google Chrome", actualName);
 	}
 
 	/**
@@ -97,8 +99,8 @@ public class BrowserTest
 		Browser browser = new Browser();
 		browser.setUserAgent(USER_AGENT);
 
-		String actual = browser.getVersion();
+		String actualVersion = browser.getVersion();
 
-		assertEquals("89.0.4389.105", actual);
+		assertEquals("89.0.4389.105", actualVersion);
 	}
 }

@@ -50,11 +50,12 @@ public class OperatingSystemTest
 	public void getAll()
 	{
 		List<String> operatingSystems = OperatingSystem.getAll();
-
-		Integer actual = operatingSystems.size();
-
 		// Отнимается 1 так как в результат OperatingSystem.getAll() не попадает OperatingSystemType.UNKNOWN
-		assertEquals(OperatingSystemType.values().length - 1, actual);
+		Integer expectedSize = OperatingSystemType.values().length - 1;
+
+		Integer actualSize = operatingSystems.size();
+
+		assertEquals(expectedSize, actualSize);
 	}
 
 	/**
@@ -83,9 +84,9 @@ public class OperatingSystemTest
 		OperatingSystem operatingSystem = new OperatingSystem();
 		operatingSystem.setUserAgent(USER_AGENT);
 
-		String actual = operatingSystem.getName();
+		String actualName = operatingSystem.getName();
 
-		assertEquals("Android", actual);
+		assertEquals("Android", actualName);
 	}
 
 	/**
@@ -97,8 +98,8 @@ public class OperatingSystemTest
 		OperatingSystem operatingSystem = new OperatingSystem();
 		operatingSystem.setUserAgent(USER_AGENT);
 
-		String actual = operatingSystem.getVersion();
+		String actualVersion = operatingSystem.getVersion();
 
-		assertEquals("6.0.1", actual);
+		assertEquals("6.0.1", actualVersion);
 	}
 }

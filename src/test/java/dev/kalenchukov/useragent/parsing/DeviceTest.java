@@ -51,7 +51,7 @@ public class DeviceTest
 	{
 		List<String> devices = Device.getAll();
 		// Отнимается 1 так как в результат Device.getAll() не попадает DeviceType.UNKNOWN
-		Integer expectedSize = DeviceType.values().length - 1;
+		int expectedSize = DeviceType.values().length - 1;
 
 		int actualSize = devices.size();
 

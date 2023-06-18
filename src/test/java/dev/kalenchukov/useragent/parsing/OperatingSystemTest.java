@@ -51,7 +51,7 @@ public class OperatingSystemTest
 	{
 		List<String> operatingSystems = OperatingSystem.getAll();
 		// Отнимается 1 так как в результат OperatingSystem.getAll() не попадает OperatingSystemType.UNKNOWN
-		Integer expectedSize = OperatingSystemType.values().length - 1;
+		int expectedSize = OperatingSystemType.values().length - 1;
 
 		int actualSize = operatingSystems.size();
 

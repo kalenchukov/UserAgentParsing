@@ -51,7 +51,7 @@ public class BrowserTest
 	{
 		List<String> browsers = Browser.getAll();
 		// Отнимается 1 так как в результат Browser.getAll() не попадает BrowserType.UNKNOWN
-		Integer expectedSize = BrowserType.values().length - 1;
+		int expectedSize = BrowserType.values().length - 1;
 
 		int actualSize = browsers.size();
 

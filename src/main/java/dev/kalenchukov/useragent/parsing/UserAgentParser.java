@@ -70,6 +70,7 @@ public final class UserAgentParser implements UserAgentParsing
 	 * {@inheritDoc}
 	 *
 	 * @param userAgent {@inheritDoc}
+	 * @throws NullPointerException если в качестве {@code userAgent} передан {@code null}.
 	 */
 	@Override
 	public void setUserAgent(@NotNull String userAgent)
@@ -187,6 +188,7 @@ public final class UserAgentParser implements UserAgentParsing
 	 *
 	 * @param userAgent строка user-agent.
 	 * @return отформатированную строку user-agent.
+	 * @throws NullPointerException если в качестве {@code userAgent} передан {@code null}.
 	 */
 	@NotNull
 	private String format(@NotNull final String userAgent)

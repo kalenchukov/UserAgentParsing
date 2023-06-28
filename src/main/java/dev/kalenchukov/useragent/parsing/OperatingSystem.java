@@ -100,6 +100,7 @@ public final class OperatingSystem
 	 * Устанавливает строку user-agent.
 	 *
 	 * @param userAgent строка user-agent.
+	 * @throws NullPointerException если в качестве {@code userAgent} передан {@code null}.
 	 */
 	public void setUserAgent(@NotNull final String userAgent)
 	{

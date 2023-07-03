@@ -7,6 +7,7 @@
 * Изменена версия требуемого модуля annotations до 24.0.1.
 * Изменена версия Java на 17.
 * Перемещён метод Browser.getAll() -> BrowserType.getAll().
+* Перемещён метод Device.getAll() -> DeviceType.getAll().
 
 ### Исправлено
 *

@@ -24,7 +24,11 @@
 
 package dev.kalenchukov.useragent.parsing.resources;
 
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Типы возможных устройств.
@@ -107,5 +111,25 @@ public enum DeviceType
 	public String getType()
 	{
 		return this.type;
+	}
+
+	/**
+	 * Возвращает все типы устройств.
+	 *
+	 * @return коллекцию с типами устройств.
+	 */
+	@NotNull
+	public static List<@NotNull String> getAll()
+	{
+		List<String> devices = new ArrayList<>();
+
+		for (DeviceType device : DeviceType.values())
+		{
+			if (device != DeviceType.UNKNOWN) {
+				devices.add(device.getType());
+			}
+		}
+
+		return devices;
 	}
 }

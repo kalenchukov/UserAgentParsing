@@ -1,5 +1,5 @@
 /*
- * Copyright © 2022-2023 Алексей Каленчуков
+ * Copyright © 2023 Алексей Каленчуков
  * GitHub: https://github.com/kalenchukov
  * E-mail: mailto:aleksey.kalenchukov@yandex.ru
  *
@@ -22,65 +22,56 @@
  * SOFTWARE.
  */
 
-package dev.kalenchukov.useragent.parsing;
+package dev.kalenchukov.useragent.parsing.resources;
 
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
+
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 /**
- * Класс проверки методов класса {@link Device}.
+ * Класс проверки методов перечисления {@link DeviceType}.
  *
  * @author Алексей Каленчуков
  */
-public class DeviceTest
+public class DeviceTypeTest
 {
-	private static final String USER_AGENT =
-		"Mozilla/5.0 (Linux; Android 6.0.1; SM-A300FU Build/MMB29M; wv) AppleWebKit/537.36 " +
-			"(KHTML, like Gecko) Version/4.0 Chrome/89.0.4389.105 Mobile Safari/537.36";
+    /**
+     * Проверка метода {@link DeviceType#getType()}.
+     */
+    @Test
+    public void getType()
+    {
+        DeviceType deviceType = DeviceType.MOBILE;
 
-	/**
-	 * Проверка метода {@link Device#setUserAgent(String)}.
-	 */
-	@Test
-	public void setUserAgent()
-	{
-		Device device = new Device();
+        String actualType = deviceType.getType();
 
-		assertThat(device.getType()).isNull();
-		assertThat(device.getModel()).isNull();
+        assertThat(actualType).isEqualTo("Mobile");
+    }
 
-		device.setUserAgent(USER_AGENT);
+    /**
+     * Класс проверки статических методов.
+     *
+     * @author Алексей Каленчуков
+     */
+    @Nested
+    public class Static
+    {
+        /**
+         * Проверка метода {@link DeviceType#getAll()}.
+         */
+        @Test
+        public void getAll()
+        {
+            List<String> devices = DeviceType.getAll();
+            // Отнимается 1 так как в результат DeviceType.getAll() не попадает DeviceType.UNKNOWN
+            int expectedSize = DeviceType.values().length - 1;
 
-		assertThat(device.getType()).isNotNull();
-		assertThat(device.getModel()).isNotNull();
-	}
+            int actualSize = devices.size();
 
-	/**
-	 * Проверка метода {@link Device#getType()}.
-	 */
-	@Test
-	public void getType()
-	{
-		Device device = new Device();
-		device.setUserAgent(USER_AGENT);
-
-		String actualType = device.getType();
-
-		assertThat(actualType).isEqualTo("Mobile");
-	}
-
-	/**
-	 * Проверка метода {@link Device#getModel()}.
-	 */
-	@Test
-	public void getModel()
-	{
-		Device device = new Device();
-		device.setUserAgent(USER_AGENT);
-
-		String actualModel = device.getModel();
-
-		assertThat(actualModel).isEqualTo("SM-A300FU");
-	}
+            assertThat(actualSize).isEqualTo(expectedSize);
+        }
+    }
 }

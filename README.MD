@@ -178,15 +178,15 @@ operatingSystem.getVersion();
 
 #### Получение списка всех названий браузеров
 ```java
-Browser.getAll();
+BrowserType.getAllNames();
 ```
 
 #### Получение списка всех типов устройств
 ```java
-Device.getAll();
+DeviceType.getAllNames();
 ```
 
 #### Получение списка всех названий операционных систем
 ```java
-OperatingSystem.getAll();
+OperatingSystemType.getAllNames();
 ```

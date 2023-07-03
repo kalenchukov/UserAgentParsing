@@ -77,26 +77,6 @@ public final class Browser
 	}
 
 	/**
-	 * Возвращает названия всех браузеров.
-	 *
-	 * @return коллекцию с названиями браузеров.
-	 */
-	@NotNull
-	public static List<@NotNull String> getAll()
-	{
-		List<String> browsers = new ArrayList<>();
-
-		for (BrowserType browser : BrowserType.values())
-		{
-			if (browser != BrowserType.UNKNOWN) {
-				browsers.add(browser.getName());
-			}
-		}
-
-		return browsers;
-	}
-
-	/**
 	 * Устанавливает строку user-agent.
 	 *
 	 * @param userAgent строка user-agent.

@@ -87,36 +87,36 @@ public enum DeviceType
 	);
 
 	/**
-	 * Тип устройства.
+	 * Название устройства.
 	 */
 	@Nullable
-	private final String type;
+	private final String name;
 
 	/**
-	 * Устанавливает тип устройства.
+	 * Устанавливает название устройства.
 	 *
-	 * @param type тип устройства.
+	 * @param name название устройства.
 	 */
-	DeviceType(@Nullable final String type)
+	DeviceType(@Nullable final String name)
 	{
-		this.type = type;
+		this.name = name;
 	}
 
 	/**
-	 * Возвращает тип устройства.
+	 * Возвращает название устройства.
 	 *
-	 * @return тип устройства.
+	 * @return название устройства.
 	 */
 	@Nullable
-	public String getType()
+	public String getName()
 	{
-		return this.type;
+		return this.name;
 	}
 
 	/**
-	 * Возвращает все типы устройств.
+	 * Возвращает названия всех устройств.
 	 *
-	 * @return коллекцию с типами устройств.
+	 * @return коллекцию с названиями устройств.
 	 */
 	@NotNull
 	public static List<@NotNull String> getAll()
@@ -126,7 +126,7 @@ public enum DeviceType
 		for (DeviceType device : DeviceType.values())
 		{
 			if (device != DeviceType.UNKNOWN) {
-				devices.add(device.getType());
+				devices.add(device.getName());
 			}
 		}
 

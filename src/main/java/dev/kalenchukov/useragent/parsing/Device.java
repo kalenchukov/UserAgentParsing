@@ -103,7 +103,7 @@ public final class Device
 	@Nullable
 	public String getType()
 	{
-		return this.device.getType();
+		return this.device.getName();
 	}
 
 	/**

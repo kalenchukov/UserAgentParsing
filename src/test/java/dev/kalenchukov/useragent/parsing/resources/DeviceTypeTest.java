@@ -39,16 +39,16 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class DeviceTypeTest
 {
     /**
-     * Проверка метода {@link DeviceType#getType()}.
+     * Проверка метода {@link DeviceType#getName()}.
      */
     @Test
-    public void getType()
+    public void getName()
     {
         DeviceType deviceType = DeviceType.MOBILE;
 
-        String actualType = deviceType.getType();
+        String actualName = deviceType.getName();
 
-        assertThat(actualType).isEqualTo("Mobile");
+        assertThat(actualName).isEqualTo("Mobile");
     }
 
     /**

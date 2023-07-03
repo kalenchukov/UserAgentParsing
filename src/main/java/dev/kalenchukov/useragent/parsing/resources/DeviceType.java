@@ -119,7 +119,7 @@ public enum DeviceType
 	 * @return коллекцию с названиями устройств.
 	 */
 	@NotNull
-	public static List<@NotNull String> getAll()
+	public static List<@NotNull String> getAllNames()
 	{
 		List<String> devices = new ArrayList<>();
 

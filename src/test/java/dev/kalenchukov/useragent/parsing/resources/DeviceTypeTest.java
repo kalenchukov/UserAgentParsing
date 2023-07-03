@@ -60,12 +60,12 @@ public class DeviceTypeTest
     public class Static
     {
         /**
-         * Проверка метода {@link DeviceType#getAll()}.
+         * Проверка метода {@link DeviceType#getAllNames()}.
          */
         @Test
-        public void getAll()
+        public void getAllNames()
         {
-            List<String> devices = DeviceType.getAll();
+            List<String> devices = DeviceType.getAllNames();
             // Отнимается 1 так как в результат DeviceType.getAll() не попадает DeviceType.UNKNOWN
             int expectedSize = DeviceType.values().length - 1;
 

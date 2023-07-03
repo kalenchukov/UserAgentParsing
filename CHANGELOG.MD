@@ -12,6 +12,7 @@
 * Переименован метод BrowserType.getAll() -> BrowserType.getAllNames().
 * Переименован метод OperatingSystemType.getAll() -> OperatingSystemType.getAllNames().
 * Переименован метод Device.getType() -> Device.getName().
+* Переименован метод Device.getAll() -> Device.getAllNames().
 
 ### Исправлено
 *

@@ -60,12 +60,12 @@ public class BrowserTypeTest
     public class Static
     {
         /**
-         * Проверка метода {@link BrowserType#getAll()}.
+         * Проверка метода {@link BrowserType#getAllNames()}.
          */
         @Test
         public void getAll()
         {
-            List<String> browsers = BrowserType.getAll();
+            List<String> browsers = BrowserType.getAllNames();
             // Отнимается 1 так как в результат BrowserType.getAll() не попадает BrowserType.UNKNOWN
             int expectedSize = BrowserType.values().length - 1;
 

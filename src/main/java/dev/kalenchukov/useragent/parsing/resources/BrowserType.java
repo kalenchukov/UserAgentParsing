@@ -609,7 +609,7 @@ public enum BrowserType
 	 * @return коллекцию с названиями браузеров.
 	 */
 	@NotNull
-	public static List<@NotNull String> getAll()
+	public static List<@NotNull String> getAllNames()
 	{
 		List<String> browsers = new ArrayList<>();
 

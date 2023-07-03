@@ -9,6 +9,7 @@
 * Перемещён метод Browser.getAll() -> BrowserType.getAll().
 * Перемещён метод Device.getAll() -> DeviceType.getAll().
 * Перемещён метод OperatingSystem.getAll() -> OperatingSystemType.getAll().
+* Переименован метод BrowserType.getAll() -> BrowserType.getAllNames().
 
 ### Исправлено
 *

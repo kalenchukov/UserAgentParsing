@@ -8,6 +8,7 @@
 * Изменена версия Java на 17.
 * Перемещён метод Browser.getAll() -> BrowserType.getAll().
 * Перемещён метод Device.getAll() -> DeviceType.getAll().
+* Перемещён метод OperatingSystem.getAll() -> OperatingSystemType.getAll().
 
 ### Исправлено
 *

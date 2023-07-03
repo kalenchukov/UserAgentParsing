@@ -24,7 +24,7 @@
 
 package dev.kalenchukov.useragent.parsing;
 
-import dev.kalenchukov.useragent.parsing.resources.OperatingSystemType;
+import dev.kalenchukov.useragent.parsing.resources.OperatingSystemTypeTest;
 
 import org.junit.jupiter.api.Test;
 
@@ -42,21 +42,6 @@ public class OperatingSystemTest
 	private static final String USER_AGENT =
 		"Mozilla/5.0 (Linux; Android 6.0.1; SM-A300FU Build/MMB29M; wv) AppleWebKit/537.36 " +
 			"(KHTML, like Gecko) Version/4.0 Chrome/89.0.4389.105 Mobile Safari/537.36";
-
-	/**
-	 * Проверка метода {@link OperatingSystem#getAll()}.
-	 */
-	@Test
-	public void getAll()
-	{
-		List<String> operatingSystems = OperatingSystem.getAll();
-		// Отнимается 1 так как в результат OperatingSystem.getAll() не попадает OperatingSystemType.UNKNOWN
-		int expectedSize = OperatingSystemType.values().length - 1;
-
-		int actualSize = operatingSystems.size();
-
-		assertThat(actualSize).isEqualTo(expectedSize);
-	}
 
 	/**
 	 * Проверка метода {@link OperatingSystem#setUserAgent(String)}.

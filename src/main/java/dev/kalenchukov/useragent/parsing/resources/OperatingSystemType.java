@@ -24,7 +24,12 @@
 
 package dev.kalenchukov.useragent.parsing.resources;
 
+import dev.kalenchukov.useragent.parsing.OperatingSystem;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Типы возможных операционных систем.
@@ -338,5 +343,25 @@ public enum OperatingSystemType
 	public String getName()
 	{
 		return this.name;
+	}
+
+	/**
+	 * Возвращает все названия операционных систем.
+	 *
+	 * @return коллекцию с названиями операционных системы.
+	 */
+	@NotNull
+	public static List<@NotNull String> getAll()
+	{
+		List<String> operatingSystems = new ArrayList<>();
+
+		for (OperatingSystemType operatingSystem : OperatingSystemType.values())
+		{
+			if (operatingSystem != OperatingSystemType.UNKNOWN) {
+				operatingSystems.add(operatingSystem.getName());
+			}
+		}
+
+		return operatingSystems;
 	}
 }

@@ -77,26 +77,6 @@ public final class OperatingSystem
 	}
 
 	/**
-	 * Возвращает все названия операционных систем.
-	 *
-	 * @return коллекцию с названиями операционных системы.
-	 */
-	@NotNull
-	public static List<@NotNull String> getAll()
-	{
-		List<String> operatingSystems = new ArrayList<>();
-
-		for (OperatingSystemType operatingSystem : OperatingSystemType.values())
-		{
-			if (operatingSystem != OperatingSystemType.UNKNOWN) {
-				operatingSystems.add(operatingSystem.getName());
-			}
-		}
-
-		return operatingSystems;
-	}
-
-	/**
 	 * Устанавливает строку user-agent.
 	 *
 	 * @param userAgent строка user-agent.

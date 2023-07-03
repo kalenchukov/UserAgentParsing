@@ -60,12 +60,12 @@ public class OperatingSystemTypeTest
     public class Static
     {
         /**
-         * Проверка метода {@link OperatingSystemType#getAll()}.
+         * Проверка метода {@link OperatingSystemType#getAllNames()}.
          */
         @Test
-        public void getAll()
+        public void getAllNames()
         {
-            List<String> operatingSystems = OperatingSystemType.getAll();
+            List<String> operatingSystems = OperatingSystemType.getAllNames();
             // Отнимается 1 так как в результат OperatingSystemType.getAll() не попадает OperatingSystemType.UNKNOWN
             int expectedSize = OperatingSystemType.values().length - 1;
 

@@ -24,7 +24,6 @@
 
 package dev.kalenchukov.useragent.parsing.resources;
 
-import dev.kalenchukov.useragent.parsing.OperatingSystem;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -351,7 +350,7 @@ public enum OperatingSystemType
 	 * @return коллекцию с названиями операционных системы.
 	 */
 	@NotNull
-	public static List<@NotNull String> getAll()
+	public static List<@NotNull String> getAllNames()
 	{
 		List<String> operatingSystems = new ArrayList<>();
 

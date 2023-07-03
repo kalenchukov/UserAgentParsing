@@ -63,7 +63,7 @@ public class BrowserTypeTest
          * Проверка метода {@link BrowserType#getAllNames()}.
          */
         @Test
-        public void getAll()
+        public void getAllNames()
         {
             List<String> browsers = BrowserType.getAllNames();
             // Отнимается 1 так как в результат BrowserType.getAll() не попадает BrowserType.UNKNOWN

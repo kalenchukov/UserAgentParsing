@@ -1,10 +1,6 @@
 # Журнал изменений
-## vX.X.X - XX.XX.XXXX
-### Добавлено
-* Добавлен модуль assertj-core версии 3.24.2.
-
+## v2.4.0 - 08.07.2023
 ### Изменено
-* Изменена версия требуемого модуля annotations до 24.0.1.
 * Изменена версия Java на 17.
 * Перемещён метод Browser.getAll() -> BrowserType.getAll().
 * Перемещён метод Device.getAll() -> DeviceType.getAll().
@@ -13,12 +9,6 @@
 * Переименован метод OperatingSystemType.getAll() -> OperatingSystemType.getAllNames().
 * Переименован метод Device.getType() -> Device.getName().
 * Переименован метод Device.getAll() -> Device.getAllNames().
-
-### Исправлено
-*
-
-### Удалено
-*
 
 ## v2.3.0 - 12.02.2023
 ### Добавлено

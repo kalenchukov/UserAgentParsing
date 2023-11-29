@@ -25,4 +25,4 @@
 /**
  * Предоставляет перечисления, необходимые для определения типов.
  */
-package dev.kalenchukov.useragent.parsing.resources;
+package dev.kalenchukov.useragent.parsing.types;

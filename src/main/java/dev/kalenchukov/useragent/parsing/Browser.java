@@ -24,7 +24,7 @@
 
 package dev.kalenchukov.useragent.parsing;
 
-import dev.kalenchukov.useragent.parsing.resources.BrowserType;
+import dev.kalenchukov.useragent.parsing.types.BrowserType;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 

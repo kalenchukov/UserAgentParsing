@@ -24,11 +24,7 @@
 
 package dev.kalenchukov.useragent.parsing;
 
-import dev.kalenchukov.useragent.parsing.resources.OperatingSystemTypeTest;
-
 import org.junit.jupiter.api.Test;
-
-import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-package dev.kalenchukov.useragent.parsing.resources;
+package dev.kalenchukov.useragent.parsing.types;
 
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;

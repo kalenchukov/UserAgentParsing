@@ -24,7 +24,7 @@
 
 package dev.kalenchukov.useragent.parsing;
 
-import dev.kalenchukov.useragent.parsing.resources.DeviceType;
+import dev.kalenchukov.useragent.parsing.types.DeviceType;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 

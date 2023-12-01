@@ -38,40 +38,40 @@ import static org.assertj.core.api.Assertions.assertThat;
  */
 public class BrowserTypeTest
 {
-    /**
-     * Проверка метода {@link BrowserType#getName()}.
-     */
-    @Test
-    public void getName()
-    {
-        BrowserType browserType = BrowserType.FIREFOX;
+	/**
+	 * Проверка метода {@link BrowserType#getName()}.
+	 */
+	@Test
+	public void getName()
+	{
+		BrowserType browserType = BrowserType.FIREFOX;
 
-        String actualName = browserType.getName();
+		String actualName = browserType.getName();
 
-        assertThat(actualName).isEqualTo("Firefox");
-    }
+		assertThat(actualName).isEqualTo("Firefox");
+	}
 
-    /**
-     * Класс проверки статических методов.
-     *
-     * @author Алексей Каленчуков
-     */
-    @Nested
-    public class Static
-    {
-        /**
-         * Проверка метода {@link BrowserType#getAllNames()}.
-         */
-        @Test
-        public void getAllNames()
-        {
-            List<String> browsers = BrowserType.getAllNames();
-            // Отнимается 1 так как в результат BrowserType.getAll() не попадает BrowserType.UNKNOWN
-            int expectedSize = BrowserType.values().length - 1;
+	/**
+	 * Класс проверки статических методов.
+	 *
+	 * @author Алексей Каленчуков
+	 */
+	@Nested
+	public class Static
+	{
+		/**
+		 * Проверка метода {@link BrowserType#getAllNames()}.
+		 */
+		@Test
+		public void getAllNames()
+		{
+			List<String> browsers = BrowserType.getAllNames();
+			// Отнимается 1 так как в результат BrowserType.getAll() не попадает BrowserType.UNKNOWN
+			int expectedSize = BrowserType.values().length - 1;
 
-            int actualSize = browsers.size();
+			int actualSize = browsers.size();
 
-            assertThat(actualSize).isEqualTo(expectedSize);
-        }
-    }
+			assertThat(actualSize).isEqualTo(expectedSize);
+		}
+	}
 }

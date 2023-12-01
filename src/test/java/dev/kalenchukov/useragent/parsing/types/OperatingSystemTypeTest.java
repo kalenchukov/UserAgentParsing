@@ -38,40 +38,40 @@ import static org.assertj.core.api.Assertions.assertThat;
  */
 public class OperatingSystemTypeTest
 {
-    /**
-     * Проверка метода {@link OperatingSystemType#getName()}.
-     */
-    @Test
-    public void getName()
-    {
-        OperatingSystemType operatingSystemType = OperatingSystemType.LINUX;
+	/**
+	 * Проверка метода {@link OperatingSystemType#getName()}.
+	 */
+	@Test
+	public void getName()
+	{
+		OperatingSystemType operatingSystemType = OperatingSystemType.LINUX;
 
-        String actualName = operatingSystemType.getName();
+		String actualName = operatingSystemType.getName();
 
-        assertThat(actualName).isEqualTo("Linux");
-    }
+		assertThat(actualName).isEqualTo("Linux");
+	}
 
-    /**
-     * Класс проверки статических методов.
-     *
-     * @author Алексей Каленчуков
-     */
-    @Nested
-    public class Static
-    {
-        /**
-         * Проверка метода {@link OperatingSystemType#getAllNames()}.
-         */
-        @Test
-        public void getAllNames()
-        {
-            List<String> operatingSystems = OperatingSystemType.getAllNames();
-            // Отнимается 1 так как в результат OperatingSystemType.getAll() не попадает OperatingSystemType.UNKNOWN
-            int expectedSize = OperatingSystemType.values().length - 1;
+	/**
+	 * Класс проверки статических методов.
+	 *
+	 * @author Алексей Каленчуков
+	 */
+	@Nested
+	public class Static
+	{
+		/**
+		 * Проверка метода {@link OperatingSystemType#getAllNames()}.
+		 */
+		@Test
+		public void getAllNames()
+		{
+			List<String> operatingSystems = OperatingSystemType.getAllNames();
+			// Отнимается 1 так как в результат OperatingSystemType.getAll() не попадает OperatingSystemType.UNKNOWN
+			int expectedSize = OperatingSystemType.values().length - 1;
 
-            int actualSize = operatingSystems.size();
+			int actualSize = operatingSystems.size();
 
-            assertThat(actualSize).isEqualTo(expectedSize);
-        }
-    }
+			assertThat(actualSize).isEqualTo(expectedSize);
+		}
+	}
 }

@@ -7,7 +7,7 @@
 ```java
 UserAgentParsing userAgentParser = new UserAgentParser();
 userAgentParser.setUserAgent(
-    "Mozilla/5.0 (Linux; Android 6.0.1; SM-A300FU Build/MMB29M; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/89.0.4389.105 Mobile Safari/537.36"
+	"Mozilla/5.0 (Linux; Android 6.0.1; SM-A300FU Build/MMB29M; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/89.0.4389.105 Mobile Safari/537.36"
 );
 userAgentParser.getAll();
 ```
@@ -15,12 +15,12 @@ userAgentParser.getAll();
 Результат выполнения:
 ```
 [
-    browser_name=Google Chrome,
-    browser_version=89.0.4389.105,
-    device_type=Mobile,
-    device_model=SM-A300FU,
-    operating_system_name=Android,
-    operating_system_version=6.0.1
+	browser_name=Google Chrome,
+	browser_version=89.0.4389.105,
+	device_type=Mobile,
+	device_model=SM-A300FU,
+	operating_system_name=Android,
+	operating_system_version=6.0.1
 ]
 ```
 
@@ -28,7 +28,7 @@ userAgentParser.getAll();
 ```java
 UserAgentParsing userAgentParser = new UserAgentParser();
 userAgentParser.setUserAgent(
-    "Mozilla/5.0 (Linux; Android 6.0.1; SM-A300FU Build/MMB29M; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/89.0.4389.105 Mobile Safari/537.36"
+	"Mozilla/5.0 (Linux; Android 6.0.1; SM-A300FU Build/MMB29M; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/89.0.4389.105 Mobile Safari/537.36"
 );
 ```
 
@@ -152,7 +152,7 @@ SM-A300FU
 ```java
 OperatingSystem operatingSystem = new OperatingSystem();
 operatingSystem.setUserAgent(
-    "Mozilla/5.0 (Linux; Android 6.0.1; SM-A300FU Build/MMB29M; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/89.0.4389.105 Mobile Safari/537.36"
+	"Mozilla/5.0 (Linux; Android 6.0.1; SM-A300FU Build/MMB29M; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/89.0.4389.105 Mobile Safari/537.36"
 );
 ```
 

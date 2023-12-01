@@ -38,40 +38,40 @@ import static org.assertj.core.api.Assertions.assertThat;
  */
 public class DeviceTypeTest
 {
-    /**
-     * Проверка метода {@link DeviceType#getName()}.
-     */
-    @Test
-    public void getName()
-    {
-        DeviceType deviceType = DeviceType.MOBILE;
+	/**
+	 * Проверка метода {@link DeviceType#getName()}.
+	 */
+	@Test
+	public void getName()
+	{
+		DeviceType deviceType = DeviceType.MOBILE;
 
-        String actualName = deviceType.getName();
+		String actualName = deviceType.getName();
 
-        assertThat(actualName).isEqualTo("Mobile");
-    }
+		assertThat(actualName).isEqualTo("Mobile");
+	}
 
-    /**
-     * Класс проверки статических методов.
-     *
-     * @author Алексей Каленчуков
-     */
-    @Nested
-    public class Static
-    {
-        /**
-         * Проверка метода {@link DeviceType#getAllNames()}.
-         */
-        @Test
-        public void getAllNames()
-        {
-            List<String> devices = DeviceType.getAllNames();
-            // Отнимается 1 так как в результат DeviceType.getAll() не попадает DeviceType.UNKNOWN
-            int expectedSize = DeviceType.values().length - 1;
+	/**
+	 * Класс проверки статических методов.
+	 *
+	 * @author Алексей Каленчуков
+	 */
+	@Nested
+	public class Static
+	{
+		/**
+		 * Проверка метода {@link DeviceType#getAllNames()}.
+		 */
+		@Test
+		public void getAllNames()
+		{
+			List<String> devices = DeviceType.getAllNames();
+			// Отнимается 1 так как в результат DeviceType.getAll() не попадает DeviceType.UNKNOWN
+			int expectedSize = DeviceType.values().length - 1;
 
-            int actualSize = devices.size();
+			int actualSize = devices.size();
 
-            assertThat(actualSize).isEqualTo(expectedSize);
-        }
-    }
+			assertThat(actualSize).isEqualTo(expectedSize);
+		}
+	}
 }
